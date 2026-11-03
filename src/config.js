@@ -4,6 +4,9 @@ export const UPLOAD_ENDPOINT = '/api/upload';
 export const CONTACT_EMAIL = 'testimonials@magicmurals.com';
 /** If set (e.g. /custom-wall-murals.html), "I want this look" uses ?ref=ID instead of mailto */
 export const WANT_THIS_URL = '';
+/** Room tile row (Phase 1B §7) — off until layout is decided */
+export const ENABLE_BROWSE_BY_ROOM = false;
+
 export const PAGE_SIZE = 24;
 export const SEARCH_DEBOUNCE_MS = 250;
 

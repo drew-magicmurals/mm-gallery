@@ -8,6 +8,13 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PUBLIC = path.join(ROOT, 'public');
 const galleryPath = path.join(PUBLIC, 'data/gallery.json');
 
+/** Min share of non-background pixels for a bucket to count (reduces wall/floor noise). */
+const MIN_DOMINANT_SHARE = 0.1;
+const MIN_HEX_SHARE = 0.04;
+const MIN_NEUTRAL_DOMINANT = 0.28;
+
+// Future: AI segmentation to sample mural region only (see README).
+
 function isBackgroundPixel(r, g, b) {
   if (r > 245 && g > 245 && b > 245) return true;
   const d = Math.max(r, g, b) - Math.min(r, g, b);
@@ -44,12 +51,27 @@ async function analyzeImage(relSrc) {
   }
 
   if (!total) {
-    return { colors: ['#9e9e9e'], dominant: 'neutral' };
+    return { colors: [], dominant: null };
   }
 
+  const share = (n) => n / total;
   const sortedBuckets = [...bucketCounts.entries()].sort((a, b) => b[1] - a[1]);
-  const dominant = sortedBuckets[0]?.[0] || 'neutral';
-  const sortedHex = [...hexCounts.entries()].sort((a, b) => b[1] - a[1]);
+
+  let dominant = null;
+  for (const [key, count] of sortedBuckets) {
+    const s = share(count);
+    if (s < MIN_DOMINANT_SHARE) break;
+    if (key === 'neutral' || key === 'blackwhite') {
+      if (s >= MIN_NEUTRAL_DOMINANT) dominant = key;
+      continue;
+    }
+    dominant = key;
+    break;
+  }
+
+  const sortedHex = [...hexCounts.entries()]
+    .filter(([, count]) => share(count) >= MIN_HEX_SHARE)
+    .sort((a, b) => b[1] - a[1]);
   const colors = sortedHex.slice(0, 3).map(([h]) => h);
 
   return { colors, dominant };
@@ -62,8 +84,13 @@ for (const item of gallery.items || []) {
   for (const img of item.images || []) {
     try {
       const result = await analyzeImage(img.src);
-      img.colors = result.colors;
-      img.dominant = result.dominant;
+      if (result.dominant) {
+        img.colors = result.colors?.length ? result.colors : undefined;
+        img.dominant = result.dominant;
+      } else {
+        delete img.colors;
+        delete img.dominant;
+      }
       n += 1;
     } catch (err) {
       console.warn(`Skip colors for ${img.src}:`, err.message);

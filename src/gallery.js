@@ -1,4 +1,9 @@
-import { PAGE_SIZE, SEARCH_DEBOUNCE_MS, COLOR_SWATCH_KEYS } from './config.js';
+import {
+  PAGE_SIZE,
+  SEARCH_DEBOUNCE_MS,
+  COLOR_SWATCH_KEYS,
+  ENABLE_BROWSE_BY_ROOM,
+} from './config.js';
 import { debounce } from './util.js';
 import { imageSrc, imageSrcSet } from './images.js';
 import { filterItems, stateToHashParams, hasUserFilters } from './state.js';
@@ -140,12 +145,6 @@ export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, sh
     }
   }
 
-  function truncateQuote(text, max = 140) {
-    const t = String(text || '').trim();
-    if (t.length <= max) return t;
-    return `${t.slice(0, max).trim()}…`;
-  }
-
   function renderFeatured(allItems) {
     if (hasUserFilters(state)) {
       featuredEl.hidden = true;
@@ -160,22 +159,19 @@ export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, sh
     featuredEl.textContent = '';
     const title = document.createElement('h2');
     title.className = 'mmg-featured__title';
-    title.textContent = 'Featured stories';
+    title.textContent = 'Featured';
     featuredEl.appendChild(title);
     const track = document.createElement('div');
     track.className = 'mmg-featured__track';
-    featured.forEach((item, idx) => {
+    featured.forEach((item) => {
       const img = item.images?.[0];
       const card = document.createElement('button');
       card.type = 'button';
-      card.className = 'mmg-featured__card' + (idx === 0 ? ' mmg-featured__card--lead' : '');
-      const quote = truncateQuote(item.text);
+      card.className = 'mmg-featured__card';
+      card.setAttribute('aria-label', `Featured photo ${item.id}`);
       card.innerHTML = `
-        <span class="mmg-featured__img-wrap"></span>
-        <span class="mmg-featured__meta">
-          <span class="mmg-featured__mural"></span>
-          <span class="mmg-featured__caption"></span>
-          ${quote ? `<span class="mmg-featured__quote"></span>` : ''}
+        <span class="mmg-featured__img-wrap">
+          <span class="mmg-featured__badge">Featured</span>
         </span>
       `;
       if (img) {
@@ -183,16 +179,8 @@ export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, sh
         im.src = imageSrc(img.src, 450);
         im.alt = '';
         im.loading = 'lazy';
-        if (img.w && img.h) {
-          im.width = img.w;
-          im.height = img.h;
-        }
         card.querySelector('.mmg-featured__img-wrap').appendChild(im);
       }
-      card.querySelector('.mmg-featured__mural').textContent = item.mural?.name || item.headline;
-      card.querySelector('.mmg-featured__caption').textContent = item.caption || '';
-      const qEl = card.querySelector('.mmg-featured__quote');
-      if (qEl) qEl.textContent = `"${quote}"`;
       card.addEventListener('click', () => onOpenLightbox(item, filterItems(state)));
       track.appendChild(card);
     });
@@ -200,6 +188,10 @@ export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, sh
   }
 
   function renderBrowse() {
+    if (!ENABLE_BROWSE_BY_ROOM) {
+      browseWrap.hidden = true;
+      return;
+    }
     const rooms = roomCounts(state.items, state.taxonomy).slice(0, 6);
     if (!rooms.length || state.segment === 'business') {
       browseWrap.hidden = true;
@@ -257,7 +249,7 @@ export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, sh
       card.innerHTML = `
         <div class="${mediaClass}">
           <img class="mmg-card__img" alt="" loading="lazy" decoding="async" />
-          <button type="button" class="mmg-card__heart" aria-label="Save to shortlist" aria-pressed="false">♥</button>
+          <button type="button" class="mmg-card__heart" aria-label="Save to shortlist" aria-pressed="false"><span aria-hidden="true">♥</span></button>
           <div class="mmg-card__overlay">
             <span class="mmg-card__mural"></span>
             <span class="mmg-card__loc"></span>

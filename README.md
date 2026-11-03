@@ -19,6 +19,10 @@ npm run extract-colors   # requires existing WebPs in public/img/
 npm run fix-alt          # refresh alt text from taxonomy
 ```
 
+Color buckets use a **minimum pixel share** (10%) so beige walls do not dominate. Smarter **mural-only** sampling (AI segmentation) is planned for a later phase — see comment in `scripts/extract-colors.mjs`.
+
+Browse-by-room tiles are implemented but **disabled** (`ENABLE_BROWSE_BY_ROOM` in `src/config.js`) until layout is decided; dropdown filters remain.
+
 Embed with mural filter (future product pages):
 
 ```html
