@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseLegacyType, stripHtml } from './lib/taxonomy-map.mjs';
+import { imageAltText } from './lib/alt-text.mjs';
 import { writeResponsiveWebp } from './lib/images.mjs';
 import { generateSampleGallery } from './generate-sample-data.mjs';
 
@@ -136,11 +137,6 @@ function groupRows(allRows) {
   return [...map.values()];
 }
 
-function roomLabel(rooms, taxonomyRooms) {
-  if (!rooms?.length) return 'room';
-  return taxonomyRooms[rooms[0]]?.toLowerCase() || 'room';
-}
-
 async function convertRows(allRows) {
   const taxonomy = JSON.parse(
     await fs.readFile(path.join(PUBLIC, 'data/taxonomy.json'), 'utf8'),
@@ -182,7 +178,14 @@ async function convertRows(allRows) {
 
       const { segment, rooms, sectors } = parseLegacyType(r.type || row.type);
       const muralName = r.mural || row.mural || row.headline || 'Custom mural';
-      const alt = `${muralName} installed in a ${roomLabel(rooms, taxonomy.rooms)}`;
+      const alt = imageAltText(
+        muralName,
+        rooms,
+        taxonomy.rooms,
+        segment,
+        taxonomy.sectors,
+        sectors,
+      );
 
       images.push({ src: relSrc, w: dims.w, h: dims.h, alt });
       if (r.filename) legacyFiles.push(r.filename);

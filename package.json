@@ -8,6 +8,8 @@
     "preview": "vite preview",
     "convert": "node scripts/convert-legacy.mjs",
     "convert:local": "node scripts/convert-legacy.mjs --local",
+    "fix-alt": "node scripts/fix-gallery-alt.mjs",
+    "extract-colors": "node scripts/extract-colors.mjs",
     "generate-data": "node scripts/generate-sample-data.mjs"
   },
   "devDependencies": {

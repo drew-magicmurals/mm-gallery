@@ -4,6 +4,31 @@ Standalone customer photo gallery that embeds into the existing Magento `/testim
 
 See [AGENTS.md](./AGENTS.md) for the full product brief.
 
+## Phase 1B config constants (`src/config.js`)
+
+| Constant | Purpose |
+|----------|---------|
+| `CONTACT_EMAIL` | Shortlist and “I want this look” mailto target (default `testimonials@magicmurals.com`) |
+| `WANT_THIS_URL` | If set, “I want this look” links here with `?ref=G-xxxx` instead of mailto |
+| `UPLOAD_ENDPOINT` | Share-your-photo POST URL (mock in dev) |
+
+Regenerate image colors after importing photos:
+
+```bash
+npm run extract-colors   # requires existing WebPs in public/img/
+npm run fix-alt          # refresh alt text from taxonomy
+```
+
+Embed with mural filter (future product pages):
+
+```html
+<div id="mmg-strip" data-mural="Vintage Eiffel Tower"></div>
+<script src="/gallery-assets/mmg.js" defer></script>
+<script>
+  MMGallery.mount(document.getElementById('mmg-strip'), { mural: 'Vintage Eiffel Tower' });
+</script>
+```
+
 ## Live preview (GitHub Pages)
 
 After enabling **Settings → Pages → Source: GitHub Actions**, pushes to `main` deploy automatically.

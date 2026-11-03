@@ -1,8 +1,10 @@
-import { assetUrl } from './config.js';
+import { assetUrl, CONTACT_EMAIL, WANT_THIS_URL } from './config.js';
 import { imageSrc, imageSrcSet, pinterestUrl } from './images.js';
 import { trapFocus, prefersReducedMotion } from './util.js';
+import { displayAlt } from './alt-text.js';
+import { itemsWithSameMural } from './mural.js';
 
-export function createLightbox(root, state, onClose, onNavigate) {
+export function createLightbox(root, state, { onClose, onNavigate, shortlistApi, onMuralFilter }) {
   let releaseTrap = null;
   let touchStartX = 0;
 
@@ -29,8 +31,11 @@ export function createLightbox(root, state, onClose, onNavigate) {
         <p class="mmg-lightbox__headline"></p>
         <p class="mmg-lightbox__text"></p>
         <p class="mmg-lightbox__id"></p>
+        <div class="mmg-lightbox__mural-more" hidden></div>
         <div class="mmg-lightbox__actions">
-          <a class="mmg-btn mmg-btn--primary mmg-lightbox__mural" href="#"></a>
+          <a class="mmg-btn mmg-lightbox__mural" href="#" hidden></a>
+          <a class="mmg-btn mmg-btn--primary mmg-lightbox__want" href="#"></a>
+          <button type="button" class="mmg-btn mmg-lightbox__heart" aria-pressed="false">Save to shortlist</button>
           <button type="button" class="mmg-btn mmg-lightbox__copy">Copy link</button>
           <a class="mmg-btn mmg-lightbox__pin" href="#" target="_blank" rel="noopener noreferrer">Save to Pinterest</a>
         </div>
@@ -53,6 +58,9 @@ export function createLightbox(root, state, onClose, onNavigate) {
     imageCount: overlay.querySelector('.mmg-lightbox__image-count'),
     prevBtn: overlay.querySelector('.mmg-lightbox__nav--prev'),
     nextBtn: overlay.querySelector('.mmg-lightbox__nav--next'),
+    want: overlay.querySelector('.mmg-lightbox__want'),
+    heart: overlay.querySelector('.mmg-lightbox__heart'),
+    muralMore: overlay.querySelector('.mmg-lightbox__mural-more'),
   };
 
   function permalink(itemId) {
@@ -85,8 +93,14 @@ export function createLightbox(root, state, onClose, onNavigate) {
     els.img.src = imageSrc(img.src, 1600);
     els.img.srcset = imageSrcSet(img.src);
     els.img.sizes = '(min-width: 900px) 900px, 100vw';
-    els.img.alt = img.alt || '';
-    els.img.style.aspectRatio = `${img.w} / ${img.h}`;
+    els.img.alt = displayAlt(item, img, state.taxonomy);
+    if (img.w && img.h) {
+      els.img.width = img.w;
+      els.img.height = img.h;
+    } else {
+      els.img.removeAttribute('width');
+      els.img.removeAttribute('height');
+    }
 
     const pageUrl = permalink(item.id);
     const fullImg = assetUrl(`${img.src}-1600.webp`);
@@ -137,6 +151,70 @@ export function createLightbox(root, state, onClose, onNavigate) {
     }
   }
 
+  function wantThisHref(item) {
+    if (WANT_THIS_URL) {
+      try {
+        const u = new URL(WANT_THIS_URL, location.href);
+        u.searchParams.set('ref', item.id);
+        return u.pathname + u.search + u.hash;
+      } catch {
+        return `${WANT_THIS_URL}?ref=${encodeURIComponent(item.id)}`;
+      }
+    }
+    const subject = encodeURIComponent(`Custom mural like photo ${item.id}`);
+    const body = encodeURIComponent(
+      `I'm interested in a custom mural like photo ${item.id}:\n${permalink(item.id)}\n\nMy wall size / notes:\n\n`,
+    );
+    return `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  }
+
+  function renderMuralRelated(item) {
+    const related = itemsWithSameMural(state.items, item);
+    els.muralMore.textContent = '';
+    if (!related.length) {
+      els.muralMore.hidden = true;
+      return;
+    }
+    els.muralMore.hidden = false;
+    const title = document.createElement('p');
+    title.className = 'mmg-lightbox__mural-more-title';
+    title.textContent = `${related.length} more install${related.length === 1 ? '' : 's'} of this mural`;
+    els.muralMore.appendChild(title);
+    const row = document.createElement('div');
+    row.className = 'mmg-lightbox__mural-more-row';
+    for (const other of related.slice(0, 8)) {
+      const im = other.images?.[0];
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'mmg-lightbox__mural-more-thumb';
+      btn.setAttribute('aria-label', `Open ${other.id}`);
+      if (im) {
+        const thumb = document.createElement('img');
+        thumb.src = imageSrc(im.src, 450);
+        thumb.alt = '';
+        btn.appendChild(thumb);
+      }
+      btn.addEventListener('click', () => {
+        state.lightbox.item = other;
+        state.lightbox.imageIndex = 0;
+        fillContent(other, 0);
+        onNavigate?.(other.id);
+      });
+      row.appendChild(btn);
+    }
+    els.muralMore.appendChild(row);
+    const link = document.createElement('button');
+    link.type = 'button';
+    link.className = 'mmg-link-btn';
+    link.textContent = 'Show all installs of this mural';
+    const muralName = item.mural?.name || item.headline;
+    link.addEventListener('click', () => {
+      close();
+      onMuralFilter?.(muralName);
+    });
+    els.muralMore.appendChild(link);
+  }
+
   function fillContent(item, imageIndex = 0) {
     els.caption.textContent = item.caption || '';
     els.headline.textContent = item.headline || '';
@@ -146,13 +224,22 @@ export function createLightbox(root, state, onClose, onNavigate) {
     if (item.mural?.url) {
       els.mural.textContent = 'See this mural';
       els.mural.href = item.mural.url;
+      els.mural.hidden = false;
     } else {
-      els.mural.textContent = 'Start a custom mural like this';
-      els.mural.href = '/custom-wall-murals.html';
+      els.mural.hidden = true;
     }
-    els.mural.hidden = false;
+
+    els.want.textContent = 'I want this look';
+    els.want.href = wantThisHref(item);
+
+    if (shortlistApi) {
+      const saved = shortlistApi.isSaved(item.id);
+      els.heart.setAttribute('aria-pressed', saved ? 'true' : 'false');
+      els.heart.classList.toggle('is-active', saved);
+    }
 
     renderImageIndex(item, imageIndex);
+    renderMuralRelated(item);
   }
 
   function open(item, list, imageIndex = 0) {
@@ -208,6 +295,14 @@ export function createLightbox(root, state, onClose, onNavigate) {
     if (action === 'close') close();
     if (action === 'prev') step(-1);
     if (action === 'next') step(1);
+  });
+
+  els.heart.addEventListener('click', () => {
+    if (!state.lightbox || !shortlistApi) return;
+    shortlistApi.toggle(state.lightbox.item.id);
+    const saved = shortlistApi.isSaved(state.lightbox.item.id);
+    els.heart.setAttribute('aria-pressed', saved ? 'true' : 'false');
+    els.heart.classList.toggle('is-active', saved);
   });
 
   els.copy.addEventListener('click', async () => {

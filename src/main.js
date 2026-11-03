@@ -4,13 +4,14 @@ import {
   setAssetBase,
   assetUrl,
 } from './config.js';
-import { createState, applyHashToState } from './state.js';
+import { createState, applyHashToState, filterItems } from './state.js';
 import { parseHash, writeFilterHash, debounce } from './util.js';
 import { renderGalleryUI } from './gallery.js';
 import { createLightbox } from './lightbox.js';
 import { createShareWidget } from './share.js';
 import { injectJsonLd } from './jsonld.js';
-import { filterItems } from './state.js';
+import { attachShortlistUI } from './shortlist-ui.js';
+import { normalizeMuralName } from './mural.js';
 
 function injectStylesheet(base) {
   if (document.querySelector('link[data-mmg-css]')) return;
@@ -27,9 +28,8 @@ async function loadJson(url) {
   return res.json();
 }
 
-async function init() {
-  const mount = document.getElementById('mmg-gallery');
-  if (!mount) return;
+async function mountGallery(mountEl, options = {}) {
+  if (!mountEl) return;
 
   const scriptEl = document.currentScript || document.querySelector('script[src*="mmg"], script[src*="main.js"]');
   const base = resolveAssetBase(scriptEl);
@@ -47,10 +47,15 @@ async function init() {
   state.items = gallery.items || [];
   state.taxonomy = taxonomy;
 
+  if (options.mural) {
+    state.embedMural = options.mural;
+  }
+
   injectJsonLd(state.items);
 
   let lightboxApi;
   let ui;
+  let shortlistApi;
 
   const pushHash = debounce(() => {
     const hash = parseHash();
@@ -62,29 +67,46 @@ async function init() {
     const filtered = ui.refresh();
     pushHash();
     if (state.pendingOpenId) {
-      const item = filtered.find((i) => i.id === state.pendingOpenId);
+      const item =
+        filtered.find((i) => i.id === state.pendingOpenId) ||
+        state.items.find((i) => i.id === state.pendingOpenId);
       if (item) {
-        lightboxApi.open(item, filtered);
+        lightboxApi.open(item, filtered.length ? filtered : state.items);
         state.pendingOpenId = null;
       }
     }
   };
 
-  ui = renderGalleryUI(mount, state, {
+  shortlistApi = attachShortlistUI(mountEl, state, () => state.items, {
+    onViewChange: onStateChange,
+    onOpenItem: (item) => {
+      const filtered = filterItems(state);
+      writeFilterHash(new URLSearchParams(), item.id);
+      lightboxApi.open(item, filtered.length ? filtered : state.items);
+    },
+  });
+
+  ui = renderGalleryUI(mountEl, state, {
     onOpenLightbox: (item, list) => {
       writeFilterHash(new URLSearchParams(), item.id);
       lightboxApi.open(item, list);
     },
     onStateChange,
+    shortlistApi,
   });
 
-  lightboxApi = createLightbox(mount, state, () => {
-    pushHash();
-  }, (id) => {
-    writeFilterHash(new URLSearchParams(), id);
+  lightboxApi = createLightbox(mountEl, state, {
+    onClose: () => pushHash(),
+    onNavigate: (id) => writeFilterHash(new URLSearchParams(), id),
+    shortlistApi,
+    onMuralFilter: (muralName) => {
+      state.muralFilter = muralName;
+      state.visibleCount = 24;
+      onStateChange();
+    },
   });
 
-  createShareWidget(mount);
+  createShareWidget(mountEl);
 
   const initialHash = parseHash();
   applyHashToState(state, initialHash);
@@ -93,7 +115,9 @@ async function init() {
   ui.refresh();
   if (state.pendingOpenId) {
     const filtered = filterItems(state);
-    const item = filtered.find((i) => i.id === state.pendingOpenId) || state.items.find((i) => i.id === state.pendingOpenId);
+    const item =
+      filtered.find((i) => i.id === state.pendingOpenId) ||
+      state.items.find((i) => i.id === state.pendingOpenId);
     if (item) {
       lightboxApi.open(item, filtered.length ? filtered : state.items);
       state.pendingOpenId = null;
@@ -113,7 +137,23 @@ async function init() {
     ui.refresh();
     lightboxApi.close();
   });
+
+  return { state, refresh: () => ui.refresh(), open: (id) => lightboxApi.open(
+    state.items.find((i) => i.id === id),
+    filterItems(state),
+  ) };
 }
+
+async function init() {
+  const mount = document.getElementById('mmg-gallery');
+  if (!mount) return;
+  const presetMural = mount.dataset?.mural || '';
+  await mountGallery(mount, presetMural ? { mural: presetMural } : {});
+}
+
+globalThis.MMGallery = {
+  mount: mountGallery,
+};
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);

@@ -1,3 +1,7 @@
+import { isIdOnlySearch } from './photo-id.js';
+import { itemHasColorBucket } from './color-buckets.js';
+import { normalizeMuralName } from './mural.js';
+
 export function createState() {
   return {
     items: [],
@@ -6,9 +10,15 @@ export function createState() {
     segment: 'all',
     category: '',
     search: '',
+    color: '',
+    muralFilter: '',
+    shortlistView: null,
+    shortlistIds: [],
     visibleCount: 24,
     lightbox: null,
     lastFocus: null,
+    pendingOpenId: null,
+    embedMural: '',
   };
 }
 
@@ -44,14 +54,42 @@ export function itemSearchText(item) {
     item.caption,
     item.text,
     item.mural?.name,
+    item.id,
   ]
     .filter(Boolean)
     .join(' ')
     .toLowerCase();
 }
 
+export function hasUserFilters(state) {
+  return Boolean(
+    state.search.trim() ||
+      state.category ||
+      state.segment !== 'all' ||
+      state.color ||
+      state.muralFilter ||
+      state.shortlistView?.length ||
+      state.embedMural,
+  );
+}
+
 export function filterItems(state) {
   let list = state.items;
+
+  if (state.shortlistView?.length) {
+    const allow = new Set(state.shortlistView);
+    list = list.filter((i) => allow.has(i.id));
+  }
+
+  if (state.embedMural) {
+    const key = normalizeMuralName(state.embedMural);
+    list = list.filter((i) => normalizeMuralName(i.mural?.name || i.headline) === key);
+  }
+
+  if (state.muralFilter) {
+    const key = normalizeMuralName(state.muralFilter);
+    list = list.filter((i) => normalizeMuralName(i.mural?.name || i.headline) === key);
+  }
 
   if (state.segment === 'residential') {
     list = list.filter((i) => i.segment === 'residential');
@@ -68,12 +106,21 @@ export function filterItems(state) {
     });
   }
 
-  const tokens = state.searchTokens || [];
-  if (tokens.length) {
-    list = list.filter((item) => {
-      const hay = itemSearchText(item);
-      return tokens.every((t) => hay.includes(t));
-    });
+  if (state.color) {
+    list = list.filter((i) => itemHasColorBucket(i, state.color));
+  }
+
+  const idQuery = isIdOnlySearch(state.search);
+  if (idQuery) {
+    list = list.filter((i) => i.id === idQuery);
+  } else {
+    const tokens = state.searchTokens || [];
+    if (tokens.length) {
+      list = list.filter((item) => {
+        const hay = itemSearchText(item);
+        return tokens.every((t) => hay.includes(t));
+      });
+    }
   }
 
   return sortItems(list, state.sort);
@@ -93,6 +140,13 @@ export function applyHashToState(state, hash) {
 
   const q = hash.params.get('q');
   if (q != null) state.search = q;
+
+  state.color = hash.params.get('color') || '';
+  const mural = hash.params.get('mural');
+  state.muralFilter = mural ? decodeURIComponent(mural) : '';
+  state.shortlistView = hash.params.get('list')
+    ? hash.params.get('list').split(',').map((s) => s.trim().toUpperCase())
+    : null;
 }
 
 export function stateToHashParams(state) {
@@ -106,5 +160,8 @@ export function stateToHashParams(state) {
   }
   if (state.sort !== 'best') p.set('sort', state.sort);
   if (state.search.trim()) p.set('q', state.search.trim());
+  if (state.color) p.set('color', state.color);
+  if (state.muralFilter) p.set('mural', state.muralFilter);
+  if (state.shortlistView?.length) p.set('list', state.shortlistView.join(','));
   return p;
 }

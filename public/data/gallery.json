@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-11-03T20:39:38.089Z",
+  "generated": "2026-11-03T21:51:26.597Z",
   "items": [
     {
       "id": "G-0001",
@@ -9,7 +9,13 @@
           "src": "img/G-0001-1",
           "w": 541,
           "h": 768,
-          "alt": "Vintage Eiffel Tower installed in a living"
+          "alt": "Vintage Eiffel Tower installed in a living room",
+          "colors": [
+            "#b6b39b",
+            "#b2ad93",
+            "#bab49d"
+          ],
+          "dominant": "brown"
         }
       ],
       "caption": "Allie B., Stafford Springs, CT",
@@ -26,7 +32,7 @@
       ],
       "sectors": [],
       "material": null,
-      "featured": false,
+      "featured": true,
       "score": 0,
       "added": "2026-11-03"
     },
@@ -37,7 +43,13 @@
           "src": "img/G-0002-1",
           "w": 1024,
           "h": 768,
-          "alt": "Garden Waterfall installed in a other"
+          "alt": "Garden Waterfall installed in a other room",
+          "colors": [
+            "#31150a",
+            "#301409",
+            "#30130b"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Amy and Mario C., Ontario, Canada",
@@ -64,7 +76,13 @@
           "src": "img/G-0003-1",
           "w": 576,
           "h": 768,
-          "alt": "Mandala 5 installed in a room"
+          "alt": "Mandala 5 installed in a libraries",
+          "colors": [
+            "#431013",
+            "#4f1315",
+            "#461116"
+          ],
+          "dominant": "red"
         }
       ],
       "caption": "Daria P., Reston Regional Library",
@@ -91,7 +109,13 @@
           "src": "img/G-0004-1",
           "w": 432,
           "h": 768,
-          "alt": "Young Woman's Doodle installed in a bedroom"
+          "alt": "Young Woman's Doodle installed in a bedroom room",
+          "colors": [
+            "#f2ede1",
+            "#7f1804",
+            "#7b1803"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Amy S., Chicago, IL",
@@ -118,7 +142,13 @@
           "src": "img/G-0005-1",
           "w": 640,
           "h": 480,
-          "alt": "Door to Garden installed in a bedroom"
+          "alt": "Door to Garden installed in a bedroom room",
+          "colors": [
+            "#9b978f",
+            "#9d9a92",
+            "#a6a4a0"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Anita S., Mundelein, IL",
@@ -146,7 +176,13 @@
           "src": "img/G-0006-1",
           "w": 1024,
           "h": 768,
-          "alt": "Trevi Fountain-Rome-Italy installed in a room"
+          "alt": "Trevi Fountain-Rome-Italy installed in a salons & spas",
+          "colors": [
+            "#808682",
+            "#7b7e79",
+            "#636564"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Anthony H., Naples, FL",
@@ -173,7 +209,13 @@
           "src": "img/G-0007-1",
           "w": 1024,
           "h": 768,
-          "alt": "Custom Mural installed in a room"
+          "alt": "Custom Mural installed in a corporate & offices",
+          "colors": [
+            "#cebfb8",
+            "#cfbeb6",
+            "#b4a293"
+          ],
+          "dominant": "brown"
         }
       ],
       "caption": "Arlene H., HealthWorks Rehab Fitness",
@@ -201,7 +243,13 @@
           "src": "img/G-0008-1",
           "w": 1024,
           "h": 768,
-          "alt": "Healing Waters installed in a room"
+          "alt": "Healing Waters installed in a churches & religion",
+          "colors": [
+            "#9b9587",
+            "#989185",
+            "#261910"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Barbara G., Rocky Point Baptist Church",
@@ -228,7 +276,13 @@
           "src": "img/G-0009-1",
           "w": 1024,
           "h": 768,
-          "alt": "Custom Mural installed in a home office"
+          "alt": "Custom Mural installed in a corporate & offices",
+          "colors": [
+            "#e4dcd1",
+            "#e6dfd3",
+            "#dce8ef"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Larry H., Big Chile Inn",
@@ -257,7 +311,13 @@
           "src": "img/G-0010-1",
           "w": 1024,
           "h": 768,
-          "alt": "Poplar Sunrise installed in a living"
+          "alt": "Poplar Sunrise installed in a living room",
+          "colors": [
+            "#b2bbb8",
+            "#b6b7ae",
+            "#b4b9b3"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Bob S., Germantown, TN",
@@ -284,7 +344,13 @@
           "src": "img/G-0011-1",
           "w": 1024,
           "h": 576,
-          "alt": "The Pursuit of Happiness installed in a room"
+          "alt": "The Pursuit of Happiness installed in a retail",
+          "colors": [
+            "#ebe3cf",
+            "#877a63",
+            "#262730"
+          ],
+          "dominant": "brown"
         }
       ],
       "caption": "Brenda B., The Yoga Room",
@@ -311,7 +377,13 @@
           "src": "img/G-0012-1",
           "w": 432,
           "h": 768,
-          "alt": "Italian Archway - Sepia installed in a bathroom"
+          "alt": "Italian Archway - Sepia installed in a bathroom",
+          "colors": [
+            "#8f9555",
+            "#aeb678",
+            "#939b5b"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Brie Q., Enfield, CT",
@@ -338,13 +410,25 @@
           "src": "img/G-0013-1",
           "w": 1024,
           "h": 768,
-          "alt": "Custom Mural installed in a room"
+          "alt": "Custom Mural installed in a medical",
+          "colors": [
+            "#504b4f",
+            "#aaaeb6",
+            "#575254"
+          ],
+          "dominant": "pink"
         },
         {
           "src": "img/G-0013-2",
           "w": 1024,
           "h": 768,
-          "alt": "Custom Mural installed in a room"
+          "alt": "Custom Mural installed in a medical",
+          "colors": [
+            "#959490",
+            "#e9e3d3",
+            "#92908c"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Christine W., Mill Plain Medical Aesthetics",
@@ -360,7 +444,7 @@
         "Me"
       ],
       "material": null,
-      "featured": false,
+      "featured": true,
       "score": 0,
       "added": "2026-11-03"
     },
@@ -371,7 +455,13 @@
           "src": "img/G-0014-1",
           "w": 1024,
           "h": 768,
-          "alt": "Movies-Films and TV installed in a living"
+          "alt": "Movies-Films and TV installed in a living room",
+          "colors": [
+            "#2b2c27",
+            "#2d2e29",
+            "#2c2d28"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Christopher C., Attleboro, MA",
@@ -398,7 +488,13 @@
           "src": "img/G-0015-1",
           "w": 526,
           "h": 768,
-          "alt": "*Custom Mural installed in a room"
+          "alt": "Custom Mural installed in a medical",
+          "colors": [
+            "#919493",
+            "#343728",
+            "#69695c"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Cindy F., Beaver, WV",
@@ -425,7 +521,13 @@
           "src": "img/G-0016-1",
           "w": 466,
           "h": 624,
-          "alt": "Bash Bish Falls in Berkshires installed in a bathroom"
+          "alt": "Bash Bish Falls in Berkshires installed in a bathroom",
+          "colors": [
+            "#f1fefe",
+            "#f2fefe",
+            "#f1fcfd"
+          ],
+          "dominant": "yellow"
         }
       ],
       "caption": "Cristie S., Phoenix, AZ",
@@ -452,7 +554,13 @@
           "src": "img/G-0017-1",
           "w": 432,
           "h": 768,
-          "alt": "Manhattan Bridge at Twilight installed in a living"
+          "alt": "Manhattan Bridge at Twilight installed in a living room",
+          "colors": [
+            "#171216",
+            "#161115",
+            "#191418"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Cynthia B., Graniteville, SC",
@@ -479,7 +587,13 @@
           "src": "img/G-0018-1",
           "w": 1017,
           "h": 768,
-          "alt": "Executive World Map installed in a room"
+          "alt": "Executive World Map installed in a corporate & offices",
+          "colors": [
+            "#0a0c00",
+            "#0c0e02",
+            "#0a140c"
+          ],
+          "dominant": "brown"
         }
       ],
       "caption": "Cynthia K., GreenWood Resources",
@@ -506,7 +620,13 @@
           "src": "img/G-0019-1",
           "w": 1024,
           "h": 576,
-          "alt": "Outdoor Patio installed in a dining"
+          "alt": "Outdoor Patio installed in a dining room",
+          "colors": [
+            "#120625",
+            "#0e051f",
+            "#1a0820"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Damian C., West Chester, PA",
@@ -533,7 +653,13 @@
           "src": "img/G-0020-1",
           "w": 1024,
           "h": 683,
-          "alt": "See installed in a room"
+          "alt": "See installed in a corporate & offices",
+          "colors": [
+            "#302e2f",
+            "#2f2d2d",
+            "#333033"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Lisa and Steve, Atlantic City, NJ",
@@ -560,7 +686,13 @@
           "src": "img/G-0021-1",
           "w": 576,
           "h": 768,
-          "alt": "Cherry Blossom Dream installed in a dining"
+          "alt": "Cherry Blossom Dream installed in a dining room",
+          "colors": [
+            "#d7caba",
+            "#dacabb",
+            "#d7c9bc"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Francis W., Brentwood, TN",
@@ -587,7 +719,13 @@
           "src": "img/G-0022-1",
           "w": 1024,
           "h": 680,
-          "alt": "Twilight in Paradise installed in a kitchen"
+          "alt": "Twilight in Paradise installed in a kitchen",
+          "colors": [
+            "#a7a7a4",
+            "#a0a09d",
+            "#a2a2a0"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Fred G., Tigard, OR",
@@ -614,7 +752,13 @@
           "src": "img/G-0023-1",
           "w": 640,
           "h": 480,
-          "alt": "On a Day Like This installed in a other"
+          "alt": "On a Day Like This installed in a other room",
+          "colors": [
+            "#1a191e",
+            "#1b1a1f",
+            "#40362c"
+          ],
+          "dominant": "brown"
         }
       ],
       "caption": "George & Janie E., Coral Gables, FL",
@@ -643,7 +787,13 @@
           "src": "img/G-0024-1",
           "w": 1024,
           "h": 768,
-          "alt": "Mediterranean Terrace installed in a garage"
+          "alt": "Mediterranean Terrace installed in a garage",
+          "colors": [
+            "#030303",
+            "#3e3e3c",
+            "#454545"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "George G., Tucson, AZ",
@@ -670,7 +820,13 @@
           "src": "img/G-0025-1",
           "w": 480,
           "h": 640,
-          "alt": "Vintage Canal installed in a entry/hallway"
+          "alt": "Vintage Canal installed in a entry/hallway",
+          "colors": [
+            "#fef7ea",
+            "#9f764d",
+            "#fff1e3"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Geraldine B., Schaumburg, IL",
@@ -686,7 +842,7 @@
       ],
       "sectors": [],
       "material": null,
-      "featured": false,
+      "featured": true,
       "score": 0,
       "added": "2026-11-03"
     },
@@ -697,7 +853,13 @@
           "src": "img/G-0026-1",
           "w": 1024,
           "h": 576,
-          "alt": "Custom Mural installed in a room"
+          "alt": "Custom Mural installed in a churches & religion",
+          "colors": [
+            "#afafaf",
+            "#c2bfc0",
+            "#a8a6a7"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Geraldine M., Florissant, MO",
@@ -724,7 +886,13 @@
           "src": "img/G-0027-1",
           "w": 1024,
           "h": 768,
-          "alt": "Winter Trees installed in a bonus room"
+          "alt": "Winter Trees installed in a bonus room",
+          "colors": [
+            "#b9b2a2",
+            "#bbb9ac",
+            "#9fadb8"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Gina A., Linwood, NJ",
@@ -751,7 +919,13 @@
           "src": "img/G-0028-1",
           "w": 576,
           "h": 768,
-          "alt": "Custom Mural installed in a room"
+          "alt": "Custom Mural installed in a restaurants",
+          "colors": [
+            "#d2a534",
+            "#ce9d31",
+            "#c89930"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Gina F., Venissimo Cheese",
@@ -779,7 +953,13 @@
           "src": "img/G-0029-1",
           "w": 576,
           "h": 768,
-          "alt": "California Oranges installed in a living"
+          "alt": "California Oranges installed in a living room",
+          "colors": [
+            "#96512d",
+            "#d27b47",
+            "#95522f"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Glenn T., Orange, CA",
@@ -806,7 +986,13 @@
           "src": "img/G-0030-1",
           "w": 576,
           "h": 768,
-          "alt": "Woodward Avenue installed in a bathroom"
+          "alt": "Woodward Avenue installed in a bathroom",
+          "colors": [
+            "#e9e6db",
+            "#eae7dc",
+            "#eeece1"
+          ],
+          "dominant": "red"
         }
       ],
       "caption": "Greg B., Boise, ID",
@@ -834,7 +1020,13 @@
           "src": "img/G-0031-1",
           "w": 1024,
           "h": 768,
-          "alt": "Wally's Gas Station installed in a garage"
+          "alt": "Wally's Gas Station installed in a garage",
+          "colors": [
+            "#050505",
+            "#060606",
+            "#030507"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Greg B., Boise, ID",
@@ -861,7 +1053,13 @@
           "src": "img/G-0032-1",
           "w": 1024,
           "h": 765,
-          "alt": "Surfing in Hawaii installed in a bedroom"
+          "alt": "Surfing in Hawaii installed in a bedroom room",
+          "colors": [
+            "#b39b83",
+            "#3a2f2c",
+            "#3f3333"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Greg M. - Installer, American Wallpaper",
@@ -890,7 +1088,13 @@
           "src": "img/G-0033-1",
           "w": 432,
           "h": 768,
-          "alt": "September Royal installed in a bedroom"
+          "alt": "September Royal installed in a bedroom room",
+          "colors": [
+            "#402314",
+            "#4d4429",
+            "#cdc0be"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Harry T., Loveland, CO",
@@ -917,7 +1121,13 @@
           "src": "img/G-0034-1",
           "w": 1024,
           "h": 576,
-          "alt": "Catalina installed in a room"
+          "alt": "Catalina installed in a medical",
+          "colors": [
+            "#8b634e",
+            "#2e1814",
+            "#946a54"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Jacquie D., Catalina Imaging",
@@ -944,7 +1154,13 @@
           "src": "img/G-0035-1",
           "w": 576,
           "h": 768,
-          "alt": "Baseballs Galore (Grayscale) installed in a bedroom"
+          "alt": "Baseballs Galore (Grayscale) installed in a bedroom room",
+          "colors": [
+            "#c3bb97",
+            "#d0c9ae",
+            "#e5dfc1"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "James D., East Northport, NY",
@@ -973,7 +1189,13 @@
           "src": "img/G-0036-1",
           "w": 576,
           "h": 768,
-          "alt": "Custom Mural installed in a room"
+          "alt": "Custom Mural installed in a corporate & offices",
+          "colors": [
+            "#d9c9ae",
+            "#2d2211",
+            "#130c03"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "James T., Paul G., Boynton Beach, FL",
@@ -1000,7 +1222,13 @@
           "src": "img/G-0037-1",
           "w": 1024,
           "h": 576,
-          "alt": "Wine Cellar-France installed in a bonus room"
+          "alt": "Wine Cellar-France installed in a bonus room",
+          "colors": [
+            "#bfa195",
+            "#c3a89a",
+            "#261524"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Jayn D., Freeport, OH",
@@ -1027,7 +1255,13 @@
           "src": "img/G-0038-1",
           "w": 480,
           "h": 640,
-          "alt": "Colorful Solar System installed in a bedroom"
+          "alt": "Colorful Solar System installed in a bedroom room",
+          "colors": [
+            "#221822",
+            "#1f1421",
+            "#211623"
+          ],
+          "dominant": "blue"
         }
       ],
       "caption": "Jane H., Stilwell, KS",
@@ -1056,7 +1290,13 @@
           "src": "img/G-0039-1",
           "w": 1024,
           "h": 768,
-          "alt": "Lahinch Golf Club 6th Hole installed in a home office"
+          "alt": "Lahinch Golf Club 6th Hole installed in a home office",
+          "colors": [
+            "#120f09",
+            "#b9a189",
+            "#ffead3"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Jim K., Pittsburgh, PA",
@@ -1083,7 +1323,13 @@
           "src": "img/G-0040-1",
           "w": 768,
           "h": 768,
-          "alt": "*Custom Mural installed in a entry/hallway"
+          "alt": "Custom Mural installed in a entry/hallway",
+          "colors": [
+            "#121418",
+            "#171319",
+            "#6b4b3c"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Patricia R., North Ft. Myers, FL",
@@ -1111,7 +1357,13 @@
           "src": "img/G-0041-1",
           "w": 418,
           "h": 768,
-          "alt": "Pathway to Florida Beach installed in a bonus room"
+          "alt": "Pathway to Florida Beach installed in a bonus room",
+          "colors": [
+            "#b28f7d",
+            "#e3c2cd",
+            "#e1adba"
+          ],
+          "dominant": "pink"
         }
       ],
       "caption": "Paul S., Canonsburg, PA",
@@ -1139,7 +1391,13 @@
           "src": "img/G-0042-1",
           "w": 1024,
           "h": 579,
-          "alt": "Custom Mural installed in a kid's room"
+          "alt": "Custom Mural installed in a kid's room",
+          "colors": [
+            "#ae8e2e",
+            "#b19130",
+            "#5d5a1d"
+          ],
+          "dominant": "yellow"
         }
       ],
       "caption": "Peter O., New York, NY",
@@ -1166,7 +1424,13 @@
           "src": "img/G-0043-1",
           "w": 1024,
           "h": 768,
-          "alt": "Snake River installed in a room"
+          "alt": "Snake River installed in a corporate & offices",
+          "colors": [
+            "#98a0b2",
+            "#a1a19f",
+            "#919db4"
+          ],
+          "dominant": "blue"
         }
       ],
       "caption": "Priscilla L., Tulsa, OK",
@@ -1193,7 +1457,13 @@
           "src": "img/G-0044-1",
           "w": 768,
           "h": 768,
-          "alt": "Autumn Mountain Lake (Customized) installed in a bonus room"
+          "alt": "Autumn Mountain Lake (Customized) installed in a bonus room",
+          "colors": [
+            "#211411",
+            "#1b0f0f",
+            "#1a1110"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Ray and Penny, Parker, CO",
@@ -1220,7 +1490,13 @@
           "src": "img/G-0045-1",
           "w": 1024,
           "h": 576,
-          "alt": "Let the Path Lead You installed in a other"
+          "alt": "Let the Path Lead You installed in a other room",
+          "colors": [
+            "#5a8ca8",
+            "#c1c5b8",
+            "#5c8eab"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Rebecca R., Crystal River, FL",
@@ -1247,7 +1523,13 @@
           "src": "img/G-0046-1",
           "w": 1024,
           "h": 576,
-          "alt": "Sicilian Grapes installed in a room"
+          "alt": "Sicilian Grapes installed in a restaurants",
+          "colors": [
+            "#4e3033",
+            "#43272c",
+            "#4f3134"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Richard H., Frontiere Natural Meats",
@@ -1275,7 +1557,13 @@
           "src": "img/G-0047-1",
           "w": 566,
           "h": 768,
-          "alt": "Flower Balcony installed in a entry/hallway"
+          "alt": "Flower Balcony installed in a entry/hallway",
+          "colors": [
+            "#02244b",
+            "#022952",
+            "#012b53"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Richard W., Brentwood, NY",
@@ -1303,7 +1591,13 @@
           "src": "img/G-0048-1",
           "w": 1024,
           "h": 768,
-          "alt": "Long Island Dunes installed in a home office"
+          "alt": "Long Island Dunes installed in a home office",
+          "colors": [
+            "#0c0c0c",
+            "#242422",
+            "#2b2b29"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Bob and Linda F., Jeannette, PA",
@@ -1331,7 +1625,13 @@
           "src": "img/G-0049-1",
           "w": 1024,
           "h": 683,
-          "alt": "Custom Mural installed in a living"
+          "alt": "Custom Mural installed in a living room",
+          "colors": [
+            "#d4cfec",
+            "#d3cce8",
+            "#d2cbe7"
+          ],
+          "dominant": "purple"
         }
       ],
       "caption": "Robert H., Miami Springs, FL",
@@ -1358,7 +1658,13 @@
           "src": "img/G-0050-1",
           "w": 640,
           "h": 480,
-          "alt": "Blue Sky Cliff Jump installed in a bedroom"
+          "alt": "Blue Sky Cliff Jump installed in a bedroom room",
+          "colors": [
+            "#2e2524",
+            "#2f2625",
+            "#e3c4a1"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Robin F., East Stroudsburg, PA",
@@ -1387,7 +1693,13 @@
           "src": "img/G-0051-1",
           "w": 576,
           "h": 768,
-          "alt": "Golf Course-North Carolina installed in a room"
+          "alt": "Golf Course-North Carolina installed in a corporate & offices",
+          "colors": [
+            "#2a2814",
+            "#2b3013",
+            "#668932"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Rodgers T., Catalyst Group",
@@ -1414,7 +1726,13 @@
           "src": "img/G-0052-1",
           "w": 1024,
           "h": 768,
-          "alt": "Basketball Stadium installed in a room"
+          "alt": "Basketball Stadium installed in a corporate & offices",
+          "colors": [
+            "#13130f",
+            "#151410",
+            "#181916"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Rodgers T., Catalyst Group",
@@ -1441,7 +1759,13 @@
           "src": "img/G-0053-1",
           "w": 640,
           "h": 640,
-          "alt": "Outdoor Patio installed in a dining"
+          "alt": "Outdoor Patio installed in a dining room",
+          "colors": [
+            "#d8cbb9",
+            "#d7c8b4",
+            "#d7caba"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Ronnie H., Scurry, TX",
@@ -1469,7 +1793,13 @@
           "src": "img/G-0054-1",
           "w": 1024,
           "h": 768,
-          "alt": "American Past Time installed in a bedroom"
+          "alt": "American Past Time installed in a bedroom room",
+          "colors": [
+            "#cbc7ab",
+            "#0e1011",
+            "#c2d2e1"
+          ],
+          "dominant": "brown"
         }
       ],
       "caption": "Ryan D., Las Vegas, NV",
@@ -1499,7 +1829,13 @@
           "src": "img/G-0055-1",
           "w": 576,
           "h": 768,
-          "alt": "*Custom Mural installed in a bedroom"
+          "alt": "Custom Mural installed in a bedroom room",
+          "colors": [
+            "#caba94",
+            "#e8f0f7",
+            "#e1e9f2"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Sarah L., Auckland, New Zealand",
@@ -1528,7 +1864,13 @@
           "src": "img/G-0056-1",
           "w": 576,
           "h": 768,
-          "alt": "Bridge Over Stream installed in a room"
+          "alt": "Bridge Over Stream installed in a medical",
+          "colors": [
+            "#f2f0e1",
+            "#f1efdf",
+            "#eeecdd"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Dr. Scott Mason, Mason Dental",
@@ -1555,7 +1897,13 @@
           "src": "img/G-0057-1",
           "w": 1024,
           "h": 768,
-          "alt": "Castle Entrance installed in a bedroom"
+          "alt": "Castle Entrance installed in a bedroom room",
+          "colors": [
+            "#cdc8bc",
+            "#ccc7b9",
+            "#d1d3e0"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Sergei B., Jacksonville, FL",
@@ -1582,7 +1930,13 @@
           "src": "img/G-0058-1",
           "w": 841,
           "h": 768,
-          "alt": "Jamaican Waterfall installed in a room"
+          "alt": "Jamaican Waterfall installed in a retail",
+          "colors": [
+            "#000000",
+            "#010101",
+            "#010103"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Shannon W., Swinson Funeral Services",
@@ -1609,7 +1963,13 @@
           "src": "img/G-0059-1",
           "w": 576,
           "h": 768,
-          "alt": "Wine Cellar installed in a bonus room"
+          "alt": "Wine Cellar installed in a bonus room",
+          "colors": [
+            "#513925",
+            "#795f3f",
+            "#473225"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Shawn and Regina C., Rutledge, TN",
@@ -1636,7 +1996,13 @@
           "src": "img/G-0060-1",
           "w": 576,
           "h": 768,
-          "alt": "Light of the Cross installed in a room"
+          "alt": "Light of the Cross installed in a churches & religion",
+          "colors": [
+            "#08070c",
+            "#060508",
+            "#09080f"
+          ],
+          "dominant": "blackwhite"
         }
       ],
       "caption": "Albert A., Laredo, TX",
@@ -1663,7 +2029,13 @@
           "src": "img/G-0061-1",
           "w": 576,
           "h": 768,
-          "alt": "Gotham City Lights (Grayscale) installed in a bathroom"
+          "alt": "Gotham City Lights (Grayscale) installed in a bathroom",
+          "colors": [
+            "#3a301d",
+            "#392f1c",
+            "#fffbef"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Alexander A., New York, NY",
@@ -1691,7 +2063,13 @@
           "src": "img/G-0062-1",
           "w": 576,
           "h": 768,
-          "alt": "Outdoor Patio installed in a boy's room"
+          "alt": "Outdoor Patio installed in a boy's room",
+          "colors": [
+            "#1c0504",
+            "#cf7d50",
+            "#df9c7c"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Al H., Grants PAA, OR",
@@ -1719,7 +2097,13 @@
           "src": "img/G-0063-1",
           "w": 1000,
           "h": 750,
-          "alt": "The Structure installed in a framed"
+          "alt": "The Structure installed in a framed room",
+          "colors": [
+            "#0b0e0d",
+            "#090b0a",
+            "#0a0c0c"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Alice D., Rockledge, FL",
@@ -1746,7 +2130,13 @@
           "src": "img/G-0064-1",
           "w": 1000,
           "h": 750,
-          "alt": "Magical Coast installed in a framed"
+          "alt": "Magical Coast installed in a framed room",
+          "colors": [
+            "#f0dfd5",
+            "#eee1da",
+            "#f0e0d3"
+          ],
+          "dominant": "blue"
         }
       ],
       "caption": "Alice M., Ann Arbor, MI",
@@ -1773,7 +2163,13 @@
           "src": "img/G-0065-1",
           "w": 576,
           "h": 768,
-          "alt": "Custom Murals installed in a room"
+          "alt": "Custom Murals installed in a corporate & offices",
+          "colors": [
+            "#6c6c6c",
+            "#6d6d6d",
+            "#6f6f6f"
+          ],
+          "dominant": "neutral"
         }
       ],
       "caption": "Allie H., R2P Pet Ltd.",
@@ -1800,13 +2196,25 @@
           "src": "img/G-0066-1",
           "w": 1000,
           "h": 750,
-          "alt": "Custom Murals installed in a room"
+          "alt": "Custom Murals installed in a residential communities",
+          "colors": [
+            "#371010",
+            "#706451",
+            "#6d604e"
+          ],
+          "dominant": "brown"
         },
         {
           "src": "img/G-0066-2",
           "w": 576,
           "h": 768,
-          "alt": "Custom Murals installed in a room"
+          "alt": "Custom Murals installed in a residential communities",
+          "colors": [
+            "#887965",
+            "#d8d3c7",
+            "#8b7c68"
+          ],
+          "dominant": "brown"
         }
       ],
       "caption": "Allison C., Washington Street Properties",
@@ -1833,7 +2241,13 @@
           "src": "img/G-0067-1",
           "w": 576,
           "h": 768,
-          "alt": "Blossom Falls installed in a entry/hallway"
+          "alt": "Blossom Falls installed in a entry/hallway",
+          "colors": [
+            "#cfa053",
+            "#d0a154",
+            "#cb9e52"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Alona B., Santa Clarita, CA",
@@ -1860,7 +2274,13 @@
           "src": "img/G-0068-1",
           "w": 1000,
           "h": 746,
-          "alt": "Map of London installed in a framed"
+          "alt": "Map of London installed in a framed room",
+          "colors": [
+            "#030303",
+            "#020202",
+            "#050505"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Amanda F., Colorado Springs, CO",
@@ -1887,7 +2307,13 @@
           "src": "img/G-0069-1",
           "w": 480,
           "h": 640,
-          "alt": "Assorted Glasses installed in a bonus room"
+          "alt": "Assorted Glasses installed in a bonus room",
+          "colors": [
+            "#0f0a0c",
+            "#180f0f",
+            "#a68e78"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Amanda K., Overland Park, KS",
@@ -1914,7 +2340,13 @@
           "src": "img/G-0070-1",
           "w": 1000,
           "h": 747,
-          "alt": "Orchid Detail installed in a living"
+          "alt": "Orchid Detail installed in a living room",
+          "colors": [
+            "#cec998",
+            "#988040",
+            "#cbc593"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Amber S., Sedro Woolley, WA",
@@ -1942,7 +2374,13 @@
           "src": "img/G-0071-1",
           "w": 640,
           "h": 480,
-          "alt": "Decorator World Map installed in a bedroom"
+          "alt": "Decorator World Map installed in a bedroom room",
+          "colors": [
+            "#9c8a7c",
+            "#af9d91",
+            "#a18467"
+          ],
+          "dominant": "brown"
         }
       ],
       "caption": "Amelia S., Santiago, Chile",
@@ -1971,7 +2409,13 @@
           "src": "img/G-0072-1",
           "w": 432,
           "h": 768,
-          "alt": "*Custom Mural installed in a entry/hallway"
+          "alt": "Custom Mural installed in a entry/hallway",
+          "colors": [
+            "#f5e5ca",
+            "#f6e6cb",
+            "#cabeb2"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Amy S., Cary, NC",
@@ -1998,7 +2442,13 @@
           "src": "img/G-0073-1",
           "w": 320,
           "h": 240,
-          "alt": "Winter Bliss installed in a room"
+          "alt": "Winter Bliss installed in a corporate & offices",
+          "colors": [
+            "#c5bfad",
+            "#d3cdbd",
+            "#d0c8b6"
+          ],
+          "dominant": "brown"
         }
       ],
       "caption": "Amy S., College Station, TX",
@@ -2025,7 +2475,13 @@
           "src": "img/G-0074-1",
           "w": 540,
           "h": 720,
-          "alt": "Sepia Continents installed in a entry/hallway"
+          "alt": "Sepia Continents installed in a entry/hallway",
+          "colors": [
+            "#0c0c0a",
+            "#0d0b0a",
+            "#0c0a08"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Ana L., Austin, TX",
@@ -2053,7 +2509,13 @@
           "src": "img/G-0075-1",
           "w": 576,
           "h": 768,
-          "alt": "Custom Mural installed in a room"
+          "alt": "Custom Mural installed in a restaurants",
+          "colors": [
+            "#090909",
+            "#0a0a0a",
+            "#0c0c0c"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Andrea F., Cafe Torino-Seattle",
@@ -2080,13 +2542,25 @@
           "src": "img/G-0076-1",
           "w": 576,
           "h": 768,
-          "alt": "Greek Architecture installed in a living"
+          "alt": "Greek Architecture installed in a living room",
+          "colors": [
+            "#b9a97c",
+            "#b5a679",
+            "#bbae80"
+          ],
+          "dominant": "orange"
         },
         {
           "src": "img/G-0076-2",
           "w": 576,
           "h": 768,
-          "alt": "Earth Mother installed in a bedroom"
+          "alt": "Greek Architecture installed in a living room",
+          "colors": [
+            "#fa6e94",
+            "#f96c93",
+            "#fa6d96"
+          ],
+          "dominant": "pink"
         }
       ],
       "caption": "Andrea T., Lombard, IL",
@@ -2113,7 +2587,13 @@
           "src": "img/G-0077-1",
           "w": 960,
           "h": 720,
-          "alt": "Hawaiian Sunset installed in a bonus room"
+          "alt": "Hawaiian Sunset installed in a bonus room",
+          "colors": [
+            "#95816f",
+            "#f3e7cd",
+            "#977f69"
+          ],
+          "dominant": "orange"
         }
       ],
       "caption": "Andy B., Schererville, IN",

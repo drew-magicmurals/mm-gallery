@@ -28,7 +28,11 @@ export function parseHash() {
   if (/^G-\d{4}$/i.test(raw)) {
     return { id: raw.toUpperCase(), params: new URLSearchParams() };
   }
-  return { id: null, params: new URLSearchParams(raw) };
+  const params = new URLSearchParams(raw);
+  if (params.has('list') || params.has('color') || params.has('mural') || params.has('room')) {
+    return { id: null, params };
+  }
+  return { id: null, params };
 }
 
 export function writeFilterHash(params, itemId) {
