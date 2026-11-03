@@ -358,6 +358,13 @@ body.mmg-lightbox-open {
   background: #f0f0f0;
 }
 
+.mmg-lightbox__image-count {
+  margin: var(--mmg-space-xs) 0 0;
+  font-size: 0.8125rem;
+  color: var(--mmg-color-muted);
+  text-align: center;
+}
+
 .mmg-lightbox__caption {
   margin-top: var(--mmg-space-sm);
   font-size: 0.9375rem;

@@ -21,6 +21,7 @@ export function createLightbox(root, state, onClose, onNavigate) {
       <button type="button" class="mmg-lightbox__nav mmg-lightbox__nav--next" data-mmg-action="next" aria-label="Next photo">&rsaquo;</button>
       <figure class="mmg-lightbox__figure">
         <img class="mmg-lightbox__img" alt="" decoding="async" />
+        <p class="mmg-lightbox__image-count" hidden></p>
         <figcaption class="mmg-lightbox__caption"></figcaption>
       </figure>
       <div class="mmg-lightbox__thumbs" hidden></div>
@@ -49,6 +50,9 @@ export function createLightbox(root, state, onClose, onNavigate) {
     copy: overlay.querySelector('.mmg-lightbox__copy'),
     pin: overlay.querySelector('.mmg-lightbox__pin'),
     thumbs: overlay.querySelector('.mmg-lightbox__thumbs'),
+    imageCount: overlay.querySelector('.mmg-lightbox__image-count'),
+    prevBtn: overlay.querySelector('.mmg-lightbox__nav--prev'),
+    nextBtn: overlay.querySelector('.mmg-lightbox__nav--next'),
   };
 
   function permalink(itemId) {
@@ -56,7 +60,24 @@ export function createLightbox(root, state, onClose, onNavigate) {
     return `${base}#${itemId}`;
   }
 
-  function renderImageIndex(item, imageIndex) {
+  function updateNavLabels(item, imageIndex) {
+    const images = item.images || [];
+    const multi = images.length > 1;
+    const atStart = imageIndex <= 0;
+    const atEnd = imageIndex >= images.length - 1;
+
+    els.prevBtn.setAttribute(
+      'aria-label',
+      multi && !atStart ? 'Previous image in this set' : 'Previous testimonial',
+    );
+    els.nextBtn.setAttribute(
+      'aria-label',
+      multi && !atEnd ? 'Next image in this set' : 'Next testimonial',
+    );
+  }
+
+  function renderImageIndex(item, imageIndex, options = {}) {
+    const { rebuildThumbs = true } = options;
     const images = item.images || [];
     const img = images[imageIndex] || images[0];
     if (!img) return;
@@ -72,26 +93,47 @@ export function createLightbox(root, state, onClose, onNavigate) {
     els.pin.href = pinterestUrl(pageUrl, fullImg, item.headline || item.caption);
 
     if (images.length > 1) {
+      els.imageCount.hidden = false;
+      els.imageCount.textContent = `Image ${imageIndex + 1} of ${images.length}`;
+    } else {
+      els.imageCount.hidden = true;
+      els.imageCount.textContent = '';
+    }
+
+    updateNavLabels(item, imageIndex);
+
+    if (images.length > 1) {
       els.thumbs.hidden = false;
-      els.thumbs.textContent = '';
-      images.forEach((im, idx) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'mmg-lightbox__thumb' + (idx === imageIndex ? ' is-active' : '');
-        btn.setAttribute('aria-label', `Image ${idx + 1} of ${images.length}`);
-        const thumb = document.createElement('img');
-        thumb.src = imageSrc(im.src, 450);
-        thumb.alt = '';
-        thumb.loading = 'lazy';
-        btn.appendChild(thumb);
-        btn.addEventListener('click', () => {
-          state.lightbox.imageIndex = idx;
-          renderImageIndex(item, idx);
+      const thumbButtons = els.thumbs.querySelectorAll('.mmg-lightbox__thumb');
+      if (rebuildThumbs || thumbButtons.length !== images.length) {
+        els.thumbs.textContent = '';
+        images.forEach((im, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'mmg-lightbox__thumb' + (idx === imageIndex ? ' is-active' : '');
+          btn.setAttribute('aria-label', `Show image ${idx + 1} of ${images.length}`);
+          btn.setAttribute('aria-current', idx === imageIndex ? 'true' : 'false');
+          const thumb = document.createElement('img');
+          thumb.src = imageSrc(im.src, 450);
+          thumb.alt = '';
+          thumb.loading = 'lazy';
+          btn.appendChild(thumb);
+          btn.addEventListener('click', () => {
+            if (!state.lightbox) return;
+            state.lightbox.imageIndex = idx;
+            renderImageIndex(state.lightbox.item, idx, { rebuildThumbs: false });
+          });
+          els.thumbs.appendChild(btn);
         });
-        els.thumbs.appendChild(btn);
-      });
+      } else {
+        thumbButtons.forEach((btn, idx) => {
+          btn.classList.toggle('is-active', idx === imageIndex);
+          btn.setAttribute('aria-current', idx === imageIndex ? 'true' : 'false');
+        });
+      }
     } else {
       els.thumbs.hidden = true;
+      els.thumbs.textContent = '';
     }
   }
 
@@ -138,14 +180,27 @@ export function createLightbox(root, state, onClose, onNavigate) {
 
   function step(delta) {
     if (!state.lightbox) return;
-    const { list, item } = state.lightbox;
+    const { list, item, imageIndex } = state.lightbox;
+    const images = item.images || [];
+    const nextImageIndex = imageIndex + delta;
+
+    if (images.length > 1 && nextImageIndex >= 0 && nextImageIndex < images.length) {
+      state.lightbox.imageIndex = nextImageIndex;
+      renderImageIndex(item, nextImageIndex, { rebuildThumbs: false });
+      return;
+    }
+
     const idx = list.findIndex((i) => i.id === item.id);
     if (idx < 0) return;
-    const next = list[(idx + delta + list.length) % list.length];
-    state.lightbox.item = next;
-    state.lightbox.imageIndex = 0;
-    fillContent(next, 0);
-    onNavigate?.(next.id);
+    const nextItem = list[(idx + delta + list.length) % list.length];
+    const nextImages = nextItem.images || [];
+    const landOn =
+      delta > 0 ? 0 : Math.max(0, nextImages.length - 1);
+
+    state.lightbox.item = nextItem;
+    state.lightbox.imageIndex = landOn;
+    fillContent(nextItem, landOn);
+    onNavigate?.(nextItem.id);
   }
 
   overlay.addEventListener('click', (e) => {
