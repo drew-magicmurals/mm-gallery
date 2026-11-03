@@ -4,6 +4,14 @@ Standalone customer photo gallery that embeds into the existing Magento `/testim
 
 See [AGENTS.md](./AGENTS.md) for the full product brief.
 
+## Live preview (GitHub Pages)
+
+After enabling **Settings → Pages → Source: GitHub Actions**, pushes to `main` deploy automatically.
+
+Preview URL: **https://drew-magicmurals.github.io/mm-gallery/**
+
+(Static host only — browse filters/lightbox; upload form is disabled.)
+
 ## Quick start
 
 ```bash
