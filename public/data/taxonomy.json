@@ -1,0 +1,37 @@
+{
+  "segments": {
+    "residential": "Residential",
+    "business": "Business"
+  },
+  "rooms": {
+    "Ba": "Bathroom",
+    "Be": "Bedroom",
+    "Bor": "Bonus room",
+    "Bo": "Boy's room",
+    "D": "Dining",
+    "Eh": "Entry/hallway",
+    "Rf": "Framed",
+    "G": "Garage",
+    "Gi": "Girl's room",
+    "Ho": "Home office",
+    "Kid": "Kid's room",
+    "Ki": "Kitchen",
+    "L": "Living",
+    "M": "Man cave",
+    "Ro": "Other"
+  },
+  "sectors": {
+    "Ch": "Churches & religion",
+    "Co": "Corporate & offices",
+    "E": "Entertainment",
+    "Li": "Libraries",
+    "Me": "Medical",
+    "Mu": "Museums",
+    "Rc": "Residential communities",
+    "Re": "Restaurants",
+    "Ret": "Retail",
+    "S": "Salons & spas",
+    "Sc": "Schools & universities",
+    "Buo": "Other"
+  }
+}

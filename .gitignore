@@ -1,4 +1,6 @@
 node_modules/
-data/
+/data/
 tmp/
 .DS_Store
+dist/
+public/assets/
