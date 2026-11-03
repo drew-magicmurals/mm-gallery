@@ -21,7 +21,7 @@ npm run fix-alt          # refresh alt text from taxonomy
 
 Color buckets use a **minimum pixel share** (10%) so beige walls do not dominate. Smarter **mural-only** sampling (AI segmentation) is planned for a later phase — see comment in `scripts/extract-colors.mjs`.
 
-Browse-by-room tiles are implemented but **disabled** (`ENABLE_BROWSE_BY_ROOM` in `src/config.js`) until layout is decided; dropdown filters remain.
+**Smart Bar** (Phase 1B addendum): one search pill replaces the old segment buttons, room dropdown, sort dropdown, and color swatch row. Filters live in chips inside the pill; open the pill for color dots, room/sector chips, and sort. URL hash keys include `seg`, `room`, `sector`, `color`, `place`, `q`, and `sort`. Press `/` to focus the bar.
 
 Embed with mural filter (future product pages):
 

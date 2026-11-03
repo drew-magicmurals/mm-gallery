@@ -1,16 +1,15 @@
-import {
-  PAGE_SIZE,
-  SEARCH_DEBOUNCE_MS,
-  COLOR_SWATCH_KEYS,
-  ENABLE_BROWSE_BY_ROOM,
-} from './config.js';
-import { debounce } from './util.js';
+import { PAGE_SIZE } from './config.js';
 import { imageSrc, imageSrcSet } from './images.js';
-import { filterItems, stateToHashParams, hasUserFilters } from './state.js';
+import {
+  filterItems,
+  stateToHashParams,
+  showFeaturedStrip,
+  syncLegacyFilterFields,
+} from './state.js';
 import { displayAlt } from './alt-text.js';
-import { hasColorData, SWATCH_HEX, SWATCH_LABELS } from './color-buckets.js';
-import { roomCounts } from './mural.js';
+import { attachSmartBar } from './smart-bar.js';
 import { isIdOnlySearch } from './photo-id.js';
+import { rankItemForQuery } from './search-rank.js';
 
 export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, shortlistApi }) {
   root.classList.add('mmg-root');
@@ -18,43 +17,12 @@ export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, sh
     <noscript><p class="mmg-noscript">Enable JavaScript to browse the customer photo gallery, filter by room, and view full-size photos.</p></noscript>
     <div class="mmg-app" hidden>
       <div class="mmg-featured" hidden aria-label="Featured customer stories"></div>
-      <div class="mmg-browse" hidden>
-        <button type="button" class="mmg-browse-toggle" aria-expanded="false">Browse by room</button>
-        <div class="mmg-browse-tiles" hidden></div>
-      </div>
-      <div class="mmg-toolbar">
-        <div class="mmg-color-filters" hidden role="group" aria-label="Filter by color"></div>
-        <div class="mmg-toolbar__row">
-          <div class="mmg-segments" role="group" aria-label="Gallery segment">
-            <button type="button" class="mmg-seg" data-seg="all">All</button>
-            <button type="button" class="mmg-seg" data-seg="residential">Residential</button>
-            <button type="button" class="mmg-seg" data-seg="business">Business</button>
-          </div>
-          <label class="mmg-select-wrap">
-            <span class="mmg-visually-hidden">Room or sector</span>
-            <select class="mmg-category" aria-label="Filter by room or sector"></select>
-          </label>
-        </div>
-        <div class="mmg-toolbar__row">
-          <label class="mmg-search-wrap">
-            <span class="mmg-visually-hidden">Search gallery</span>
-            <input type="search" class="mmg-search" placeholder="Search murals, places, or a photo number" autocomplete="off" />
-          </label>
-          <label class="mmg-select-wrap mmg-select-wrap--sort">
-            <span class="mmg-visually-hidden">Sort</span>
-            <select class="mmg-sort" aria-label="Sort gallery">
-              <option value="best">Best</option>
-              <option value="newest">Newest</option>
-              <option value="mural">Mural name</option>
-            </select>
-          </label>
-        </div>
-      </div>
-      <p class="mmg-count" aria-live="polite"></p>
+      <div class="mmg-smartbar-wrap"></div>
       <div class="mmg-grid" role="list"></div>
       <div class="mmg-empty" hidden>
-        <p>No photos match your filters.</p>
-        <button type="button" class="mmg-btn mmg-clear">Clear filters</button>
+        <p class="mmg-empty__msg">No photos match your search.</p>
+        <ul class="mmg-empty__suggest" hidden></ul>
+        <button type="button" class="mmg-btn mmg-clear">Clear all</button>
       </div>
       <button type="button" class="mmg-btn mmg-load-more" hidden>Load more</button>
     </div>
@@ -62,91 +30,16 @@ export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, sh
 
   const app = root.querySelector('.mmg-app');
   const featuredEl = root.querySelector('.mmg-featured');
-  const browseWrap = root.querySelector('.mmg-browse');
-  const browseToggle = root.querySelector('.mmg-browse-toggle');
-  const browseTiles = root.querySelector('.mmg-browse-tiles');
-  const colorFilters = root.querySelector('.mmg-color-filters');
+  const smartbarWrap = root.querySelector('.mmg-smartbar-wrap');
   const grid = root.querySelector('.mmg-grid');
-  const countEl = root.querySelector('.mmg-count');
   const emptyEl = root.querySelector('.mmg-empty');
+  const emptySuggest = root.querySelector('.mmg-empty__suggest');
   const loadMoreBtn = root.querySelector('.mmg-load-more');
-  const categorySelect = root.querySelector('.mmg-category');
-  const searchInput = root.querySelector('.mmg-search');
-  const sortSelect = root.querySelector('.mmg-sort');
 
-  function categoryOptions() {
-    const tax = state.taxonomy;
-    const opts = [{ value: '', label: state.segment === 'business' ? 'All sectors' : 'All rooms' }];
-    if (!tax) return opts;
-    const map = state.segment === 'business' ? tax.sectors : tax.rooms;
-    if (state.segment === 'all') {
-      opts.push({ value: '', label: 'Select segment first', disabled: true });
-      return opts;
-    }
-    for (const [key, label] of Object.entries(map)) {
-      opts.push({ value: key, label });
-    }
-    return opts;
-  }
-
-  function syncControls() {
-    root.querySelectorAll('.mmg-seg').forEach((btn) => {
-      btn.classList.toggle('is-active', btn.dataset.seg === state.segment);
-      btn.setAttribute('aria-pressed', btn.dataset.seg === state.segment ? 'true' : 'false');
-    });
-    sortSelect.value = state.sort;
-    searchInput.value = state.search;
-
-    const prev = state.category;
-    categorySelect.textContent = '';
-    for (const opt of categoryOptions()) {
-      const o = document.createElement('option');
-      o.value = opt.value;
-      o.textContent = opt.label;
-      if (opt.disabled) o.disabled = true;
-      categorySelect.appendChild(o);
-    }
-    if ([...categorySelect.options].some((o) => o.value === prev)) {
-      categorySelect.value = prev;
-    } else {
-      categorySelect.value = '';
-      state.category = '';
-    }
-
-    categorySelect.disabled = state.segment === 'all';
-
-    colorFilters.querySelectorAll('.mmg-color-swatch').forEach((btn) => {
-      btn.classList.toggle('is-active', btn.dataset.color === state.color);
-      btn.setAttribute('aria-pressed', btn.dataset.color === state.color ? 'true' : 'false');
-    });
-  }
-
-  function renderColorFilters() {
-    colorFilters.textContent = '';
-    if (!hasColorData(state.items)) {
-      colorFilters.hidden = true;
-      return;
-    }
-    colorFilters.hidden = false;
-    for (const key of COLOR_SWATCH_KEYS) {
-      if (!state.items.some((i) => i.images?.some((im) => im.dominant === key))) continue;
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = `mmg-color-swatch mmg-dominant-${key}`;
-      btn.dataset.color = key;
-      btn.setAttribute('aria-label', SWATCH_LABELS[key] || key);
-      btn.title = SWATCH_LABELS[key] || key;
-      btn.addEventListener('click', () => {
-        state.color = state.color === key ? '' : key;
-        state.visibleCount = PAGE_SIZE;
-        onStateChange();
-      });
-      colorFilters.appendChild(btn);
-    }
-  }
+  const smartBar = attachSmartBar(smartbarWrap, state, { onStateChange });
 
   function renderFeatured(allItems) {
-    if (hasUserFilters(state)) {
+    if (!showFeaturedStrip(state)) {
       featuredEl.hidden = true;
       return;
     }
@@ -186,49 +79,6 @@ export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, sh
     });
     featuredEl.appendChild(track);
   }
-
-  function renderBrowse() {
-    if (!ENABLE_BROWSE_BY_ROOM) {
-      browseWrap.hidden = true;
-      return;
-    }
-    const rooms = roomCounts(state.items, state.taxonomy).slice(0, 6);
-    if (!rooms.length || state.segment === 'business') {
-      browseWrap.hidden = true;
-      return;
-    }
-    browseWrap.hidden = false;
-    browseTiles.textContent = '';
-    for (const room of rooms) {
-      const sample = room.sample?.images?.[0];
-      const tile = document.createElement('button');
-      tile.type = 'button';
-      tile.className = 'mmg-browse-tile';
-      tile.innerHTML = `<span class="mmg-browse-tile__img"></span><span class="mmg-browse-tile__label"></span><span class="mmg-browse-tile__count"></span>`;
-      if (sample) {
-        const im = document.createElement('img');
-        im.src = imageSrc(sample.src, 450);
-        im.alt = '';
-        im.loading = 'lazy';
-        tile.querySelector('.mmg-browse-tile__img').appendChild(im);
-      }
-      tile.querySelector('.mmg-browse-tile__label').textContent = room.label;
-      tile.querySelector('.mmg-browse-tile__count').textContent = `${room.count} photos`;
-      tile.addEventListener('click', () => {
-        state.segment = 'residential';
-        state.category = room.key;
-        state.visibleCount = PAGE_SIZE;
-        onStateChange();
-      });
-      browseTiles.appendChild(tile);
-    }
-  }
-
-  browseToggle.addEventListener('click', () => {
-    const open = browseTiles.hidden;
-    browseTiles.hidden = !open;
-    browseToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
 
   function renderCards(filtered) {
     grid.textContent = '';
@@ -303,19 +153,77 @@ export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, sh
     loadMoreBtn.hidden = !hasMore;
     emptyEl.hidden = filtered.length > 0;
     grid.hidden = filtered.length === 0;
-    countEl.textContent =
-      filtered.length === state.items.length
-        ? `${filtered.length} photos`
-        : `${filtered.length} of ${state.items.length} photos`;
+
+    if (filtered.length === 0) {
+      emptySuggest.textContent = '';
+      const suggestions = smartBar.getCloseSuggestions();
+      if (suggestions.length) {
+        emptySuggest.hidden = false;
+        for (const s of suggestions) {
+          const li = document.createElement('li');
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'mmg-empty__suggest-btn';
+          btn.textContent = s.label;
+          btn.addEventListener('click', () => {
+            if (s.kind === 'color' || s.kind === 'category' || s.kind === 'place') {
+              const colors = state.filterColors || [];
+              const cats = state.filterCategories || [];
+              const places = state.filterPlaces || [];
+              if (s.kind === 'color' && !colors.includes(s.value)) {
+                state.filterColors = [...colors, s.value];
+              }
+              if (s.kind === 'category' && !cats.includes(s.value)) {
+                state.filterCategories = [...cats, s.value];
+              }
+              if (s.kind === 'place') state.filterPlaces = [...places, s.value];
+              onStateChange();
+            } else if (s.kind === 'id') {
+              state.search = s.value;
+              onStateChange();
+            } else {
+              state.search = s.label;
+              onStateChange();
+            }
+          });
+          li.appendChild(btn);
+          emptySuggest.appendChild(li);
+        }
+      } else if (state.search.trim()) {
+        const ranked = [...state.items]
+          .map((item) => ({ item, score: rankItemForQuery(item, state.search) }))
+          .filter((x) => x.score > 0)
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 3);
+        if (ranked.length) {
+          emptySuggest.hidden = false;
+          for (const { item } of ranked) {
+            const li = document.createElement('li');
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'mmg-empty__suggest-btn';
+            btn.textContent = item.mural?.name || item.headline || item.id;
+            btn.addEventListener('click', () => onOpenLightbox(item, state.items));
+            li.appendChild(btn);
+            emptySuggest.appendChild(li);
+          }
+        } else {
+          emptySuggest.hidden = true;
+        }
+      } else {
+        emptySuggest.hidden = true;
+      }
+    } else {
+      emptySuggest.hidden = true;
+    }
   }
 
   function refresh() {
     state.searchTokens = state.search.trim().toLowerCase().split(/\s+/).filter(Boolean);
-    renderColorFilters();
-    syncControls();
+    syncLegacyFilterFields(state);
     renderFeatured(state.items);
-    renderBrowse();
     const filtered = filterItems(state);
+    smartBar.sync(filtered.length);
     renderCards(filtered);
 
     const idJump = isIdOnlySearch(state.search);
@@ -326,48 +234,13 @@ export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, sh
     return filtered;
   }
 
-  root.querySelectorAll('.mmg-seg').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      state.segment = btn.dataset.seg;
-      state.category = '';
-      state.visibleCount = PAGE_SIZE;
-      onStateChange();
-    });
-  });
-
-  categorySelect.addEventListener('change', () => {
-    state.category = categorySelect.value;
-    state.visibleCount = PAGE_SIZE;
-    onStateChange();
-  });
-
-  sortSelect.addEventListener('change', () => {
-    state.sort = sortSelect.value;
-    onStateChange();
-  });
-
-  const debouncedSearch = debounce(() => onStateChange(), SEARCH_DEBOUNCE_MS);
-  searchInput.addEventListener('input', () => {
-    state.search = searchInput.value;
-    state.visibleCount = PAGE_SIZE;
-    debouncedSearch();
-  });
-
   loadMoreBtn.addEventListener('click', () => {
     state.visibleCount += PAGE_SIZE;
     refresh();
   });
 
   root.querySelector('.mmg-clear').addEventListener('click', () => {
-    state.segment = 'all';
-    state.category = '';
-    state.search = '';
-    state.sort = 'best';
-    state.color = '';
-    state.muralFilter = '';
-    state.shortlistView = null;
-    state.visibleCount = PAGE_SIZE;
-    onStateChange();
+    smartBar.clearAll();
   });
 
   app.hidden = false;

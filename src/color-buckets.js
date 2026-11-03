@@ -36,6 +36,11 @@ export function itemHasColorBucket(item, bucket) {
   return (item.images || []).some((im) => im.dominant === bucket);
 }
 
+export function itemHasAnyColorBucket(item, buckets) {
+  if (!buckets?.length) return true;
+  return buckets.some((b) => itemHasColorBucket(item, b));
+}
+
 export function hasColorData(items) {
   return items.some((i) => i.images?.[0]?.dominant);
 }

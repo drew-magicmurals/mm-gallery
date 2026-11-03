@@ -36,3 +36,20 @@ export function roomCounts(items, taxonomy) {
     }))
     .sort((a, b) => b.count - a.count);
 }
+
+export function sectorCounts(items, taxonomy) {
+  const counts = new Map();
+  for (const item of items) {
+    if (item.segment !== 'business') continue;
+    for (const s of item.sectors || []) {
+      counts.set(s, (counts.get(s) || 0) + 1);
+    }
+  }
+  return [...counts.entries()]
+    .map(([key, count]) => ({
+      key,
+      label: taxonomy?.sectors?.[key] || key,
+      count,
+    }))
+    .sort((a, b) => b.count - a.count);
+}
