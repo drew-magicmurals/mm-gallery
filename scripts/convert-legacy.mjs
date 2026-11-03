@@ -49,27 +49,35 @@ function rowsFromChunk(chunk) {
   return chunk.items || chunk.data || [];
 }
 
-async function loadLocalPages() {
-  let files = [];
+const LEGACY_JSON_DIRS = [
+  path.join(ROOT, 'scripts/fixtures/legacy'),
+  DATA_RAW,
+];
+
+async function listLegacyPageFiles(dir) {
   try {
-    files = (await fs.readdir(DATA_RAW))
+    return (await fs.readdir(dir))
       .filter((f) => /^page-\d+\.json$/i.test(f))
-      .sort((a, b) => {
-        const na = Number(a.match(/\d+/)?.[0] || 0);
-        const nb = Number(b.match(/\d+/)?.[0] || 0);
-        return na - nb;
-      });
+      .sort((a, b) => Number(a.match(/\d+/)?.[0] || 0) - Number(b.match(/\d+/)?.[0] || 0));
   } catch {
     return [];
   }
-  if (!files.length) return [];
+}
 
+async function loadLocalPages() {
+  const seenFiles = new Set();
   const allRows = [];
-  for (const file of files) {
-    const raw = JSON.parse(await fs.readFile(path.join(DATA_RAW, file), 'utf8'));
-    const list = rowsFromChunk(raw);
-    console.log(`Loaded ${list.length} rows from ${file}`);
-    allRows.push(...list);
+
+  for (const dir of LEGACY_JSON_DIRS) {
+    const files = await listLegacyPageFiles(dir);
+    for (const file of files) {
+      if (seenFiles.has(file)) continue;
+      seenFiles.add(file);
+      const raw = JSON.parse(await fs.readFile(path.join(dir, file), 'utf8'));
+      const list = rowsFromChunk(raw);
+      console.log(`Loaded ${list.length} rows from ${path.relative(ROOT, path.join(dir, file))}`);
+      allRows.push(...list);
+    }
   }
   return allRows;
 }
@@ -93,16 +101,24 @@ async function fetchAllPages() {
   return allRows;
 }
 
+function publicCompany(company) {
+  const c = String(company || '').trim();
+  if (!c) return null;
+  if (/find email|chk name/i.test(c)) return null;
+  return c;
+}
+
 function buildCaption(row) {
   const parts = [];
   if (row.name) parts.push(String(row.name).trim());
-  if (row.company) parts.push(String(row.company).trim());
+  const company = publicCompany(row.company);
+  if (company) parts.push(company);
   else if (row.install) parts.push(String(row.install).trim());
   return parts.filter(Boolean).join(', ') || 'Customer photo';
 }
 
 function groupKey(row) {
-  const m = String(row.filename || '').match(/\/(\d+)-\d+\.jpg$/i);
+  const m = String(row.filename || '').match(/\/(\d+)-\d+/);
   if (m) return `order-${m[1]}`;
   return `row-${row.name}-${row.install}-${row.headline}`;
 }

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-11-03T20:32:23.379Z",
+  "generated": "2026-11-03T20:39:38.089Z",
   "items": [
     {
       "id": "G-0001",
@@ -519,6 +519,1614 @@
       "segment": "residential",
       "rooms": [
         "D"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0020",
+      "images": [
+        {
+          "src": "img/G-0020-1",
+          "w": 1024,
+          "h": 683,
+          "alt": "See installed in a room"
+        }
+      ],
+      "caption": "Lisa and Steve, Atlantic City, NJ",
+      "headline": "Custom Word Art",
+      "text": "I just wanted to thank you for your never ending patience and personal attention to our project. We are beyond thrilled with the products you produced for us. Just when we thought we would be incredibly limited having to comply with a Class A building, your company showed us just how creative we can be. I am sending you a picture of the front of our venue. We wish we could share more, but being escape room games, we are sworn to secrecy within the confines of our walls. :-)Thank you again for making the process painless. We love your products and will definitely recommend Magic Murals to anyone who is in need of such a product. We are so pleased and want to share with you our gratitude.",
+      "mural": {
+        "name": "See",
+        "url": "/see.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Co"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0021",
+      "images": [
+        {
+          "src": "img/G-0021-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Cherry Blossom Dream installed in a dining"
+        }
+      ],
+      "caption": "Francis W., Brentwood, TN",
+      "headline": "A Wonderful Tribute",
+      "text": "One of my best friends passed away last year and I was recently allowed to have her antique window. It was one of my favorite pieces of hers. I repainted the wood and searched online for a company that had something which would resemble a bit of heaven to stick behind it so that I could picture her there every time I looked at this window.I am so pleased with your company's murals and it fit perfectly behind the window. I have used other wall murals in the past and they are very difficult to separate from the backing, and the material is flimsy. For this particular project I did not apply this mural directly to my wall. I felt that it would be easier to center it to the frame by attaching it behind the window directly and it holds up very well!\nI did notice that the material in your company's murals is a lot more durable and is easy to separate, and for this it would be easier to work with when applying to the wall.\nThe customer service is great and the delivery of the product to my home was very fast, which I really appreciated. Thank you so much for your services.",
+      "mural": {
+        "name": "Cherry Blossom Dream",
+        "url": "/cherry-blossom-dream.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "D"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0022",
+      "images": [
+        {
+          "src": "img/G-0022-1",
+          "w": 1024,
+          "h": 680,
+          "alt": "Twilight in Paradise installed in a kitchen"
+        }
+      ],
+      "caption": "Fred G., Tigard, OR",
+      "headline": "Twilight in Paradise",
+      "text": "What???? You say Tigard Oregon is 55 miles from the Pacific! No problem, with Magic Murals just a web-site away. From the day I ordered to the day I applied it to my kitchen wall was just one week.",
+      "mural": {
+        "name": "Twilight in Paradise",
+        "url": "/twilight-in-paradise.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Ki"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0023",
+      "images": [
+        {
+          "src": "img/G-0023-1",
+          "w": 640,
+          "h": 480,
+          "alt": "On a Day Like This installed in a other"
+        }
+      ],
+      "caption": "George & Janie E., Coral Gables, FL",
+      "headline": "Murphy Bed Mural",
+      "text": "Overall we like the overall impression of the mural. It adds a lot to our room.",
+      "mural": {
+        "name": "On a Day Like This",
+        "url": "/on-a-day-like-this.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Ro",
+        "L",
+        "Be"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0024",
+      "images": [
+        {
+          "src": "img/G-0024-1",
+          "w": 1024,
+          "h": 768,
+          "alt": "Mediterranean Terrace installed in a garage"
+        }
+      ],
+      "caption": "George G., Tucson, AZ",
+      "headline": "Driving To the Ocean",
+      "text": "Just wanted to show you how the installation came out. We live in the desert SW and this was the image that popped for my wife when I was showing her ideas for the wall. We recently added on. Since I knew we would be doing a mural, I had the construction people finish the wall without texture. It came out great. I installed while she was on a trip and she loves it! It's just a lot of fun. Coming home and rolling into the garage parking place is always delightful.Thank you for a great product and for great service!",
+      "mural": {
+        "name": "Mediterranean Terrace",
+        "url": "/mediterranean-terrace.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "G"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0025",
+      "images": [
+        {
+          "src": "img/G-0025-1",
+          "w": 480,
+          "h": 640,
+          "alt": "Vintage Canal installed in a entry/hallway"
+        }
+      ],
+      "caption": "Geraldine B., Schaumburg, IL",
+      "headline": "Beautiful Venice",
+      "text": "I went on line and found your company. When I called, your customer service was so pleasant, informative and helpful. I was so excited to receive my mural. I couldn't wait to put it up.I live in a split level home. I measured the entire wall above my main entry door. It fits wall to wall, door to ceiling. It makes you feel like you can touch the water.\nI am so pleased. I would definitely recommend your company to all that ask about it. Thank you.",
+      "mural": {
+        "name": "Vintage Canal",
+        "url": "/vintage-canal.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Eh"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0026",
+      "images": [
+        {
+          "src": "img/G-0026-1",
+          "w": 1024,
+          "h": 576,
+          "alt": "Custom Mural installed in a room"
+        }
+      ],
+      "caption": "Geraldine M., Florissant, MO",
+      "headline": "Church Backdrop",
+      "text": "As you can see, this mural 'This is My Beloved Son', greatly enhanced our sanctuary. I thank you for the professonal, as well as the personal service you gave us. It was a pleasure working with you.",
+      "mural": {
+        "name": "Custom Mural",
+        "url": "/custom-wall-murals.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Ch"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0027",
+      "images": [
+        {
+          "src": "img/G-0027-1",
+          "w": 1024,
+          "h": 768,
+          "alt": "Winter Trees installed in a bonus room"
+        }
+      ],
+      "caption": "Gina A., Linwood, NJ",
+      "headline": "Snowy Forest",
+      "text": "Before and after photos! Absolutely LOVE the mural. Just what was needed to make our game area in our ski house a cozy, inviting space! Not hard to install, very forgiving. We added a thin stained frame to cover a few imperfections due to the wall not being level. Thanks so much!",
+      "mural": {
+        "name": "Winter Trees",
+        "url": "/winter-trees-fot-0038684816.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Bor"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0028",
+      "images": [
+        {
+          "src": "img/G-0028-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Custom Mural installed in a room"
+        }
+      ],
+      "caption": "Gina F., Venissimo Cheese",
+      "headline": "Say Cheese!",
+      "text": "Our word cloud mural looks great. Thanks!",
+      "mural": {
+        "name": "Custom Mural",
+        "url": "/custom-wall-murals.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Re",
+        "E"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0029",
+      "images": [
+        {
+          "src": "img/G-0029-1",
+          "w": 576,
+          "h": 768,
+          "alt": "California Oranges installed in a living"
+        }
+      ],
+      "caption": "Glenn T., Orange, CA",
+      "headline": "Visit California",
+      "text": "We live in Orange, CA and had not only had a difficult time finding large format art work, but we wanted something that made a statement about where we live. The 'California Oranges' mural fit the need.My wife and I mounted this to 1/4in plywood with a 1x2 wood to thicken the back edges in order to turn this mural into a 'canvas' like thickness.\nWe were pleased with the quality of the mural material, quickness in delivery, and it was shipped in sturdy packaging to prevent damage. This mural now decorates a large family room wall. Exactly what we were looking for.",
+      "mural": {
+        "name": "California Oranges",
+        "url": "/california-oranges.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "L"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0030",
+      "images": [
+        {
+          "src": "img/G-0030-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Woodward Avenue installed in a bathroom"
+        }
+      ],
+      "caption": "Greg B., Boise, ID",
+      "headline": "The Real Men's Room",
+      "text": "I enjoyed looking at all of the murals on line and ordering was a snap. Their customer service was great. I had a deadline and also had a custom mural made for my small 2 car garage.My painter and I prepared the wall surface smooth and together was able to get the mural up in just an hour or more. We took our time and lined it up just right and removed any small bubbles that may have been in there.\nI found working with this product was easy and put up the smaller mural in my shop men's restroom myself. My painter added a small trim on the outside which really added the pop!\nIn my shop I wanted a mural that went with my cars so I chose just the right brick. In fact, Debbie in customer service helped me find what I told her on the phone that I wanted, and since it was going to be used in a shop, Debbie made sure that I got just the right one!\nI am so happy with my choices and would order from them a 4th time if  I have a need. The prices were very fair as well, and the shipping was quick. I would rate my experience 5 stars with Magic Murals!",
+      "mural": {
+        "name": "Woodward Avenue",
+        "url": "/woodward-avenue.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Ba",
+        "M"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0031",
+      "images": [
+        {
+          "src": "img/G-0031-1",
+          "w": 1024,
+          "h": 768,
+          "alt": "Wally's Gas Station installed in a garage"
+        }
+      ],
+      "caption": "Greg B., Boise, ID",
+      "headline": "Garage Mural",
+      "text": "I enjoyed looking at all of the murals on line and ordering was a snap. Their customer service was great. I had a deadline and also had a custom mural made for my small 2 car garage.My painter and I prepared the wall surface smooth and together was able to get the mural up in just an hour or more. We took our time and lined it up just right and removed any small bubbles that may have been in there.\nI found working with this product was easy and put up the smaller mural in my shop men's restroom myself. My painter added a small trim on the outside which really added the pop!\nIn my shop I wanted a mural that went with my cars so I chose just the right brick. In fact, Debbie in customer service helped me find what I told her on the phone that I wanted, and since it was going to be used in a shop, Debbie made sure that I got just the right one!\nI am so happy with my choices and would order from them a 4th time if  I have a need. The prices were very fair as well, and the shipping was quick. I would rate my experience 5 stars with Magic Murals!",
+      "mural": {
+        "name": "Wally's Gas Station",
+        "url": "/wally-s-gas-station.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "G"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0032",
+      "images": [
+        {
+          "src": "img/G-0032-1",
+          "w": 1024,
+          "h": 765,
+          "alt": "Surfing in Hawaii installed in a bedroom"
+        }
+      ],
+      "caption": "Greg M. - Installer, American Wallpaper",
+      "headline": "Surfing in Hawaii",
+      "text": "Murals can transport you to your favorite vacation spot and hobby... take crushing a big wave in Hawaii... are your bags packed yet?!",
+      "mural": {
+        "name": "Surfing in Hawaii",
+        "url": "/surfing-in-hawaii.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Be",
+        "Bo",
+        "Kid"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0033",
+      "images": [
+        {
+          "src": "img/G-0033-1",
+          "w": 432,
+          "h": 768,
+          "alt": "September Royal installed in a bedroom"
+        }
+      ],
+      "caption": "Harry T., Loveland, CO",
+      "headline": "Grazing Elk",
+      "text": "This is how it came out. I was kind of trying to make it look like I was looking out a window onto the mountain side. Thanks.",
+      "mural": {
+        "name": "September Royal",
+        "url": "/september-royal.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Be"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0034",
+      "images": [
+        {
+          "src": "img/G-0034-1",
+          "w": 1024,
+          "h": 576,
+          "alt": "Catalina installed in a room"
+        }
+      ],
+      "caption": "Jacquie D., Catalina Imaging",
+      "headline": "Just Relax",
+      "text": "This is a picture of our latest mobile CT trailer with the 'Catalina' mural on one of the walls. The mural adds a nice and unique touch to what otherwise would be just another regular mobile medical trailer. We will be adding this mural to all future trailers.",
+      "mural": {
+        "name": "Catalina",
+        "url": "/catalina.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Me"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0035",
+      "images": [
+        {
+          "src": "img/G-0035-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Baseballs Galore (Grayscale) installed in a bedroom"
+        }
+      ],
+      "caption": "James D., East Northport, NY",
+      "headline": "America's Game",
+      "text": "Thanks for the perfect piece.",
+      "mural": {
+        "name": "Baseballs Galore (Grayscale)",
+        "url": "/baseballs-galore.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Be",
+        "Kid",
+        "Bor"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0036",
+      "images": [
+        {
+          "src": "img/G-0036-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Custom Mural installed in a room"
+        }
+      ],
+      "caption": "James T., Paul G., Boynton Beach, FL",
+      "headline": "Family Collage",
+      "text": "The installation went well and the client was very happy with the finished product.",
+      "mural": {
+        "name": "Custom Mural",
+        "url": "/custom-wall-murals.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Co"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0037",
+      "images": [
+        {
+          "src": "img/G-0037-1",
+          "w": 1024,
+          "h": 576,
+          "alt": "Wine Cellar-France installed in a bonus room"
+        }
+      ],
+      "caption": "Jayn D., Freeport, OH",
+      "headline": "Beautiful Wine Cellar",
+      "text": "Wanted to share with you a picture of our wine room mural installed. Everything turned out great. Installation was a breeze.",
+      "mural": {
+        "name": "Wine Cellar-France",
+        "url": "/wine-cellar-france.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Bor"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0038",
+      "images": [
+        {
+          "src": "img/G-0038-1",
+          "w": 480,
+          "h": 640,
+          "alt": "Colorful Solar System installed in a bedroom"
+        }
+      ],
+      "caption": "Jane H., Stilwell, KS",
+      "headline": "Future Astronaut",
+      "text": "The mural is amazing!",
+      "mural": {
+        "name": "Colorful Solar System",
+        "url": "/colorful-solar-system.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Be",
+        "Bo",
+        "Kid"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0039",
+      "images": [
+        {
+          "src": "img/G-0039-1",
+          "w": 1024,
+          "h": 768,
+          "alt": "Lahinch Golf Club 6th Hole installed in a home office"
+        }
+      ],
+      "caption": "Jim K., Pittsburgh, PA",
+      "headline": "I'd Rather Be Golfing",
+      "text": "My home office was a much smaller room then in my former house. I ordered the Lahinch golf mural in the large size. I had the opportunity to play this course several times and as an avid golfer, love the Irish courses.The UltraStikﾙ was very easy to put up by myself and I absolutely love it.\nAs you can see by the picture, my small office is now my favorite place to work and even visit when the weather outside is not suitable for me playing golf. The quality is excellent and I would recommend it to any one.",
+      "mural": {
+        "name": "Lahinch Golf Club 6th Hole",
+        "url": "/lahinch-golf-club-6th-hole.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Ho"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0040",
+      "images": [
+        {
+          "src": "img/G-0040-1",
+          "w": 768,
+          "h": 768,
+          "alt": "*Custom Mural installed in a entry/hallway"
+        }
+      ],
+      "caption": "Patricia R., North Ft. Myers, FL",
+      "headline": "Italian Street",
+      "text": "Just wanted to show you my new mural, I love, love love it. It is the high lite of my new portico.",
+      "mural": {
+        "name": "Custom Mural",
+        "url": "/custom-wall-murals.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Eh",
+        "Ro"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0041",
+      "images": [
+        {
+          "src": "img/G-0041-1",
+          "w": 418,
+          "h": 768,
+          "alt": "Pathway to Florida Beach installed in a bonus room"
+        }
+      ],
+      "caption": "Paul S., Canonsburg, PA",
+      "headline": "Pier to Waves",
+      "text": "This is the finished project. I had unused space under the stairs because it was finished off. In order to access the space, I made a picture/door frame. So this is how it turned out. Thank you for all of your support to make this look good.",
+      "mural": {
+        "name": "Pathway to Florida Beach",
+        "url": "/pathway-to-florida-beach.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Bor",
+        "Ro"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0042",
+      "images": [
+        {
+          "src": "img/G-0042-1",
+          "w": 1024,
+          "h": 579,
+          "alt": "Custom Mural installed in a kid's room"
+        }
+      ],
+      "caption": "Peter O., New York, NY",
+      "headline": "Fun Playroom",
+      "text": "It looks great! We followed your advice were able to get most of the wrinkles out using a hair dryer. Thanks for all your help!",
+      "mural": {
+        "name": "Custom Mural",
+        "url": "/custom-wall-murals.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Kid"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0043",
+      "images": [
+        {
+          "src": "img/G-0043-1",
+          "w": 1024,
+          "h": 768,
+          "alt": "Snake River installed in a room"
+        }
+      ],
+      "caption": "Priscilla L., Tulsa, OK",
+      "headline": "Thirsty Moose",
+      "text": "The pic I just sent you doesn't do the mural justice. It is so much brighter & beautiful in person in Bob's office. Thank you.",
+      "mural": {
+        "name": "Snake River",
+        "url": "/snake-river.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Co"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0044",
+      "images": [
+        {
+          "src": "img/G-0044-1",
+          "w": 768,
+          "h": 768,
+          "alt": "Autumn Mountain Lake (Customized) installed in a bonus room"
+        }
+      ],
+      "caption": "Ray and Penny, Parker, CO",
+      "headline": "Basement with a View",
+      "text": "Thanks for the great product, we were very pleased with the quality of the vinyl and pressure sensitive glue. Plan to spend lots of time at the 'lake' shooting pool and the breeze!",
+      "mural": {
+        "name": "Autumn Mountain Lake (Customized)",
+        "url": "/autumn-mountain-lake.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Bor"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0045",
+      "images": [
+        {
+          "src": "img/G-0045-1",
+          "w": 1024,
+          "h": 576,
+          "alt": "Let the Path Lead You installed in a other"
+        }
+      ],
+      "caption": "Rebecca R., Crystal River, FL",
+      "headline": "Mt Rainier Backdrop",
+      "text": "Absolutely gorgeous.",
+      "mural": {
+        "name": "Let the Path Lead You",
+        "url": "/let-the-path-lead-you.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Ro"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0046",
+      "images": [
+        {
+          "src": "img/G-0046-1",
+          "w": 1024,
+          "h": 576,
+          "alt": "Sicilian Grapes installed in a room"
+        }
+      ],
+      "caption": "Richard H., Frontiere Natural Meats",
+      "headline": "Vineyard Backdrop",
+      "text": "I wanted a small backdrop to showcase our Balsamic Vinegars for our specialty meats - Bison, Elk Organic Beef etc...I have a cinderblock wall and was concerned about adhesion but the mural seems to be doing well. Thanks for a great product - and a good price.",
+      "mural": {
+        "name": "Sicilian Grapes",
+        "url": "/sicilian-grapes.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Re",
+        "Ret"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0047",
+      "images": [
+        {
+          "src": "img/G-0047-1",
+          "w": 566,
+          "h": 768,
+          "alt": "Flower Balcony installed in a entry/hallway"
+        }
+      ],
+      "caption": "Richard W., Brentwood, NY",
+      "headline": "Hallway Window",
+      "text": "You ask, you get. Down the end of the hall after I took the door out (used one of the guestrooms and turned it into a walk-in closet for the master. Wife is happy). Great mural and easy installation. Thanks again.",
+      "mural": {
+        "name": "Flower Balcony",
+        "url": "/flower-balcony.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Eh",
+        "Rf"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0048",
+      "images": [
+        {
+          "src": "img/G-0048-1",
+          "w": 1024,
+          "h": 768,
+          "alt": "Long Island Dunes installed in a home office"
+        }
+      ],
+      "caption": "Bob and Linda F., Jeannette, PA",
+      "headline": "Office At The Beach",
+      "text": "We decided to create an 'office at the beach' when we remodeled our 37 year old room. Since we were applying over orange paisley wallpaper (blame it on the 70's) we followed your advice and primed and sealed it - took two coats but we haven't been haunted by the ghost of paisley past.We purchased the 6' x 4' mural in the hopes it would enhance the small space without being overwhelming. We took design elements from the mural - rough cut untreated exterior siding and rusty iron brackets. We used wood pallets to build side tables and frame the window ledge. We love it. Hope you do too.",
+      "mural": {
+        "name": "Long Island Dunes",
+        "url": "/long-island-dunes.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Ho",
+        "Rf"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0049",
+      "images": [
+        {
+          "src": "img/G-0049-1",
+          "w": 1024,
+          "h": 683,
+          "alt": "Custom Mural installed in a living"
+        }
+      ],
+      "caption": "Robert H., Miami Springs, FL",
+      "headline": "Colorful Miami Nightlife",
+      "text": "My son and I finally got some open time together and we installed the mural today. This was my first mural installation so it took a little longer than I had anticipated.The Mural is beautiful and my son was very-very happy with it.Inasmuch as this picture was taken from the 52 floor of a condo it gives my son the feeling that he has moved from his second floor apartment up to the Penthouseﾅ and he likes the feeling.\nThank you and all the people at Magic Murals for helping me with this project.",
+      "mural": {
+        "name": "Custom Mural",
+        "url": "/custom-wall-murals.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "L"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0050",
+      "images": [
+        {
+          "src": "img/G-0050-1",
+          "w": 640,
+          "h": 480,
+          "alt": "Blue Sky Cliff Jump installed in a bedroom"
+        }
+      ],
+      "caption": "Robin F., East Stroudsburg, PA",
+      "headline": "Blue Sky Cliff Jump",
+      "text": "I was so nervous about putting a mural up, thinking it was a difficult thing to do. It was so easy to put up on the wall!! I love how it makes my son's room look! I have no doubt that I will be putting up another in my house somewhere! We absolutely love it!! Magic Murals you are the best!",
+      "mural": {
+        "name": "Blue Sky Cliff Jump",
+        "url": "/blue-sky-cliff-jump.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Be",
+        "Bo",
+        "Kid"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0051",
+      "images": [
+        {
+          "src": "img/G-0051-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Golf Course-North Carolina installed in a room"
+        }
+      ],
+      "caption": "Rodgers T., Catalyst Group",
+      "headline": "Putt Putt Golf",
+      "text": "Magic Murals were a pleasure to work with.  Their product is great and pretty easy to install.  The packaging was carefully handled to prevent damage to the murals. Their staff is very nice to work with and are very helpful in making sure you select the right product and also their Quality Control process is spot on.",
+      "mural": {
+        "name": "Golf Course-North Carolina",
+        "url": "/golf-course-north-carolina.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Co"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0052",
+      "images": [
+        {
+          "src": "img/G-0052-1",
+          "w": 1024,
+          "h": 768,
+          "alt": "Basketball Stadium installed in a room"
+        }
+      ],
+      "caption": "Rodgers T., Catalyst Group",
+      "headline": "Indoor Basketball Court",
+      "text": "Magic Murals were a pleasure to work with.  Their product is great and pretty easy to install.  The packaging was carefully handled to prevent damage to the murals. Their staff is very nice to work with and are very helpful in making sure you select the right product and also their Quality Control process is spot on.",
+      "mural": {
+        "name": "Basketball Stadium",
+        "url": "/basketball-stadium.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Co"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0053",
+      "images": [
+        {
+          "src": "img/G-0053-1",
+          "w": 640,
+          "h": 640,
+          "alt": "Outdoor Patio installed in a dining"
+        }
+      ],
+      "caption": "Ronnie H., Scurry, TX",
+      "headline": "Italian Dining Room",
+      "text": "Our mural turned out great! The mural was easy to hang on our wall and we love it, thanks again.",
+      "mural": {
+        "name": "Outdoor Patio",
+        "url": "/outdoor-patio.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "D",
+        "Ki"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0054",
+      "images": [
+        {
+          "src": "img/G-0054-1",
+          "w": 1024,
+          "h": 768,
+          "alt": "American Past Time installed in a bedroom"
+        }
+      ],
+      "caption": "Ryan D., Las Vegas, NV",
+      "headline": "American Past Time",
+      "text": "Worked like a charm.ﾅadded a DIY frame for a more finished look.",
+      "mural": {
+        "name": "American Past Time",
+        "url": "/american-pastime.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Be",
+        "Rf",
+        "Ho",
+        "L"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0055",
+      "images": [
+        {
+          "src": "img/G-0055-1",
+          "w": 576,
+          "h": 768,
+          "alt": "*Custom Mural installed in a bedroom"
+        }
+      ],
+      "caption": "Sarah L., Auckland, New Zealand",
+      "headline": "Gorgeous Beach Backdrop",
+      "text": "The mural looks great and my daughter loves to sleep in the sand dunes! Thanks for all your help!",
+      "mural": {
+        "name": "Custom Mural",
+        "url": "/custom-wall-murals.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Be",
+        "Gi",
+        "Kid"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0056",
+      "images": [
+        {
+          "src": "img/G-0056-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Bridge Over Stream installed in a room"
+        }
+      ],
+      "caption": "Dr. Scott Mason, Mason Dental",
+      "headline": "Open Wide!",
+      "text": "Here's a picture of the fantastic magic mural! It looks fabulous in my dental office!!!",
+      "mural": {
+        "name": "Bridge Over Stream",
+        "url": "/bridge-over-stream.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Me"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0057",
+      "images": [
+        {
+          "src": "img/G-0057-1",
+          "w": 1024,
+          "h": 768,
+          "alt": "Castle Entrance installed in a bedroom"
+        }
+      ],
+      "caption": "Sergei B., Jacksonville, FL",
+      "headline": "Bedroom Castle",
+      "text": "A room fit for a King or Queen!",
+      "mural": {
+        "name": "Castle Entrance",
+        "url": "/castle-entrance.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Be"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0058",
+      "images": [
+        {
+          "src": "img/G-0058-1",
+          "w": 841,
+          "h": 768,
+          "alt": "Jamaican Waterfall installed in a room"
+        }
+      ],
+      "caption": "Shannon W., Swinson Funeral Services",
+      "headline": "Serene Waterfall",
+      "text": "We have finally installed our beautiful piece of art by your company! We have received so many compliments and comments on the mural. Thank you so much for your help and for making our shopping experience a great one.",
+      "mural": {
+        "name": "Jamaican Waterfall",
+        "url": "/jamaican-waterfall.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Ret"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0059",
+      "images": [
+        {
+          "src": "img/G-0059-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Wine Cellar installed in a bonus room"
+        }
+      ],
+      "caption": "Shawn and Regina C., Rutledge, TN",
+      "headline": "Wine Barrels",
+      "text": "The mural looks great. I am very pleased with the quality of the image and equally pleased with the application!",
+      "mural": {
+        "name": "Wine Cellar",
+        "url": "/wine-cellar.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Bor"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0060",
+      "images": [
+        {
+          "src": "img/G-0060-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Light of the Cross installed in a room"
+        }
+      ],
+      "caption": "Albert A., Laredo, TX",
+      "headline": "Light of the Cross",
+      "text": "Thank You for your help on accomplishing our desire of this project. We have gotten nothing but great praise and enjoyment of this mural. I also went with the Psalms 23:1 and added a strip of lighting to enhance it.",
+      "mural": {
+        "name": "Light of the Cross",
+        "url": "/light-of-the-cross.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Ch"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0061",
+      "images": [
+        {
+          "src": "img/G-0061-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Gotham City Lights (Grayscale) installed in a bathroom"
+        }
+      ],
+      "caption": "Alexander A., New York, NY",
+      "headline": "A Hallway to Pique Your Interest",
+      "text": "I am sending you some pictures of my installed mural 'Gotham City Lights'. It looks pretty good. Installation was not too hard. It was a bit bubbly at the beginning but that smoothed itself out. Thank you!",
+      "mural": {
+        "name": "Gotham City Lights (Grayscale)",
+        "url": "/gotham-city-lights.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Ba",
+        "Ro"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0062",
+      "images": [
+        {
+          "src": "img/G-0062-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Outdoor Patio installed in a boy's room"
+        }
+      ],
+      "caption": "Al H., Grants PAA, OR",
+      "headline": "Murals Transform Small Spaces",
+      "text": "Here is a photo of your mural applied in a small, downstairs kitchenette. The space is quite limited so a more open view could not be obtained. The mural opens up the cramped quarters giving the illusion of sitting at a counter and lookimg out at a Parisienne sidewalk cafe street scene. Very effective.\nThe mural quality is high and installation was no problem. Thanks for transforming this small space into a sidwalk cafe! It is rare in these market times to have so much interest and support given to web customers and greatly appreciated.",
+      "mural": {
+        "name": "Outdoor Patio",
+        "url": "/outdoor-patio.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Bo",
+        "Ki"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0063",
+      "images": [
+        {
+          "src": "img/G-0063-1",
+          "w": 1000,
+          "h": 750,
+          "alt": "The Structure installed in a framed"
+        }
+      ],
+      "caption": "Alice D., Rockledge, FL",
+      "headline": "A Beautiful Tree",
+      "text": "",
+      "mural": {
+        "name": "The Structure",
+        "url": "/the-structure.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Rf"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0064",
+      "images": [
+        {
+          "src": "img/G-0064-1",
+          "w": 1000,
+          "h": 750,
+          "alt": "Magical Coast installed in a framed"
+        }
+      ],
+      "caption": "Alice M., Ann Arbor, MI",
+      "headline": "Magical Coast",
+      "text": "",
+      "mural": {
+        "name": "Magical Coast",
+        "url": "/magical-coast.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Rf"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0065",
+      "images": [
+        {
+          "src": "img/G-0065-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Custom Murals installed in a room"
+        }
+      ],
+      "caption": "Allie H., R2P Pet Ltd.",
+      "headline": "Corporate Branding",
+      "text": "We received and installed our mural and it came out great, the photos look fantastic! Everyone loves the mural at the office, it makes quite a statement. Thanks for your help!",
+      "mural": {
+        "name": "Custom Murals",
+        "url": "/custom-wall-murals.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Co"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0066",
+      "images": [
+        {
+          "src": "img/G-0066-1",
+          "w": 1000,
+          "h": 750,
+          "alt": "Custom Murals installed in a room"
+        },
+        {
+          "src": "img/G-0066-2",
+          "w": 576,
+          "h": 768,
+          "alt": "Custom Murals installed in a room"
+        }
+      ],
+      "caption": "Allison C., Washington Street Properties",
+      "headline": "Historic Murals on Display",
+      "text": "We are very happy with the black and white murals that your company created for us! We used the historic photos to accent the hallways in one of our apartment buildings.",
+      "mural": {
+        "name": "Custom Murals",
+        "url": "/custom-wall-murals.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Rc"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0067",
+      "images": [
+        {
+          "src": "img/G-0067-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Blossom Falls installed in a entry/hallway"
+        }
+      ],
+      "caption": "Alona B., Santa Clarita, CA",
+      "headline": "Alcove with Life!",
+      "text": "Blossom Falls' is a perfect scene for Alona's alcove. It will bring life to any wall in your home!",
+      "mural": {
+        "name": "Blossom Falls",
+        "url": "/blossom-falls.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Eh"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0068",
+      "images": [
+        {
+          "src": "img/G-0068-1",
+          "w": 1000,
+          "h": 746,
+          "alt": "Map of London installed in a framed"
+        }
+      ],
+      "caption": "Amanda F., Colorado Springs, CO",
+      "headline": "A Map of London",
+      "text": "Thank you for doing such a great job on it London map. It turned out great! We are very happy with how it turned out.",
+      "mural": {
+        "name": "Map of London",
+        "url": "/map-of-london.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Rf"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0069",
+      "images": [
+        {
+          "src": "img/G-0069-1",
+          "w": 480,
+          "h": 640,
+          "alt": "Assorted Glasses installed in a bonus room"
+        }
+      ],
+      "caption": "Amanda K., Overland Park, KS",
+      "headline": "Gameroom with Style",
+      "text": "",
+      "mural": {
+        "name": "Assorted Glasses",
+        "url": "/assorted-glasses.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Bor"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0070",
+      "images": [
+        {
+          "src": "img/G-0070-1",
+          "w": 1000,
+          "h": 747,
+          "alt": "Orchid Detail installed in a living"
+        }
+      ],
+      "caption": "Amber S., Sedro Woolley, WA",
+      "headline": "Simple Beauty",
+      "text": "",
+      "mural": {
+        "name": "Orchid Detail",
+        "url": "/orchid-detail.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "L",
+        "Rf"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0071",
+      "images": [
+        {
+          "src": "img/G-0071-1",
+          "w": 640,
+          "h": 480,
+          "alt": "Decorator World Map installed in a bedroom"
+        }
+      ],
+      "caption": "Amelia S., Santiago, Chile",
+      "headline": "Going Places!",
+      "text": "I'm sending you a couple of pictures of our sons bedroom where we installed the map. It looks great! We are very happy! We are from Chile so it travelled a long way!",
+      "mural": {
+        "name": "Decorator World Map",
+        "url": "/decorator-world-map.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Be",
+        "Kid",
+        "Bo"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0072",
+      "images": [
+        {
+          "src": "img/G-0072-1",
+          "w": 432,
+          "h": 768,
+          "alt": "*Custom Mural installed in a entry/hallway"
+        }
+      ],
+      "caption": "Amy S., Cary, NC",
+      "headline": "Happy Customer",
+      "text": "Thank you for making our dream a reality with an ocean view at the end of our hallway! We made a mistake with our measurements, so we had to paint the bottom of the wall. It looks good, though! Attached is a photo of our finished project! Thanks! ~Happy Customers",
+      "mural": {
+        "name": "Custom Mural",
+        "url": "/custom-wall-murals.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Eh"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0073",
+      "images": [
+        {
+          "src": "img/G-0073-1",
+          "w": 320,
+          "h": 240,
+          "alt": "Winter Bliss installed in a room"
+        }
+      ],
+      "caption": "Amy S., College Station, TX",
+      "headline": "Winter Bliss Office",
+      "text": "As you requested, here are some before and after pictures of my office wall on which we installed the mural. It's beautiful and I've received MANY compliments and inquiries about it.The mural and your service are both outstanding and I am a happy customer! The handwritten note is also a nice, unexpected personal touch. Thanks very much!",
+      "mural": {
+        "name": "Winter Bliss",
+        "url": "/subject/animals-wildlife/horses.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Co"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0074",
+      "images": [
+        {
+          "src": "img/G-0074-1",
+          "w": 540,
+          "h": 720,
+          "alt": "Sepia Continents installed in a entry/hallway"
+        }
+      ],
+      "caption": "Ana L., Austin, TX",
+      "headline": "Decorative Niche",
+      "text": "",
+      "mural": {
+        "name": "Sepia Continents",
+        "url": "/sepia-continents.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Eh",
+        "Rf"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0075",
+      "images": [
+        {
+          "src": "img/G-0075-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Custom Mural installed in a room"
+        }
+      ],
+      "caption": "Andrea F., Cafe Torino-Seattle",
+      "headline": "Location, Location, Location",
+      "text": "In the restaurant business, sometimes location is more important than the quality of food or service. Location is everything in many businesses. Celebrating your location with vintage maps and images of the city you're in is an easy and inexpensive way of bonding with your customers and displaying your commitment to your community. Call us and we'll find the right maps and images for your location.",
+      "mural": {
+        "name": "Custom Mural",
+        "url": "/custom-wall-murals.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Re"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0076",
+      "images": [
+        {
+          "src": "img/G-0076-1",
+          "w": 576,
+          "h": 768,
+          "alt": "Greek Architecture installed in a living"
+        },
+        {
+          "src": "img/G-0076-2",
+          "w": 576,
+          "h": 768,
+          "alt": "Earth Mother installed in a bedroom"
+        }
+      ],
+      "caption": "Andrea T., Lombard, IL",
+      "headline": "Beautiful Mural for Blank Wall",
+      "text": "We've got your covered! No matter your interest or room style, Magic Murals is sure to have the perfect mural for you! Go ahead, browse around.Not seeing just what you're looking for? Give us a call and we'll be happy to help you in your search! 877-448-7295",
+      "mural": {
+        "name": "Greek Architecture",
+        "url": "/greek-architecture.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "L"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0,
+      "added": "2026-11-03"
+    },
+    {
+      "id": "G-0077",
+      "images": [
+        {
+          "src": "img/G-0077-1",
+          "w": 960,
+          "h": 720,
+          "alt": "Hawaiian Sunset installed in a bonus room"
+        }
+      ],
+      "caption": "Andy B., Schererville, IN",
+      "headline": "Basement or Tropical Paradise?",
+      "text": "",
+      "mural": {
+        "name": "Hawaiian Sunset",
+        "url": "/hawaiian-sunset.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Bor",
+        "L"
       ],
       "sectors": [],
       "material": null,
