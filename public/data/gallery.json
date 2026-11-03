@@ -1,0 +1,547 @@
+{
+  "version": 1,
+  "generated": "2026-11-03T19:39:26.624Z",
+  "items": [
+    {
+      "id": "G-0001",
+      "images": [
+        {
+          "src": "img/G-0001-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Vintage Eiffel Tower installed in a living"
+        }
+      ],
+      "caption": "Allie B., Stafford Springs, CT",
+      "headline": "Vintage Eiffel Tower",
+      "text": "We love how the mural transformed our living room. Installation was straightforward.",
+      "mural": {
+        "name": "Vintage Eiffel Tower",
+        "url": "/vintage-eiffel-tower.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "L"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": true,
+      "score": 0.92,
+      "added": "2016-07-04"
+    },
+    {
+      "id": "G-0002",
+      "images": [
+        {
+          "src": "img/G-0002-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Alpine Dawn installed in a living"
+        }
+      ],
+      "caption": "Marcus T., Denver, CO",
+      "headline": "Mountain sunrise",
+      "text": "Perfect fit above the fireplace.",
+      "mural": {
+        "name": "Alpine Dawn",
+        "url": "/alpine-dawn.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "L",
+        "M"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0.78,
+      "added": "2019-03-12"
+    },
+    {
+      "id": "G-0003",
+      "images": [
+        {
+          "src": "img/G-0003-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Space Explorer installed in a kid's room"
+        }
+      ],
+      "caption": "Jenny K., Austin, TX",
+      "headline": "Kids space explorer",
+      "text": "",
+      "mural": {
+        "name": "Space Explorer",
+        "url": "/space-explorer.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Kid"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0.65,
+      "added": "2020-08-01"
+    },
+    {
+      "id": "G-0004",
+      "images": [
+        {
+          "src": "img/G-0004-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Custom vineyard installed in a room"
+        }
+      ],
+      "caption": "River Cafe, Portland, OR",
+      "headline": "Custom vineyard scene",
+      "text": "Guests always comment on the wall.",
+      "mural": {
+        "name": "Custom vineyard",
+        "url": null
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Re"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0.88,
+      "added": "2018-11-20"
+    },
+    {
+      "id": "G-0005",
+      "images": [
+        {
+          "src": "img/G-0005-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Gothic Light installed in a room"
+        }
+      ],
+      "caption": "St. Luke Church, Ohio",
+      "headline": "Stained glass inspired",
+      "text": "Beautiful and reverent.",
+      "mural": {
+        "name": "Gothic Light",
+        "url": "/gothic-light.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Ch"
+      ],
+      "material": null,
+      "featured": true,
+      "score": 0.95,
+      "added": "2015-05-09"
+    },
+    {
+      "id": "G-0006",
+      "images": [
+        {
+          "src": "img/G-0006-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Bamboo Grove installed in a bathroom"
+        }
+      ],
+      "caption": "Dana W., Seattle, WA",
+      "headline": "Bamboo spa feel",
+      "text": "Calming bathroom upgrade.",
+      "mural": {
+        "name": "Bamboo Grove",
+        "url": "/bamboo-grove.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Ba"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0.71,
+      "added": "2021-02-14"
+    },
+    {
+      "id": "G-0007",
+      "images": [
+        {
+          "src": "img/G-0007-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Antique World Map installed in a room"
+        }
+      ],
+      "caption": "Northside Library",
+      "headline": "World map mural",
+      "text": "",
+      "mural": {
+        "name": "Antique World Map",
+        "url": "/antique-world-map.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Li"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0.82,
+      "added": "2017-09-30"
+    },
+    {
+      "id": "G-0008",
+      "images": [
+        {
+          "src": "img/G-0008-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Boston Skyline installed in a dining"
+        }
+      ],
+      "caption": "Chris & Sam, Boston, MA",
+      "headline": "City skyline at night",
+      "text": "Dining room focal point.",
+      "mural": {
+        "name": "Boston Skyline",
+        "url": "/boston-skyline.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "D"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0.69,
+      "added": "2022-06-18"
+    },
+    {
+      "id": "G-0009",
+      "images": [
+        {
+          "src": "img/G-0009-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Tropical Palms installed in a room"
+        }
+      ],
+      "caption": "Glow Salon, Miami, FL",
+      "headline": "Tropical palms",
+      "text": "",
+      "mural": {
+        "name": "Tropical Palms",
+        "url": "/tropical-palms.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "S"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0.74,
+      "added": "2023-01-05"
+    },
+    {
+      "id": "G-0010",
+      "images": [
+        {
+          "src": "img/G-0010-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Sonoran Vista installed in a home office"
+        }
+      ],
+      "caption": "Pat R., Phoenix, AZ",
+      "headline": "Desert landscape",
+      "text": "Home office inspiration daily.",
+      "mural": {
+        "name": "Sonoran Vista",
+        "url": "/sonoran-vista.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Ho"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0.67,
+      "added": "2014-12-01"
+    },
+    {
+      "id": "G-0011",
+      "images": [
+        {
+          "src": "img/G-0011-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Ocean Friends installed in a room"
+        }
+      ],
+      "caption": "Westfield Elementary",
+      "headline": "Underwater adventure",
+      "text": "Students love it!",
+      "mural": {
+        "name": "Ocean Friends",
+        "url": "/ocean-friends.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Sc"
+      ],
+      "material": null,
+      "featured": true,
+      "score": 0.9,
+      "added": "2016-04-22"
+    },
+    {
+      "id": "G-0012",
+      "images": [
+        {
+          "src": "img/G-0012-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Cherry Blossom installed in a bedroom"
+        }
+      ],
+      "caption": "Elena M., Chicago, IL",
+      "headline": "Cherry blossom",
+      "text": "",
+      "mural": {
+        "name": "Cherry Blossom",
+        "url": "/cherry-blossom.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Be"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0.63,
+      "added": "2019-10-10"
+    },
+    {
+      "id": "G-0013",
+      "images": [
+        {
+          "src": "img/G-0013-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Custom racing installed in a room"
+        }
+      ],
+      "caption": "AutoHaus Garage",
+      "headline": "Racing stripes custom",
+      "text": "Bold and fun.",
+      "mural": {
+        "name": "Custom racing",
+        "url": null
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Ret"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0.58,
+      "added": "2020-07-07"
+    },
+    {
+      "id": "G-0014",
+      "images": [
+        {
+          "src": "img/G-0014-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Music City installed in a man cave"
+        }
+      ],
+      "caption": "Tyler N., Nashville, TN",
+      "headline": "Music city mural",
+      "text": "Man cave complete.",
+      "mural": {
+        "name": "Music City",
+        "url": "/music-city.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "M"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0.76,
+      "added": "2018-03-03"
+    },
+    {
+      "id": "G-0015",
+      "images": [
+        {
+          "src": "img/G-0015-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Coastal Calm installed in a room"
+        }
+      ],
+      "caption": "Harbor Medical",
+      "headline": "Calm coastal",
+      "text": "Waiting room feels larger.",
+      "mural": {
+        "name": "Coastal Calm",
+        "url": "/coastal-calm.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Me"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0.85,
+      "added": "2021-11-11"
+    },
+    {
+      "id": "G-0016",
+      "images": [
+        {
+          "src": "img/G-0016-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Herb Garden installed in a kitchen"
+        }
+      ],
+      "caption": "Rosa P., San Diego, CA",
+      "headline": "Kitchen herb garden",
+      "text": "",
+      "mural": {
+        "name": "Herb Garden",
+        "url": "/herb-garden.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Ki"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0.61,
+      "added": "2017-07-19"
+    },
+    {
+      "id": "G-0017",
+      "images": [
+        {
+          "src": "img/G-0017-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Dino Dig installed in a room"
+        }
+      ],
+      "caption": "Metro Museum Annex",
+      "headline": "Dinosaur dig scene",
+      "text": "",
+      "mural": {
+        "name": "Dino Dig",
+        "url": "/dino-dig.html"
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Mu"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0.79,
+      "added": "2015-08-08"
+    },
+    {
+      "id": "G-0018",
+      "images": [
+        {
+          "src": "img/G-0018-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Fairy Forest installed in a girl's room"
+        }
+      ],
+      "caption": "Kim & Lee, Atlanta, GA",
+      "headline": "Girl room fairy forest",
+      "text": "Magical!",
+      "mural": {
+        "name": "Fairy Forest",
+        "url": "/fairy-forest.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Gi"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0.72,
+      "added": "2022-09-09"
+    },
+    {
+      "id": "G-0019",
+      "images": [
+        {
+          "src": "img/G-0019-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Custom brand wall installed in a room"
+        }
+      ],
+      "caption": "Corporate HQ Lobby",
+      "headline": "Brand wall graphic",
+      "text": "",
+      "mural": {
+        "name": "Custom brand wall",
+        "url": null
+      },
+      "segment": "business",
+      "rooms": [],
+      "sectors": [
+        "Co"
+      ],
+      "material": null,
+      "featured": false,
+      "score": 0.81,
+      "added": "2023-04-04"
+    },
+    {
+      "id": "G-0020",
+      "images": [
+        {
+          "src": "img/G-0020-1",
+          "w": 1200,
+          "h": 900,
+          "alt": "Lake Cabin installed in a bonus room"
+        }
+      ],
+      "caption": "Jordan H., Minneapolis, MN",
+      "headline": "Lake cabin scene",
+      "text": "Bonus room getaway vibe.",
+      "mural": {
+        "name": "Lake Cabin",
+        "url": "/lake-cabin.html"
+      },
+      "segment": "residential",
+      "rooms": [
+        "Bor"
+      ],
+      "sectors": [],
+      "material": null,
+      "featured": false,
+      "score": 0.68,
+      "added": "2016-01-15"
+    }
+  ]
+}
