@@ -7,6 +7,7 @@
     "build": "vite build && cp dist/mmg.js dist/mmg.css public/",
     "preview": "vite preview",
     "convert": "node scripts/convert-legacy.mjs",
+    "convert:local": "node scripts/convert-legacy.mjs --local",
     "generate-data": "node scripts/generate-sample-data.mjs"
   },
   "devDependencies": {

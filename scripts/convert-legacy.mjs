@@ -11,6 +11,17 @@ const DATA_RAW = path.join(ROOT, 'data/raw');
 const PUBLIC = path.join(ROOT, 'public');
 const BASE = 'https://www.magicmurals.com';
 
+function mediaPathFromRow(row) {
+  if (row.filename) {
+    const fn = String(row.filename).replace(/^\/+/, '');
+    return `/media/${fn}`;
+  }
+  const thumb = row.fullImage || row.imageUrl || '';
+  const m = String(thumb).match(/media\/(testimonials\/testimony\/[^&]+)/);
+  if (m) return `/media/${m[1]}`;
+  return row.fullImage || row.imageUrl || null;
+}
+
 async function fetchJson(page) {
   const url = `${BASE}/testimonials_front/testimonials/index/?page=${page}`;
   const res = await fetch(url, {
@@ -33,31 +44,37 @@ async function downloadImage(relativeUrl, destFile) {
   return buf;
 }
 
-function anonymizeCaption(name, company, install) {
-  const parts = [];
-  if (name) {
-    const tokens = String(name).trim().split(/\s+/);
-    if (tokens.length >= 2) {
-      parts.push(`${tokens[0]} ${tokens[tokens.length - 1].charAt(0)}.`);
-    } else if (tokens[0]) {
-      parts.push(`${tokens[0].charAt(0)}.`);
-    }
+function rowsFromChunk(chunk) {
+  if (Array.isArray(chunk)) return chunk;
+  return chunk.items || chunk.data || [];
+}
+
+async function loadLocalPages() {
+  let files = [];
+  try {
+    files = (await fs.readdir(DATA_RAW))
+      .filter((f) => /^page-\d+\.json$/i.test(f))
+      .sort((a, b) => {
+        const na = Number(a.match(/\d+/)?.[0] || 0);
+        const nb = Number(b.match(/\d+/)?.[0] || 0);
+        return na - nb;
+      });
+  } catch {
+    return [];
   }
-  if (company) parts.push(String(company).trim());
-  else if (install) parts.push(String(install).trim());
-  return parts.filter(Boolean).join(', ') || 'Customer photo';
+  if (!files.length) return [];
+
+  const allRows = [];
+  for (const file of files) {
+    const raw = JSON.parse(await fs.readFile(path.join(DATA_RAW, file), 'utf8'));
+    const list = rowsFromChunk(raw);
+    console.log(`Loaded ${list.length} rows from ${file}`);
+    allRows.push(...list);
+  }
+  return allRows;
 }
 
-function roomLabel(rooms, taxonomyRooms) {
-  if (!rooms?.length) return 'room';
-  return taxonomyRooms[rooms[0]]?.toLowerCase() || 'room';
-}
-
-async function convertLegacy() {
-  const taxonomy = JSON.parse(
-    await fs.readFile(path.join(PUBLIC, 'data/taxonomy.json'), 'utf8'),
-  );
-
+async function fetchAllPages() {
   const allRows = [];
   for (let page = 1; page <= 50; page += 1) {
     let chunk;
@@ -67,47 +84,112 @@ async function convertLegacy() {
       if (page === 1) throw err;
       break;
     }
-    const list = Array.isArray(chunk) ? chunk : chunk.items || chunk.data || [];
+    const list = rowsFromChunk(chunk);
     if (!list.length) break;
     allRows.push(...list);
+    const lastPage = chunk.lastPage;
+    if (lastPage && page >= lastPage) break;
   }
+  return allRows;
+}
 
-  if (!allRows.length) throw new Error('No legacy rows downloaded');
+function buildCaption(row) {
+  const parts = [];
+  if (row.name) parts.push(String(row.name).trim());
+  if (row.company) parts.push(String(row.company).trim());
+  else if (row.install) parts.push(String(row.install).trim());
+  return parts.filter(Boolean).join(', ') || 'Customer photo';
+}
 
+function groupKey(row) {
+  const m = String(row.filename || '').match(/\/(\d+)-\d+\.jpg$/i);
+  if (m) return `order-${m[1]}`;
+  return `row-${row.name}-${row.install}-${row.headline}`;
+}
+
+function groupRows(allRows) {
+  const map = new Map();
+  for (const row of allRows) {
+    const key = groupKey(row);
+    if (!map.has(key)) map.set(key, []);
+    map.get(key).push(row);
+  }
+  for (const rows of map.values()) {
+    rows.sort((a, b) => String(a.filename).localeCompare(String(b.filename)));
+  }
+  return [...map.values()];
+}
+
+function roomLabel(rooms, taxonomyRooms) {
+  if (!rooms?.length) return 'room';
+  return taxonomyRooms[rooms[0]]?.toLowerCase() || 'room';
+}
+
+async function convertRows(allRows) {
+  const taxonomy = JSON.parse(
+    await fs.readFile(path.join(PUBLIC, 'data/taxonomy.json'), 'utf8'),
+  );
+
+  const groups = groupRows(allRows);
   const privateMap = {};
   const items = [];
   let n = 1;
 
-  for (const row of allRows) {
+  for (const group of groups) {
+    const row = group[0];
     const id = `G-${String(n).padStart(4, '0')}`;
-    const imagePath = row.fullImage || row.imageUrl || row.url;
-    if (!imagePath) continue;
+    const images = [];
+    const legacyFiles = [];
 
-    const rawDest = path.join(DATA_RAW, `${id}${path.extname(imagePath) || '.jpg'}`);
-    let imgBuf;
-    try {
-      imgBuf = await downloadImage(imagePath, rawDest);
-    } catch {
-      continue;
+    for (let i = 0; i < group.length; i += 1) {
+      const r = group[i];
+      const mediaPath = mediaPathFromRow(r);
+      if (!mediaPath) continue;
+
+      const rawDest = path.join(
+        DATA_RAW,
+        'images',
+        path.basename(String(r.filename || `${id}-${i}.jpg`)),
+      );
+      let imgBuf;
+      try {
+        imgBuf = await downloadImage(mediaPath, rawDest);
+      } catch (err) {
+        console.warn(`Skip image ${mediaPath}: ${err.message}`);
+        continue;
+      }
+
+      const imgIndex = images.length + 1;
+      const imgBase = path.join(PUBLIC, 'img', `${id}-${imgIndex}`);
+      const relSrc = `img/${id}-${imgIndex}`;
+      const dims = await writeResponsiveWebp(imgBuf, imgBase);
+
+      const { segment, rooms, sectors } = parseLegacyType(r.type || row.type);
+      const muralName = r.mural || row.mural || row.headline || 'Custom mural';
+      const alt = `${muralName} installed in a ${roomLabel(rooms, taxonomy.rooms)}`;
+
+      images.push({ src: relSrc, w: dims.w, h: dims.h, alt });
+      if (r.filename) legacyFiles.push(r.filename);
     }
 
-    const imgBase = path.join(PUBLIC, 'img', `${id}-1`);
-    const relSrc = `img/${id}-1`;
-    const dims = await writeResponsiveWebp(imgBuf, imgBase);
+    if (!images.length) continue;
 
     const { segment, rooms, sectors } = parseLegacyType(row.type);
     const muralName = row.mural || row.headline || 'Custom mural';
-    const alt = `${muralName} installed in a ${roomLabel(rooms, taxonomy.rooms)}`;
-
-    const muralUrl = row.url && String(row.url).startsWith('/') ? row.url : null;
+    const muralUrl =
+      row.url && String(row.url).startsWith('/') && !row.url.includes('custom-wall-murals')
+        ? row.url
+        : row.url && String(row.url).startsWith('/')
+          ? row.url
+          : null;
 
     items.push({
       id,
-      images: [{ src: relSrc, w: dims.w, h: dims.h, alt }],
-      caption: anonymizeCaption(row.name, row.company, row.install),
-      headline: row.headline || muralName,
+      images,
+      caption: buildCaption(row),
+      headline: (row.headline || muralName).trim(),
       text: stripHtml(row.description),
-      mural: muralName ? { name: muralName, url: muralUrl } : null,
+      mural: muralName ? { name: muralName.replace(/^\*/, ''), url: muralUrl } : null,
       segment,
       rooms,
       sectors,
@@ -118,7 +200,7 @@ async function convertLegacy() {
     });
 
     privateMap[id] = {
-      filename: row.filename || null,
+      filenames: legacyFiles,
       legacyName: row.name || null,
     };
     n += 1;
@@ -140,16 +222,32 @@ async function convertLegacy() {
     JSON.stringify(privateMap, null, 2) + '\n',
   );
 
-  console.log(`Converted ${items.length} legacy items.`);
+  console.log(`Converted ${items.length} gallery entries (${allRows.length} legacy rows).`);
 }
 
 async function main() {
-  try {
-    await convertLegacy();
-  } catch (err) {
-    console.warn('Legacy convert failed, using sample data:', err.message);
-    await generateSampleGallery();
+  const localFirst = process.argv.includes('--local') || process.argv.includes('--from-local');
+  let allRows = [];
+
+  if (localFirst || (await loadLocalPages()).length) {
+    allRows = await loadLocalPages();
   }
+
+  if (!allRows.length) {
+    try {
+      allRows = await fetchAllPages();
+    } catch (err) {
+      console.warn('Legacy fetch failed:', err.message);
+    }
+  }
+
+  if (allRows.length) {
+    await convertRows(allRows);
+    return;
+  }
+
+  console.warn('No legacy data; using sample placeholders.');
+  await generateSampleGallery();
 }
 
 main().catch((err) => {

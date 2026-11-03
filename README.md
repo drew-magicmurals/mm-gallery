@@ -52,7 +52,16 @@ If you add this hook, wire it in `src/config.js` / `src/main.js` when you deploy
 
 | Command | Purpose |
 |--------|---------|
-| `npm run convert` | Download legacy JSON + images from magicmurals.com, build WebPs, write `public/data/gallery.json` and private `data/private-map.json` |
+| `npm run convert` | Try live legacy API, else `data/raw/page-*.json`, else sample placeholders |
+| `npm run convert:local` | Use only `data/raw/page-*.json` (see below) |
+
+### Import legacy pages manually (Cloudflare-friendly)
+
+1. In a browser, open `https://www.magicmurals.com/testimonials_front/testimonials/index/?page=1` (then `page=2`, …). Response JSON includes `"lastPage": 16` on page 1.
+2. Save each response as `data/raw/page-1.json`, `page-2.json`, etc. (full JSON body).
+3. Run **`npm run convert:local`** — downloads originals from `/media/testimonials/...`, builds WebPs, writes `public/data/gallery.json`.
+
+You do **not** need all 16 pages for a good preview; add more files anytime and re-run convert.
 | `npm run generate-data` | Always write 20 placeholder entries (used automatically when convert is blocked) |
 
 Legacy API (read-only):  
