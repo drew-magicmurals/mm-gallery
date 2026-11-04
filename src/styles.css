@@ -585,7 +585,7 @@ body.mmg-lightbox-open {
   max-width: 56rem;
   max-height: 100%;
   overflow: hidden;
-  padding: 0;
+  padding: var(--mmg-space-md);
   background: var(--mmg-color-bg);
   box-sizing: border-box;
 }
@@ -614,7 +614,7 @@ body.mmg-lightbox-open {
   min-height: 0;
   overflow: hidden;
   margin-top: var(--mmg-space-sm);
-  padding: var(--mmg-space-sm) var(--mmg-space-md) var(--mmg-space-md);
+  padding: var(--mmg-space-sm) 0 0;
   border-top: 1px solid #ececec;
 }
 
