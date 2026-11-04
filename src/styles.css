@@ -554,6 +554,11 @@ body.mmg-lightbox-open {
 }
 
 .mmg-lightbox {
+  /* Tune overall lightbox size here (responsive below). */
+  --mmg-lb-outer: var(--mmg-space-md);
+  --mmg-lb-inner: var(--mmg-space-md);
+  --mmg-lb-panel-max: min(97vw, 56rem);
+  --mmg-lb-img-max: min(58dvh, calc(100dvh - 14rem));
   position: fixed;
   inset: 0;
   z-index: 10000;
@@ -561,12 +566,26 @@ body.mmg-lightbox-open {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: var(--mmg-space-md);
-  padding-top: max(var(--mmg-space-md), env(safe-area-inset-top, 0px));
-  padding-right: max(var(--mmg-space-md), env(safe-area-inset-right, 0px));
-  padding-bottom: max(var(--mmg-space-md), env(safe-area-inset-bottom, 0px));
-  padding-left: max(var(--mmg-space-md), env(safe-area-inset-left, 0px));
+  padding-top: max(var(--mmg-lb-outer), env(safe-area-inset-top, 0px));
+  padding-right: max(var(--mmg-lb-outer), env(safe-area-inset-right, 0px));
+  padding-bottom: max(var(--mmg-lb-outer), env(safe-area-inset-bottom, 0px));
+  padding-left: max(var(--mmg-lb-outer), env(safe-area-inset-left, 0px));
   overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .mmg-lightbox {
+    --mmg-lb-outer: var(--mmg-space-sm);
+    --mmg-lb-panel-max: min(94vw, 68rem);
+    --mmg-lb-img-max: min(66dvh, calc(100dvh - 12rem));
+  }
+}
+
+@media (min-width: 1024px) {
+  .mmg-lightbox {
+    --mmg-lb-panel-max: min(92vw, 76rem);
+    --mmg-lb-img-max: min(72dvh, calc(100dvh - 11rem));
+  }
 }
 
 .mmg-lightbox__backdrop {
@@ -582,10 +601,10 @@ body.mmg-lightbox-open {
   flex-direction: column;
   flex: 0 1 auto;
   width: 100%;
-  max-width: 56rem;
+  max-width: var(--mmg-lb-panel-max);
   max-height: 100%;
   overflow: hidden;
-  padding: var(--mmg-space-md);
+  padding: var(--mmg-lb-inner);
   background: var(--mmg-color-bg);
   box-sizing: border-box;
 }
@@ -704,7 +723,7 @@ body.mmg-lightbox-open {
   max-width: 100%;
   width: auto;
   height: auto;
-  max-height: min(52dvh, calc(100dvh - 15rem));
+  max-height: var(--mmg-lb-img-max);
   object-fit: contain;
   margin: 0 auto;
   background: #f0f0f0;

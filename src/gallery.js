@@ -135,7 +135,7 @@ export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, sh
 
       card.querySelector('.mmg-card__mural').textContent = muralName;
       card.querySelector('.mmg-card__loc').textContent = location;
-      card.querySelector('.mmg-card__id').textContent = item.id;
+      card.querySelector('.mmg-card__id').textContent = displayPhotoId(item.id);
 
       const open = () => onOpenLightbox(item, filtered);
       card.addEventListener('click', open);

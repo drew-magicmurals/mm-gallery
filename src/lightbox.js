@@ -244,7 +244,7 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
     els.text.textContent = body || '\u00a0';
     els.text.classList.toggle('is-empty', !body);
     els.text.title = body || '';
-    els.id.textContent = `Photo ${item.id}`;
+    els.id.textContent = displayPhotoId(item.id);
 
     if (item.mural?.url) {
       const rawName = item.mural.name?.replace(/^\*/, '').trim() || '';
