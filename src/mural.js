@@ -1,3 +1,17 @@
+const GENERIC_MURAL_NAMES = new Set([
+  '',
+  'custom mural',
+  'custom wall mural',
+  'custom murals',
+  'custom',
+]);
+
+/** Catch-all product pages — not a specific mural SKU. */
+const GENERIC_MURAL_URLS = new Set([
+  '/custom-wall-murals.html',
+  '/custom-murals.html',
+]);
+
 export function normalizeMuralName(name) {
   return String(name || '')
     .replace(/^\*/, '')
@@ -5,12 +19,50 @@ export function normalizeMuralName(name) {
     .toLowerCase();
 }
 
+function normalizeMuralUrl(url) {
+  if (!url) return '';
+  try {
+    const path = url.startsWith('http') ? new URL(url).pathname : url;
+    return path.trim().toLowerCase().replace(/\/$/, '') || '';
+  } catch {
+    return String(url).trim().toLowerCase().replace(/\/$/, '');
+  }
+}
+
+/** Stable key for “same mural product” grouping; null when not groupable. */
+export function muralGroupKey(item) {
+  const url = normalizeMuralUrl(item.mural?.url);
+  if (url && !GENERIC_MURAL_URLS.has(url)) return `url:${url}`;
+
+  const name = normalizeMuralName(item.mural?.name);
+  if (name && !GENERIC_MURAL_NAMES.has(name)) return `name:${name}`;
+
+  return null;
+}
+
+export function muralDisplayName(item) {
+  const rawName = item.mural?.name?.replace(/^\*/, '').trim();
+  const nameKey = normalizeMuralName(rawName);
+  if (rawName && nameKey && !GENERIC_MURAL_NAMES.has(nameKey)) return rawName;
+
+  const url = normalizeMuralUrl(item.mural?.url);
+  if (url && !GENERIC_MURAL_URLS.has(url)) {
+    const slug = url.split('/').filter(Boolean).pop()?.replace(/\.html$/i, '') || '';
+    if (slug) {
+      return slug
+        .split('-')
+        .filter(Boolean)
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ');
+    }
+  }
+  return '';
+}
+
 export function itemsWithSameMural(items, item) {
-  const key = normalizeMuralName(item.mural?.name || item.headline);
+  const key = muralGroupKey(item);
   if (!key) return [];
-  return items.filter(
-    (i) => i.id !== item.id && normalizeMuralName(i.mural?.name || i.headline) === key,
-  );
+  return items.filter((i) => i.id !== item.id && muralGroupKey(i) === key);
 }
 
 export function bestItemForRoom(items, roomKey) {

@@ -555,10 +555,20 @@ body.mmg-lightbox-open {
   position: fixed;
   inset: 0;
   z-index: 10000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: max(var(--mmg-space-md), env(safe-area-inset-top, 0px))
+    max(var(--mmg-space-md), env(safe-area-inset-right, 0px))
+    max(var(--mmg-space-lg), calc(env(safe-area-inset-bottom, 0px) + var(--mmg-space-md)))
+    max(var(--mmg-space-md), env(safe-area-inset-left, 0px));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mmg-lightbox__backdrop {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.75);
 }
@@ -566,17 +576,25 @@ body.mmg-lightbox-open {
 .mmg-lightbox__panel {
   position: relative;
   z-index: 1;
+  flex: 0 1 auto;
+  width: 100%;
   max-width: 56rem;
-  max-height: 100vh;
+  max-height: calc(
+    100dvh - max(var(--mmg-space-md), env(safe-area-inset-top, 0px)) -
+      max(var(--mmg-space-lg), calc(env(safe-area-inset-bottom, 0px) + var(--mmg-space-md))) -
+      var(--mmg-space-sm)
+  );
   overflow: auto;
-  margin: 0 auto;
+  margin: auto 0;
   padding: var(--mmg-space-md);
+  padding-bottom: max(var(--mmg-space-lg), var(--mmg-space-md));
   background: var(--mmg-color-bg);
 }
 
 @media (min-width: 768px) {
   .mmg-lightbox__panel {
-    margin-top: 2vh;
+    margin-top: auto;
+    margin-bottom: auto;
     border-radius: var(--mmg-radius);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
   }
@@ -672,10 +690,15 @@ body.mmg-lightbox-open {
   color: var(--mmg-color-muted);
 }
 
+.mmg-lightbox__body {
+  padding-bottom: var(--mmg-space-xs);
+}
+
 .mmg-lightbox__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--mmg-space-sm);
+  padding-bottom: var(--mmg-space-sm);
 }
 
 .mmg-lightbox__thumbs {

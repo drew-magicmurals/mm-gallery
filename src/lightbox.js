@@ -2,7 +2,7 @@ import { assetUrl, CONTACT_EMAIL, WANT_THIS_URL } from './config.js';
 import { imageSrc, imageSrcSet, pinterestUrl } from './images.js';
 import { trapFocus, prefersReducedMotion } from './util.js';
 import { displayAlt } from './alt-text.js';
-import { itemsWithSameMural } from './mural.js';
+import { itemsWithSameMural, muralDisplayName } from './mural.js';
 
 export function createLightbox(root, state, { onClose, onNavigate, shortlistApi, onMuralFilter }) {
   let releaseTrap = null;
@@ -170,15 +170,20 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
 
   function renderMuralRelated(item) {
     const related = itemsWithSameMural(state.items, item);
+    const productName = muralDisplayName(item);
     els.muralMore.textContent = '';
-    if (!related.length) {
+    if (!related.length || !productName) {
       els.muralMore.hidden = true;
       return;
     }
     els.muralMore.hidden = false;
     const title = document.createElement('p');
     title.className = 'mmg-lightbox__mural-more-title';
-    title.textContent = `${related.length} more install${related.length === 1 ? '' : 's'} of this mural`;
+    const n = related.length;
+    title.textContent =
+      n === 1
+        ? `1 more customer photo of ${productName}`
+        : `${n} more customer photos of ${productName}`;
     els.muralMore.appendChild(title);
     const row = document.createElement('div');
     row.className = 'mmg-lightbox__mural-more-row';
@@ -206,11 +211,10 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
     const link = document.createElement('button');
     link.type = 'button';
     link.className = 'mmg-link-btn';
-    link.textContent = 'Show all installs of this mural';
-    const muralName = item.mural?.name || item.headline;
+    link.textContent = `See all photos of ${productName}`;
     link.addEventListener('click', () => {
       close();
-      onMuralFilter?.(muralName);
+      onMuralFilter?.(productName);
     });
     els.muralMore.appendChild(link);
   }

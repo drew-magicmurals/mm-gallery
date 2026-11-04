@@ -1,6 +1,6 @@
 import { isIdOnlySearch } from './photo-id.js';
 import { itemHasAnyColorBucket } from './color-buckets.js';
-import { normalizeMuralName } from './mural.js';
+import { normalizeMuralName, muralDisplayName } from './mural.js';
 import { itemMatchesPlaces } from './places.js';
 
 export function createState() {
@@ -134,13 +134,13 @@ export function filterItems(state, options = {}) {
   }
 
   if (state.embedMural) {
-    const key = normalizeMuralName(state.embedMural);
-    list = list.filter((i) => normalizeMuralName(i.mural?.name || i.headline) === key);
+    const target = normalizeMuralName(state.embedMural);
+    list = list.filter((i) => normalizeMuralName(muralDisplayName(i)) === target);
   }
 
   if (state.muralFilter) {
-    const key = normalizeMuralName(state.muralFilter);
-    list = list.filter((i) => normalizeMuralName(i.mural?.name || i.headline) === key);
+    const target = normalizeMuralName(state.muralFilter);
+    list = list.filter((i) => normalizeMuralName(muralDisplayName(i)) === target);
   }
 
   if (state.segment === 'residential') {
