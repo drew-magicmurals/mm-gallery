@@ -104,11 +104,6 @@
   max-width: 100%;
 }
 
-.mmg-smartbar__chip.mmg-dominant-red,
-.mmg-smartbar__chip.mmg-dominant-blue {
-  color: var(--mmg-color-text);
-}
-
 .mmg-smartbar__chip:focus-visible {
   outline: none;
   box-shadow: var(--mmg-focus);
@@ -286,26 +281,97 @@
   font-size: 0.875rem;
 }
 
+.mmg-smartbar__sort-colors-heading {
+  margin-bottom: var(--mmg-space-xs);
+}
+
+.mmg-smartbar__sort-colors-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--mmg-space-sm) var(--mmg-space-md);
+  margin-bottom: var(--mmg-space-md);
+}
+
+@media (max-width: 639px) {
+  .mmg-smartbar__sort-colors-body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mmg-smartbar__color-row {
+    width: 100%;
+  }
+}
+
+.mmg-smartbar__sort-colors-body .mmg-smartbar__sort {
+  margin-bottom: 0;
+  flex: 0 1 auto;
+}
+
 .mmg-smartbar__color-row {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--mmg-space-sm);
-  margin-bottom: var(--mmg-space-sm);
+  gap: 0.35rem;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: min(100%, 12rem);
 }
 
 .mmg-smartbar__color-dot {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
-  border: 2px solid var(--mmg-color-border);
+  border: 2px solid rgba(0, 0, 0, 0.12);
   cursor: pointer;
   padding: 0;
+  flex-shrink: 0;
+}
+
+.mmg-smartbar__color-dot.is-active {
+  box-shadow: 0 0 0 2px var(--mmg-color-bg), 0 0 0 4px var(--mmg-color-text);
 }
 
 .mmg-smartbar__color-dot:focus-visible {
   outline: none;
   box-shadow: var(--mmg-focus);
 }
+
+.mmg-smartbar__color-dot.mmg-dominant-red,
+.mmg-smartbar__option-swatch.mmg-dominant-red { background: #c0392b; }
+.mmg-smartbar__color-dot.mmg-dominant-orange,
+.mmg-smartbar__option-swatch.mmg-dominant-orange { background: #e67e22; }
+.mmg-smartbar__color-dot.mmg-dominant-yellow,
+.mmg-smartbar__option-swatch.mmg-dominant-yellow { background: #f1c40f; }
+.mmg-smartbar__color-dot.mmg-dominant-green,
+.mmg-smartbar__option-swatch.mmg-dominant-green { background: #3c9b35; }
+.mmg-smartbar__color-dot.mmg-dominant-teal,
+.mmg-smartbar__option-swatch.mmg-dominant-teal { background: #16a085; }
+.mmg-smartbar__color-dot.mmg-dominant-blue,
+.mmg-smartbar__option-swatch.mmg-dominant-blue { background: #2980b9; }
+.mmg-smartbar__color-dot.mmg-dominant-purple,
+.mmg-smartbar__option-swatch.mmg-dominant-purple { background: #8e44ad; }
+.mmg-smartbar__color-dot.mmg-dominant-pink,
+.mmg-smartbar__option-swatch.mmg-dominant-pink { background: #e84393; }
+.mmg-smartbar__color-dot.mmg-dominant-neutral,
+.mmg-smartbar__option-swatch.mmg-dominant-neutral { background: #9e9e9e; }
+.mmg-smartbar__color-dot.mmg-dominant-blackwhite,
+.mmg-smartbar__option-swatch.mmg-dominant-blackwhite { background: #2c2c2c; }
+.mmg-smartbar__color-dot.mmg-dominant-brown,
+.mmg-smartbar__option-swatch.mmg-dominant-brown { background: #795548; }
+
+.mmg-smartbar__chip.mmg-dominant-red { background: #c0392b; border-color: #a93226; color: #fff; }
+.mmg-smartbar__chip.mmg-dominant-orange { background: #e67e22; border-color: #d35400; color: #fff; }
+.mmg-smartbar__chip.mmg-dominant-yellow { background: #f1c40f; border-color: #d4ac0d; color: #393939; }
+.mmg-smartbar__chip.mmg-dominant-green { background: #3c9b35; border-color: #347d2f; color: #fff; }
+.mmg-smartbar__chip.mmg-dominant-teal { background: #16a085; border-color: #138d75; color: #fff; }
+.mmg-smartbar__chip.mmg-dominant-blue { background: #2980b9; border-color: #2471a3; color: #fff; }
+.mmg-smartbar__chip.mmg-dominant-purple { background: #8e44ad; border-color: #7d3c98; color: #fff; }
+.mmg-smartbar__chip.mmg-dominant-pink { background: #e84393; border-color: #d63384; color: #fff; }
+.mmg-smartbar__chip.mmg-dominant-neutral { background: #9e9e9e; border-color: #757575; color: #fff; }
+.mmg-smartbar__chip.mmg-dominant-blackwhite { background: #2c2c2c; border-color: #1a1a1a; color: #fff; }
+.mmg-smartbar__chip.mmg-dominant-brown { background: #795548; border-color: #6d4c41; color: #fff; }
 
 .mmg-smartbar__launcher-chips {
   display: flex;

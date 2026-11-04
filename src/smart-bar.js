@@ -328,26 +328,6 @@ export function attachSmartBar(wrap, state, { onStateChange }) {
   function renderLauncher() {
     panel.textContent = '';
 
-    if (hasColorData(state.items)) {
-      const colorsHead = document.createElement('div');
-      colorsHead.className = 'mmg-smartbar__panel-heading';
-      colorsHead.textContent = 'Colors';
-      panel.appendChild(colorsHead);
-      const row = document.createElement('div');
-      row.className = 'mmg-smartbar__color-row';
-      for (const key of COLOR_SWATCH_KEYS) {
-        if (!state.items.some((i) => i.images?.some((im) => im.dominant === key))) continue;
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = `mmg-smartbar__color-dot mmg-dominant-${key}`;
-        btn.setAttribute('aria-label', SWATCH_LABELS[key] || key);
-        btn.title = SWATCH_LABELS[key] || key;
-        btn.addEventListener('click', () => addChip('color', key));
-        row.appendChild(btn);
-      }
-      panel.appendChild(row);
-    }
-
     const cats = categoryOptionsForLauncher();
     const showCats = launcherExpanded ? cats : cats.slice(0, 8);
     if (showCats.length && state.segment !== 'all') {
@@ -395,10 +375,17 @@ export function attachSmartBar(wrap, state, { onStateChange }) {
       panel.appendChild(chipRow);
     }
 
+    const sortColors = document.createElement('div');
+    sortColors.className = 'mmg-smartbar__sort-colors';
+
     const sortHead = document.createElement('div');
-    sortHead.className = 'mmg-smartbar__panel-heading';
+    sortHead.className = 'mmg-smartbar__panel-heading mmg-smartbar__sort-colors-heading';
     sortHead.textContent = 'Sort';
-    panel.appendChild(sortHead);
+    sortColors.appendChild(sortHead);
+
+    const sortColorsBody = document.createElement('div');
+    sortColorsBody.className = 'mmg-smartbar__sort-colors-body';
+
     const sortRow = document.createElement('div');
     sortRow.className = 'mmg-smartbar__sort';
     sortRow.setAttribute('role', 'radiogroup');
@@ -423,7 +410,29 @@ export function attachSmartBar(wrap, state, { onStateChange }) {
       });
       sortRow.appendChild(btn);
     }
-    panel.appendChild(sortRow);
+    sortColorsBody.appendChild(sortRow);
+
+    if (hasColorData(state.items)) {
+      const colorRow = document.createElement('div');
+      colorRow.className = 'mmg-smartbar__color-row';
+      colorRow.setAttribute('role', 'group');
+      colorRow.setAttribute('aria-label', 'Filter by color');
+      for (const key of COLOR_SWATCH_KEYS) {
+        if (!state.items.some((i) => i.images?.some((im) => im.dominant === key))) continue;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `mmg-smartbar__color-dot mmg-dominant-${key}`;
+        btn.setAttribute('aria-label', SWATCH_LABELS[key] || key);
+        btn.title = SWATCH_LABELS[key] || key;
+        btn.classList.toggle('is-active', (state.filterColors || []).includes(key));
+        btn.addEventListener('click', () => addChip('color', key));
+        colorRow.appendChild(btn);
+      }
+      if (colorRow.childElementCount) sortColorsBody.appendChild(colorRow);
+    }
+
+    sortColors.appendChild(sortColorsBody);
+    panel.appendChild(sortColors);
 
     const actions = document.createElement('div');
     actions.className = 'mmg-smartbar__panel-actions';
