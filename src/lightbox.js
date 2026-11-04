@@ -3,6 +3,7 @@ import { imageSrc, imageSrcSet, pinterestUrl } from './images.js';
 import { trapFocus, prefersReducedMotion } from './util.js';
 import { displayAlt } from './alt-text.js';
 import { itemsWithSameMural, muralDisplayName } from './mural.js';
+import { displayPhotoId } from './photo-id.js';
 import { ICON_SHARE, ICON_PINTEREST } from './lightbox-icons.js';
 
 export function createLightbox(root, state, { onClose, onNavigate, shortlistApi, onMuralFilter }) {

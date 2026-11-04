@@ -8,7 +8,7 @@ import {
 } from './state.js';
 import { displayAlt } from './alt-text.js';
 import { attachSmartBar } from './smart-bar.js';
-import { isIdOnlySearch } from './photo-id.js';
+import { isIdOnlySearch, displayPhotoId } from './photo-id.js';
 import { rankItemForQuery } from './search-rank.js';
 
 export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, shortlistApi }) {

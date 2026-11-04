@@ -8,7 +8,7 @@ import { filterItemsPreview, clearAllFilters } from './state.js';
 import { hasColorData, SWATCH_LABELS } from './color-buckets.js';
 import { roomCounts, sectorCounts } from './mural.js';
 import { buildPlaceIndex } from './places.js';
-import { normalizePhotoId } from './photo-id.js';
+import { normalizePhotoId, displayPhotoId } from './photo-id.js';
 import { scoreText, rankIdQuery } from './search-rank.js';
 
 const SEG_SYNONYMS = {
@@ -206,7 +206,7 @@ export function attachSmartBar(wrap, state, { onStateChange }) {
       if (item) {
         groups.push({
           title: 'Photo number',
-          options: [{ kind: 'id', value: item.id, label: item.id, score: 2000 }],
+          options: [{ kind: 'id', value: item.id, label: displayPhotoId(item.id), score: 2000 }],
         });
       }
     }
