@@ -554,6 +554,7 @@ body.mmg-lightbox-open {
 }
 
 .mmg-lightbox {
+  --mmg-lb-gutter: var(--mmg-space-md);
   position: fixed;
   inset: 0;
   z-index: 10000;
@@ -561,10 +562,10 @@ body.mmg-lightbox-open {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: max(var(--mmg-space-sm), env(safe-area-inset-top, 0px))
-    max(var(--mmg-space-sm), env(safe-area-inset-right, 0px))
-    max(var(--mmg-space-sm), env(safe-area-inset-bottom, 0px))
-    max(var(--mmg-space-sm), env(safe-area-inset-left, 0px));
+  padding: max(var(--mmg-lb-gutter), env(safe-area-inset-top, 0px))
+    max(var(--mmg-lb-gutter), env(safe-area-inset-right, 0px))
+    max(var(--mmg-lb-gutter), env(safe-area-inset-bottom, 0px))
+    max(var(--mmg-lb-gutter), env(safe-area-inset-left, 0px));
   overflow: hidden;
 }
 
@@ -583,11 +584,11 @@ body.mmg-lightbox-open {
   max-width: 56rem;
   height: auto;
   max-height: calc(
-    100dvh - max(var(--mmg-space-sm), env(safe-area-inset-top, 0px)) -
-      max(var(--mmg-space-sm), env(safe-area-inset-bottom, 0px))
+    100dvh - 2 * var(--mmg-lb-gutter, var(--mmg-space-md)) -
+      env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)
   );
   overflow: hidden;
-  padding: var(--mmg-space-sm) var(--mmg-space-md) 0;
+  padding: 0;
   background: var(--mmg-color-bg);
 }
 
@@ -595,26 +596,27 @@ body.mmg-lightbox-open {
   .mmg-lightbox__panel {
     border-radius: var(--mmg-radius);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
-    padding: var(--mmg-space-md) var(--mmg-space-md) 0;
   }
 }
 
 .mmg-lightbox__media {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: var(--mmg-lb-gutter, var(--mmg-space-md))
+    var(--mmg-lb-gutter, var(--mmg-space-md))
+    0;
 }
 
 .mmg-lightbox__footer {
   flex: 0 0 auto;
   min-height: 0;
   overflow: hidden;
-  padding-top: var(--mmg-space-sm);
-  padding-bottom: var(--mmg-space-xs);
+  padding: var(--mmg-space-sm) var(--mmg-lb-gutter, var(--mmg-space-md)) 0;
   border-top: 1px solid #ececec;
 }
 
@@ -758,10 +760,6 @@ body.mmg-lightbox-open {
 .mmg-lightbox__id-slot {
   min-height: 1rem;
   margin-top: 0.2rem;
-}
-
-.mmg-lightbox__footer {
-  padding-bottom: var(--mmg-space-xs);
 }
 
 .mmg-lightbox__actions {
