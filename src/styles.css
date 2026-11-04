@@ -590,7 +590,7 @@ body.mmg-lightbox-open {
       max(var(--mmg-space-sm), env(safe-area-inset-bottom, 0px))
   );
   overflow: hidden;
-  padding: var(--mmg-space-sm) var(--mmg-space-md) var(--mmg-space-md);
+  padding: var(--mmg-space-sm) var(--mmg-space-md) var(--mmg-space-xs);
   background: var(--mmg-color-bg);
 }
 
@@ -598,7 +598,7 @@ body.mmg-lightbox-open {
   .mmg-lightbox__panel {
     border-radius: var(--mmg-radius);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
-    padding: var(--mmg-space-md);
+    padding: var(--mmg-space-md) var(--mmg-space-md) var(--mmg-space-xs);
   }
 }
 
