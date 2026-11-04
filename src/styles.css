@@ -554,11 +554,11 @@ body.mmg-lightbox-open {
 }
 
 .mmg-lightbox {
-  /* ~7% larger than pre-scale baseline (56rem / 52dvh / 1rem gutters). Tune here. */
+  /* Baseline was 56rem / 52dvh; ~5% bump for panel + image. Tune here. */
   --mmg-lb-outer: var(--mmg-space-md);
   --mmg-lb-inner: var(--mmg-space-md);
-  --mmg-lb-panel-max: min(96vw, 60rem);
-  --mmg-lb-img-max: min(56dvh, calc(100dvh - 14rem));
+  --mmg-lb-panel-max: min(96vw, 59rem);
+  --mmg-lb-img-max: min(55dvh, calc(100dvh - 14.5rem));
   position: fixed;
   inset: 0;
   z-index: 10000;
