@@ -43,7 +43,7 @@ export function renderGalleryUI(root, state, { onOpenLightbox, onStateChange, sh
       featuredEl.hidden = true;
       return;
     }
-    const featured = allItems.filter((i) => i.featured).slice(0, 5);
+    const featured = allItems.filter((i) => i.featured).slice(0, 3);
     if (!featured.length) {
       featuredEl.hidden = true;
       return;

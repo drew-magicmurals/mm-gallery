@@ -103,6 +103,7 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
       els.img.removeAttribute('width');
       els.img.removeAttribute('height');
     }
+    els.img.onload = () => scheduleLightboxLayout();
 
     const pageUrl = permalink(item.id);
     const fullImg = assetUrl(`${img.src}-1600.webp`);
