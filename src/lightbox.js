@@ -21,13 +21,15 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
       <button type="button" class="mmg-lightbox__close" data-mmg-action="close" aria-label="Close">&times;</button>
       <button type="button" class="mmg-lightbox__nav mmg-lightbox__nav--prev" data-mmg-action="prev" aria-label="Previous photo">&lsaquo;</button>
       <button type="button" class="mmg-lightbox__nav mmg-lightbox__nav--next" data-mmg-action="next" aria-label="Next photo">&rsaquo;</button>
-      <figure class="mmg-lightbox__figure">
-        <img class="mmg-lightbox__img" alt="" decoding="async" />
-        <p class="mmg-lightbox__image-count" hidden></p>
-        <figcaption class="mmg-lightbox__caption"></figcaption>
-      </figure>
-      <div class="mmg-lightbox__thumbs" hidden></div>
-      <div class="mmg-lightbox__body">
+      <div class="mmg-lightbox__media">
+        <figure class="mmg-lightbox__figure">
+          <img class="mmg-lightbox__img" alt="" decoding="async" />
+          <p class="mmg-lightbox__image-count" hidden></p>
+        </figure>
+        <div class="mmg-lightbox__thumbs" hidden></div>
+      </div>
+      <div class="mmg-lightbox__footer">
+        <p class="mmg-lightbox__caption"></p>
         <p class="mmg-lightbox__headline"></p>
         <p class="mmg-lightbox__text"></p>
         <p class="mmg-lightbox__id"></p>
@@ -185,29 +187,6 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
         ? `1 more customer photo of ${productName}`
         : `${n} more customer photos of ${productName}`;
     els.muralMore.appendChild(title);
-    const row = document.createElement('div');
-    row.className = 'mmg-lightbox__mural-more-row';
-    for (const other of related.slice(0, 8)) {
-      const im = other.images?.[0];
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'mmg-lightbox__mural-more-thumb';
-      btn.setAttribute('aria-label', `Open ${other.id}`);
-      if (im) {
-        const thumb = document.createElement('img');
-        thumb.src = imageSrc(im.src, 450);
-        thumb.alt = '';
-        btn.appendChild(thumb);
-      }
-      btn.addEventListener('click', () => {
-        state.lightbox.item = other;
-        state.lightbox.imageIndex = 0;
-        fillContent(other, 0);
-        onNavigate?.(other.id);
-      });
-      row.appendChild(btn);
-    }
-    els.muralMore.appendChild(row);
     const link = document.createElement('button');
     link.type = 'button';
     link.className = 'mmg-link-btn';
@@ -220,9 +199,16 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
   }
 
   function fillContent(item, imageIndex = 0) {
-    els.caption.textContent = item.caption || '';
-    els.headline.textContent = item.headline || '';
-    els.text.textContent = item.text || '';
+    const cap = item.caption || '';
+    const head = item.headline || '';
+    const body = item.text || '';
+    els.caption.textContent = cap;
+    els.caption.hidden = !cap;
+    els.headline.textContent = head;
+    els.headline.hidden = !head;
+    els.text.textContent = body;
+    els.text.hidden = !body;
+    if (body) els.text.title = body;
     els.id.textContent = `Photo ${item.id}`;
 
     if (item.mural?.url) {
@@ -244,6 +230,26 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
 
     renderImageIndex(item, imageIndex);
     renderMuralRelated(item);
+    scheduleLightboxLayout();
+  }
+
+  let layoutFrame = 0;
+  function scheduleLightboxLayout() {
+    cancelAnimationFrame(layoutFrame);
+    layoutFrame = requestAnimationFrame(() => {
+      if (overlay.hidden) return;
+      const panel = overlay.querySelector('.mmg-lightbox__panel');
+      const media = overlay.querySelector('.mmg-lightbox__media');
+      const footer = overlay.querySelector('.mmg-lightbox__footer');
+      if (!panel || !media || !footer) return;
+      const styles = getComputedStyle(panel);
+      const padT = parseFloat(styles.paddingTop) || 0;
+      const padB = parseFloat(styles.paddingBottom) || 0;
+      const reservedTop = padT + 40;
+      const footerH = footer.offsetHeight;
+      const maxMedia = panel.clientHeight - padB - reservedTop - footerH - 4;
+      media.style.maxHeight = `${Math.max(96, maxMedia)}px`;
+    });
   }
 
   function open(item, list, imageIndex = 0) {
@@ -256,12 +262,16 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
     overlay.hidden = false;
     document.body.classList.add('mmg-lightbox-open');
     fillContent(item, imageIndex);
-    if (opening) overlay.querySelector('.mmg-lightbox__close').focus();
+    if (opening) {
+      overlay.querySelector('.mmg-lightbox__close').focus();
+      window.addEventListener('resize', scheduleLightboxLayout);
+    }
   }
 
   function close() {
     overlay.hidden = true;
     document.body.classList.remove('mmg-lightbox-open');
+    window.removeEventListener('resize', scheduleLightboxLayout);
     state.lightbox = null;
     if (releaseTrap) releaseTrap();
     releaseTrap = null;
