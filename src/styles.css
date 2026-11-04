@@ -722,14 +722,14 @@ body.mmg-lightbox-open {
   font-size: 1rem;
   line-height: 1.25rem;
   min-height: 1.25rem;
-  margin: 0.1rem 0 0;
+  margin: 0.35rem 0 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .mmg-lightbox__text {
-  margin: 0.15rem 0 0;
+  margin: 0.4rem 0 0;
   min-height: 2.3625rem;
   font-size: 0.875rem;
   line-height: 1.35;
@@ -1230,7 +1230,7 @@ body.mmg-lightbox-open {
   text-transform: uppercase;
   line-height: 1.2;
   padding: 0.15rem 0.35rem;
-  border-radius: 2px;
+  border-radius: var(--mmg-radius);
   background: var(--mmg-color-accent);
   color: #fff;
   pointer-events: none;
