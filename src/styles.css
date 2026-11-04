@@ -581,16 +581,13 @@ body.mmg-lightbox-open {
   flex-direction: column;
   width: 100%;
   max-width: 56rem;
-  height: calc(
-    100dvh - max(var(--mmg-space-sm), env(safe-area-inset-top, 0px)) -
-      max(var(--mmg-space-sm), env(safe-area-inset-bottom, 0px))
-  );
+  height: auto;
   max-height: calc(
     100dvh - max(var(--mmg-space-sm), env(safe-area-inset-top, 0px)) -
       max(var(--mmg-space-sm), env(safe-area-inset-bottom, 0px))
   );
   overflow: hidden;
-  padding: var(--mmg-space-sm) var(--mmg-space-md) var(--mmg-space-xs);
+  padding: var(--mmg-space-sm) var(--mmg-space-md) 0;
   background: var(--mmg-color-bg);
 }
 
@@ -598,7 +595,7 @@ body.mmg-lightbox-open {
   .mmg-lightbox__panel {
     border-radius: var(--mmg-radius);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
-    padding: var(--mmg-space-md) var(--mmg-space-md) var(--mmg-space-xs);
+    padding: var(--mmg-space-md) var(--mmg-space-md) 0;
   }
 }
 
@@ -617,6 +614,7 @@ body.mmg-lightbox-open {
   min-height: 0;
   overflow: hidden;
   padding-top: var(--mmg-space-sm);
+  padding-bottom: var(--mmg-space-xs);
   border-top: 1px solid #ececec;
 }
 
@@ -705,9 +703,18 @@ body.mmg-lightbox-open {
   text-align: center;
 }
 
-.mmg-lightbox__caption {
-  margin: 0;
+.mmg-lightbox__byline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--mmg-space-sm);
   min-height: 1.125rem;
+}
+
+.mmg-lightbox__caption {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
   font-size: 0.8125rem;
   line-height: 1.125rem;
   color: var(--mmg-color-muted);
@@ -740,11 +747,21 @@ body.mmg-lightbox-open {
 }
 
 .mmg-lightbox__id {
-  margin: 0.2rem 0 0;
-  min-height: 1rem;
+  flex: 0 0 auto;
+  margin: 0;
   font-size: 0.75rem;
-  line-height: 1rem;
+  line-height: 1.125rem;
   color: var(--mmg-color-muted);
+  white-space: nowrap;
+}
+
+.mmg-lightbox__id-slot {
+  min-height: 1rem;
+  margin-top: 0.2rem;
+}
+
+.mmg-lightbox__footer {
+  padding-bottom: var(--mmg-space-xs);
 }
 
 .mmg-lightbox__actions {
@@ -754,6 +771,7 @@ body.mmg-lightbox-open {
   justify-content: space-between;
   gap: 0.4rem;
   margin-top: 0.45rem;
+  margin-bottom: 0;
 }
 
 .mmg-lightbox__actions-left {
@@ -779,16 +797,16 @@ body.mmg-lightbox-open {
   justify-content: center;
   gap: 0.3rem;
   max-width: 100%;
-  min-height: 2.375rem;
-  padding: 0.4rem 0.65rem;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.65rem;
   border-radius: var(--mmg-radius);
   border: 1px solid var(--mmg-color-border);
   background: #fafafa;
   color: var(--mmg-color-text);
   cursor: pointer;
   text-decoration: none;
-  font-size: 0.75rem;
-  line-height: 1.2;
+  font-size: 0.875rem;
+  line-height: 1.35;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

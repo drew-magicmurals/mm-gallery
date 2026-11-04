@@ -31,10 +31,13 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
       </div>
       <div class="mmg-lightbox__footer">
         <div class="mmg-lightbox__meta">
-          <p class="mmg-lightbox__caption"></p>
+          <div class="mmg-lightbox__byline">
+            <p class="mmg-lightbox__caption"></p>
+            <p class="mmg-lightbox__id"></p>
+          </div>
           <p class="mmg-lightbox__headline"></p>
           <p class="mmg-lightbox__text"></p>
-          <p class="mmg-lightbox__id"></p>
+          <div class="mmg-lightbox__id-slot" aria-hidden="true"></div>
         </div>
         <div class="mmg-lightbox__mural-more" hidden></div>
         <div class="mmg-lightbox__actions">
@@ -271,13 +274,21 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
       const media = overlay.querySelector('.mmg-lightbox__media');
       const footer = overlay.querySelector('.mmg-lightbox__footer');
       if (!panel || !media || !footer) return;
-      const styles = getComputedStyle(panel);
-      const padT = parseFloat(styles.paddingTop) || 0;
-      const padB = parseFloat(styles.paddingBottom) || 0;
-      const reservedTop = padT + 40;
+      const panelStyles = getComputedStyle(panel);
+      const overlayStyles = getComputedStyle(overlay);
+      const padT = parseFloat(panelStyles.paddingTop) || 0;
+      const padB = parseFloat(panelStyles.paddingBottom) || 0;
+      const overlayPad =
+        (parseFloat(overlayStyles.paddingTop) || 0) +
+        (parseFloat(overlayStyles.paddingBottom) || 0);
       const footerH = footer.offsetHeight;
-      const maxMedia = panel.clientHeight - padB - reservedTop - footerH - 4;
-      media.style.maxHeight = `${Math.max(96, maxMedia)}px`;
+      const chrome = padT + padB + footerH + 44;
+      const maxMedia = Math.max(
+        120,
+        Math.min(window.innerHeight - overlayPad - chrome, window.innerHeight * 0.58),
+      );
+      media.style.maxHeight = `${maxMedia}px`;
+      media.style.flex = '0 1 auto';
     });
   }
 
