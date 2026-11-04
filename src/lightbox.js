@@ -5,8 +5,6 @@ import { displayAlt } from './alt-text.js';
 import { itemsWithSameMural, muralDisplayName } from './mural.js';
 import { ICON_SHARE, ICON_PINTEREST } from './lightbox-icons.js';
 
-const GENERIC_MURAL_LABELS = /^custom\s+mural/i;
-
 export function createLightbox(root, state, { onClose, onNavigate, shortlistApi, onMuralFilter }) {
   let releaseTrap = null;
   let touchStartX = 0;
@@ -79,8 +77,8 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
     nextBtn: overlay.querySelector('.mmg-lightbox__nav--next'),
     want: overlay.querySelector('.mmg-lightbox__want'),
     heart: overlay.querySelector('.mmg-lightbox__heart'),
-    heartLabel: overlay.querySelector('.mmg-lightbox__heart .mmg-lightbox__tool-label'),
-    copyLabel: overlay.querySelector('.mmg-lightbox__copy .mmg-lightbox__tool-label'),
+    heartLabel: overlay.querySelector('.mmg-lightbox__heart .mmg-lightbox__action-label'),
+    copyLabel: overlay.querySelector('.mmg-lightbox__copy .mmg-lightbox__action-label'),
     muralMore: overlay.querySelector('.mmg-lightbox__mural-more'),
   };
 
@@ -241,14 +239,18 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
     els.id.textContent = `Photo ${item.id}`;
 
     if (item.mural?.url) {
-      els.mural.textContent = 'See this mural';
+      const rawName = item.mural.name?.replace(/^\*/, '').trim() || '';
+      els.mural.textContent = 'Shop this mural';
       els.mural.href = item.mural.url;
+      els.mural.title = rawName
+        ? `View ${rawName} on magicmurals.com`
+        : 'View this mural product page on magicmurals.com';
       els.mural.hidden = false;
     } else {
       els.mural.hidden = true;
     }
 
-    els.want.textContent = 'I want this look';
+    els.want.textContent = 'Get a mural like this';
     els.want.href = wantThisHref(item);
 
     if (shortlistApi) {
@@ -347,14 +349,14 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
   els.copy.addEventListener('click', async () => {
     if (!state.lightbox || !els.copyLabel) return;
     const url = permalink(state.lightbox.item.id);
-    const defaultLabel = 'Copy link';
+    const defaultLabel = 'Share';
     try {
       await navigator.clipboard.writeText(url);
       els.copyLabel.textContent = 'Copied!';
       els.copy.title = 'Link copied to clipboard';
       setTimeout(() => {
         els.copyLabel.textContent = defaultLabel;
-        els.copy.title = 'Copy a link to this photo';
+        els.copy.title = 'Copy a link to share this photo';
       }, 2000);
     } catch {
       els.copyLabel.textContent = 'Copy failed';
