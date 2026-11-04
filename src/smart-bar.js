@@ -44,7 +44,7 @@ export function attachSmartBar(wrap, state, { onStateChange }) {
           <div class="mmg-smartbar__chips" aria-live="polite"></div>
           <input type="search" class="mmg-smartbar__input" autocomplete="off" spellcheck="false"
             role="combobox" aria-expanded="false" aria-controls="mmg-smartbar-listbox"
-            aria-autocomplete="list" placeholder="Search murals, places, colors, rooms…" />
+            aria-autocomplete="list" placeholder="Search or filter by mural, place, color, room…" />
           <div class="mmg-smartbar__seg mmg-smartbar__seg--in-pill" role="radiogroup" aria-label="Gallery type">
             <button type="button" class="mmg-smartbar__seg-btn" data-seg="all" role="radio" aria-checked="true">All</button>
             <button type="button" class="mmg-smartbar__seg-btn" data-seg="residential" role="radio" aria-checked="false">Home</button>
