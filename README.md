@@ -21,7 +21,7 @@ npm run fix-alt          # refresh alt text from taxonomy
 
 Color buckets use a **minimum pixel share** (10%) so beige walls do not dominate. Smarter **mural-only** sampling (AI segmentation) is planned for a later phase — see comment in `scripts/extract-colors.mjs`.
 
-Lightbox size is tuned with CSS variables on `.mmg-lightbox` in `src/styles.css`: `--mmg-lb-outer` (dim gutter), `--mmg-lb-inner` (padding inside the white card), `--mmg-lb-panel-max` (width), `--mmg-lb-img-max` (photo height). Breakpoints at 640px and 1024px scale them up.
+Lightbox size is tuned with CSS variables on `.mmg-lightbox` in `src/styles.css`: `--mmg-lb-outer`, `--mmg-lb-inner`, `--mmg-lb-panel-max`, `--mmg-lb-img-max` (defaults are ~7% above the original 56rem / 52dvh layout).
 
 **Smart Bar** (Phase 1B addendum): one search pill replaces the old segment buttons, room dropdown, sort dropdown, and color swatch row. Filters live in chips inside the pill; open the pill for color dots, room/sector chips, and sort. URL hash keys include `seg`, `room`, `sector`, `color`, `place`, `q`, and `sort`. Press `/` to focus the bar.
 

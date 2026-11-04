@@ -554,11 +554,11 @@ body.mmg-lightbox-open {
 }
 
 .mmg-lightbox {
-  /* Tune overall lightbox size here (responsive below). */
+  /* ~7% larger than pre-scale baseline (56rem / 52dvh / 1rem gutters). Tune here. */
   --mmg-lb-outer: var(--mmg-space-md);
   --mmg-lb-inner: var(--mmg-space-md);
-  --mmg-lb-panel-max: min(97vw, 56rem);
-  --mmg-lb-img-max: min(58dvh, calc(100dvh - 14rem));
+  --mmg-lb-panel-max: min(96vw, 60rem);
+  --mmg-lb-img-max: min(56dvh, calc(100dvh - 14rem));
   position: fixed;
   inset: 0;
   z-index: 10000;
@@ -571,21 +571,6 @@ body.mmg-lightbox-open {
   padding-bottom: max(var(--mmg-lb-outer), env(safe-area-inset-bottom, 0px));
   padding-left: max(var(--mmg-lb-outer), env(safe-area-inset-left, 0px));
   overflow: hidden;
-}
-
-@media (min-width: 640px) {
-  .mmg-lightbox {
-    --mmg-lb-outer: var(--mmg-space-sm);
-    --mmg-lb-panel-max: min(94vw, 68rem);
-    --mmg-lb-img-max: min(66dvh, calc(100dvh - 12rem));
-  }
-}
-
-@media (min-width: 1024px) {
-  .mmg-lightbox {
-    --mmg-lb-panel-max: min(92vw, 76rem);
-    --mmg-lb-img-max: min(72dvh, calc(100dvh - 11rem));
-  }
 }
 
 .mmg-lightbox__backdrop {
