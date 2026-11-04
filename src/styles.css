@@ -655,12 +655,12 @@ body.mmg-lightbox-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.35rem;
+  height: 2.35rem;
   padding: 0;
   border: none;
-  background: rgba(57, 57, 57, 0.75);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.3);
+  color: var(--mmg-color-text);
   cursor: pointer;
   border-radius: var(--mmg-radius);
   transform: translateY(-50%);
@@ -687,7 +687,7 @@ body.mmg-lightbox-open {
 }
 
 .mmg-lightbox__nav:hover {
-  background: rgba(57, 57, 57, 0.88);
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .mmg-lightbox__figure {
