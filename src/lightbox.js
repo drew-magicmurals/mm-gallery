@@ -20,13 +20,13 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
     <div class="mmg-lightbox__backdrop" data-mmg-action="close"></div>
     <div class="mmg-lightbox__panel">
       <button type="button" class="mmg-lightbox__close" data-mmg-action="close" aria-label="Close">&times;</button>
-      <button type="button" class="mmg-lightbox__nav mmg-lightbox__nav--prev" data-mmg-action="prev" aria-label="Previous photo">
-        <svg class="mmg-lightbox__nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6L8 12l6 6" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button type="button" class="mmg-lightbox__nav mmg-lightbox__nav--next" data-mmg-action="next" aria-label="Next photo">
-        <svg class="mmg-lightbox__nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
       <div class="mmg-lightbox__media">
+        <button type="button" class="mmg-lightbox__nav mmg-lightbox__nav--prev" data-mmg-action="prev" aria-label="Previous photo">
+          <svg class="mmg-lightbox__nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6L8 12l6 6" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="mmg-lightbox__nav mmg-lightbox__nav--next" data-mmg-action="next" aria-label="Next photo">
+          <svg class="mmg-lightbox__nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
         <figure class="mmg-lightbox__figure">
           <img class="mmg-lightbox__img" alt="" decoding="async" />
           <p class="mmg-lightbox__image-count" hidden></p>
@@ -274,15 +274,11 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
     cancelAnimationFrame(layoutFrame);
     layoutFrame = requestAnimationFrame(() => {
       if (overlay.hidden) return;
-      const panel = overlay.querySelector('.mmg-lightbox__panel');
       const media = overlay.querySelector('.mmg-lightbox__media');
-      const footer = overlay.querySelector('.mmg-lightbox__footer');
-      if (!panel || !media || !footer) return;
-      const footerTop = footer.getBoundingClientRect().top;
-      const mediaTop = media.getBoundingClientRect().top;
-      const maxMedia = Math.max(120, Math.floor(footerTop - mediaTop - 4));
-      media.style.maxHeight = `${maxMedia}px`;
-      media.style.flex = '0 1 auto';
+      const img = overlay.querySelector('.mmg-lightbox__img');
+      if (!media || !img) return;
+      media.style.maxHeight = '';
+      img.style.maxHeight = '';
     });
   }
 
