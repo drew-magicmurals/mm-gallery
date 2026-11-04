@@ -749,69 +749,102 @@ body.mmg-lightbox-open {
 
 .mmg-lightbox__actions {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-top: 0.45rem;
 }
 
-.mmg-lightbox__actions-primary {
+.mmg-lightbox__actions-left {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.mmg-lightbox__actions-primary .mmg-btn {
   flex: 1 1 auto;
-  font-size: 0.875rem;
-  padding: 0.5rem 0.85rem;
-  min-height: 2.75rem;
-}
-
-.mmg-lightbox__actions-tools {
-  display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
-  align-items: stretch;
+  align-items: center;
+  gap: 0.3rem;
+  min-width: 0;
 }
 
-.mmg-lightbox__tool {
+.mmg-lightbox__actions-right {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.mmg-lightbox__action {
   font: inherit;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
-  flex: 1 1 auto;
-  min-height: 2.75rem;
-  padding: 0.4rem 0.65rem;
+  gap: 0.3rem;
+  max-width: 100%;
+  min-height: 2.125rem;
+  padding: 0.3rem 0.55rem;
   border-radius: 999px;
   border: 1px solid var(--mmg-color-border);
   background: #fafafa;
   color: var(--mmg-color-text);
   cursor: pointer;
   text-decoration: none;
-  font-size: 0.8125rem;
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.mmg-lightbox__tool:hover {
+.mmg-lightbox__action:hover {
   border-color: #c8c8c8;
   background: #f3f3f3;
 }
 
-.mmg-lightbox__tool:focus-visible {
+.mmg-lightbox__action:focus-visible {
   outline: none;
   box-shadow: var(--mmg-focus);
 }
 
-.mmg-lightbox__tool--pinterest {
-  border-color: #e6b3b3;
-  background: #fff;
-  color: #bd081c;
+.mmg-lightbox__action--lead {
+  background: var(--mmg-color-accent);
+  border-color: var(--mmg-color-accent);
+  color: #fff;
 }
 
-.mmg-lightbox__tool--pinterest:hover {
+.mmg-lightbox__action--lead:hover {
+  background: var(--mmg-color-accent-hover);
+  border-color: var(--mmg-color-accent-hover);
+  color: #fff;
+}
+
+.mmg-lightbox__action--mural {
+  border-color: var(--mmg-color-accent);
+  color: var(--mmg-color-accent);
+  background: #fff;
+  max-width: 9rem;
+}
+
+.mmg-lightbox__action--mural:hover {
+  background: #f4faf3;
+}
+
+.mmg-lightbox__action--heart {
+  padding-left: 0.45rem;
+  padding-right: 0.55rem;
+}
+
+.mmg-lightbox__action--share {
+  color: var(--mmg-color-text);
+}
+
+.mmg-lightbox__action--pinterest {
+  padding: 0.25rem 0.4rem;
+  border-color: #e8c4c4;
+  background: #fff;
+}
+
+.mmg-lightbox__action--pinterest:hover {
   border-color: #e60023;
-  background: #fff5f5;
-  color: #bd081c;
+  background: #fff8f8;
 }
 
 .mmg-lightbox__svg {

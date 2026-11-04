@@ -3,7 +3,9 @@ import { imageSrc, imageSrcSet, pinterestUrl } from './images.js';
 import { trapFocus, prefersReducedMotion } from './util.js';
 import { displayAlt } from './alt-text.js';
 import { itemsWithSameMural, muralDisplayName } from './mural.js';
-import { ICON_LINK, ICON_PINTEREST } from './lightbox-icons.js';
+import { ICON_SHARE, ICON_PINTEREST } from './lightbox-icons.js';
+
+const GENERIC_MURAL_LABELS = /^custom\s+mural/i;
 
 export function createLightbox(root, state, { onClose, onNavigate, shortlistApi, onMuralFilter }) {
   let releaseTrap = null;
@@ -38,22 +40,21 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
         </div>
         <div class="mmg-lightbox__mural-more" hidden></div>
         <div class="mmg-lightbox__actions">
-          <div class="mmg-lightbox__actions-primary">
-            <a class="mmg-btn mmg-btn--primary mmg-lightbox__want" href="#" title="Tell us you want a custom look like this photo"></a>
-            <a class="mmg-btn mmg-lightbox__mural" href="#" hidden title="Open this mural on magicmurals.com"></a>
-          </div>
-          <div class="mmg-lightbox__actions-tools" role="group" aria-label="Share and save">
-            <button type="button" class="mmg-lightbox__tool mmg-lightbox__heart" aria-pressed="false" title="Save to your favorites on this device">
+          <div class="mmg-lightbox__actions-left" role="group" aria-label="Mural options">
+            <a class="mmg-lightbox__action mmg-lightbox__action--lead mmg-lightbox__want" href="#" title="Ask Magic Murals about a custom mural inspired by this photo"></a>
+            <a class="mmg-lightbox__action mmg-lightbox__action--mural mmg-lightbox__mural" href="#" hidden title="Open this mural on magicmurals.com"></a>
+            <button type="button" class="mmg-lightbox__action mmg-lightbox__action--heart mmg-lightbox__heart" aria-pressed="false" title="Save to your favorites on this device">
               <span class="mmg-lightbox__heart-glyph" aria-hidden="true">♥</span>
-              <span class="mmg-lightbox__tool-label">Favorite</span>
+              <span class="mmg-lightbox__action-label">Favorite</span>
             </button>
-            <button type="button" class="mmg-lightbox__tool mmg-lightbox__copy" title="Copy a link to this photo">
-              ${ICON_LINK}
-              <span class="mmg-lightbox__tool-label">Copy link</span>
+          </div>
+          <div class="mmg-lightbox__actions-right" role="group" aria-label="Share">
+            <button type="button" class="mmg-lightbox__action mmg-lightbox__action--share mmg-lightbox__copy" title="Copy a link to share this photo">
+              ${ICON_SHARE}
+              <span class="mmg-lightbox__action-label">Share</span>
             </button>
-            <a class="mmg-lightbox__tool mmg-lightbox__tool--pinterest mmg-lightbox__pin" href="#" target="_blank" rel="noopener noreferrer" title="Save to Pinterest" aria-label="Save to Pinterest">
+            <a class="mmg-lightbox__action mmg-lightbox__action--pinterest mmg-lightbox__pin" href="#" target="_blank" rel="noopener noreferrer" title="Save to Pinterest" aria-label="Save to Pinterest">
               ${ICON_PINTEREST}
-              <span class="mmg-lightbox__tool-label">Pinterest</span>
             </a>
           </div>
         </div>
