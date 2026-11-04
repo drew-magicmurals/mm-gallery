@@ -3,6 +3,7 @@ import { imageSrc, imageSrcSet, pinterestUrl } from './images.js';
 import { trapFocus, prefersReducedMotion } from './util.js';
 import { displayAlt } from './alt-text.js';
 import { itemsWithSameMural, muralDisplayName } from './mural.js';
+import { ICON_LINK, ICON_PINTEREST } from './lightbox-icons.js';
 
 export function createLightbox(root, state, { onClose, onNavigate, shortlistApi, onMuralFilter }) {
   let releaseTrap = null;
@@ -29,17 +30,32 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
         <div class="mmg-lightbox__thumbs" hidden></div>
       </div>
       <div class="mmg-lightbox__footer">
-        <p class="mmg-lightbox__caption"></p>
-        <p class="mmg-lightbox__headline"></p>
-        <p class="mmg-lightbox__text"></p>
-        <p class="mmg-lightbox__id"></p>
+        <div class="mmg-lightbox__meta">
+          <p class="mmg-lightbox__caption"></p>
+          <p class="mmg-lightbox__headline"></p>
+          <p class="mmg-lightbox__text"></p>
+          <p class="mmg-lightbox__id"></p>
+        </div>
         <div class="mmg-lightbox__mural-more" hidden></div>
         <div class="mmg-lightbox__actions">
-          <a class="mmg-btn mmg-lightbox__mural" href="#" hidden></a>
-          <a class="mmg-btn mmg-btn--primary mmg-lightbox__want" href="#"></a>
-          <button type="button" class="mmg-btn mmg-lightbox__heart" aria-pressed="false">Save to shortlist</button>
-          <button type="button" class="mmg-btn mmg-lightbox__copy">Copy link</button>
-          <a class="mmg-btn mmg-lightbox__pin" href="#" target="_blank" rel="noopener noreferrer">Save to Pinterest</a>
+          <div class="mmg-lightbox__actions-primary">
+            <a class="mmg-btn mmg-btn--primary mmg-lightbox__want" href="#" title="Tell us you want a custom look like this photo"></a>
+            <a class="mmg-btn mmg-lightbox__mural" href="#" hidden title="Open this mural on magicmurals.com"></a>
+          </div>
+          <div class="mmg-lightbox__actions-tools" role="group" aria-label="Share and save">
+            <button type="button" class="mmg-lightbox__tool mmg-lightbox__heart" aria-pressed="false" title="Save to your favorites on this device">
+              <span class="mmg-lightbox__heart-glyph" aria-hidden="true">♥</span>
+              <span class="mmg-lightbox__tool-label">Favorite</span>
+            </button>
+            <button type="button" class="mmg-lightbox__tool mmg-lightbox__copy" title="Copy a link to this photo">
+              ${ICON_LINK}
+              <span class="mmg-lightbox__tool-label">Copy link</span>
+            </button>
+            <a class="mmg-lightbox__tool mmg-lightbox__tool--pinterest mmg-lightbox__pin" href="#" target="_blank" rel="noopener noreferrer" title="Save to Pinterest" aria-label="Save to Pinterest">
+              ${ICON_PINTEREST}
+              <span class="mmg-lightbox__tool-label">Pinterest</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -62,8 +78,19 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
     nextBtn: overlay.querySelector('.mmg-lightbox__nav--next'),
     want: overlay.querySelector('.mmg-lightbox__want'),
     heart: overlay.querySelector('.mmg-lightbox__heart'),
+    heartLabel: overlay.querySelector('.mmg-lightbox__heart .mmg-lightbox__tool-label'),
+    copyLabel: overlay.querySelector('.mmg-lightbox__copy .mmg-lightbox__tool-label'),
     muralMore: overlay.querySelector('.mmg-lightbox__mural-more'),
   };
+
+  function syncFavoriteButton(saved) {
+    els.heart.setAttribute('aria-pressed', saved ? 'true' : 'false');
+    els.heart.classList.toggle('is-active', saved);
+    if (els.heartLabel) els.heartLabel.textContent = saved ? 'Saved' : 'Favorite';
+    els.heart.title = saved
+      ? 'Remove from your favorites on this device'
+      : 'Save to your favorites on this device';
+  }
 
   function permalink(itemId) {
     const base = `${location.origin}${location.pathname}`;
@@ -203,13 +230,13 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
     const cap = item.caption || '';
     const head = item.headline || '';
     const body = item.text || '';
-    els.caption.textContent = cap;
-    els.caption.hidden = !cap;
-    els.headline.textContent = head;
-    els.headline.hidden = !head;
-    els.text.textContent = body;
-    els.text.hidden = !body;
-    if (body) els.text.title = body;
+    els.caption.textContent = cap || '\u00a0';
+    els.caption.classList.toggle('is-empty', !cap);
+    els.headline.textContent = head || '\u00a0';
+    els.headline.classList.toggle('is-empty', !head);
+    els.text.textContent = body || '\u00a0';
+    els.text.classList.toggle('is-empty', !body);
+    els.text.title = body || '';
     els.id.textContent = `Photo ${item.id}`;
 
     if (item.mural?.url) {
@@ -224,9 +251,7 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
     els.want.href = wantThisHref(item);
 
     if (shortlistApi) {
-      const saved = shortlistApi.isSaved(item.id);
-      els.heart.setAttribute('aria-pressed', saved ? 'true' : 'false');
-      els.heart.classList.toggle('is-active', saved);
+      syncFavoriteButton(shortlistApi.isSaved(item.id));
     }
 
     renderImageIndex(item, imageIndex);
@@ -315,22 +340,26 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
   els.heart.addEventListener('click', () => {
     if (!state.lightbox || !shortlistApi) return;
     shortlistApi.toggle(state.lightbox.item.id);
-    const saved = shortlistApi.isSaved(state.lightbox.item.id);
-    els.heart.setAttribute('aria-pressed', saved ? 'true' : 'false');
-    els.heart.classList.toggle('is-active', saved);
+    syncFavoriteButton(shortlistApi.isSaved(state.lightbox.item.id));
   });
 
   els.copy.addEventListener('click', async () => {
-    if (!state.lightbox) return;
+    if (!state.lightbox || !els.copyLabel) return;
     const url = permalink(state.lightbox.item.id);
+    const defaultLabel = 'Copy link';
     try {
       await navigator.clipboard.writeText(url);
-      els.copy.textContent = 'Copied!';
+      els.copyLabel.textContent = 'Copied!';
+      els.copy.title = 'Link copied to clipboard';
       setTimeout(() => {
-        els.copy.textContent = 'Copy link';
+        els.copyLabel.textContent = defaultLabel;
+        els.copy.title = 'Copy a link to this photo';
       }, 2000);
     } catch {
-      els.copy.textContent = 'Copy failed';
+      els.copyLabel.textContent = 'Copy failed';
+      setTimeout(() => {
+        els.copyLabel.textContent = defaultLabel;
+      }, 2000);
     }
   });
 
