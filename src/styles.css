@@ -562,10 +562,10 @@ body.mmg-lightbox-open {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: max(var(--mmg-lb-gutter), env(safe-area-inset-top, 0px))
-    max(var(--mmg-lb-gutter), env(safe-area-inset-right, 0px))
-    max(var(--mmg-lb-gutter), env(safe-area-inset-bottom, 0px))
-    max(var(--mmg-lb-gutter), env(safe-area-inset-left, 0px));
+  padding-top: max(var(--mmg-space-md), env(safe-area-inset-top, 0px));
+  padding-right: max(var(--mmg-space-md), env(safe-area-inset-right, 0px));
+  padding-bottom: max(var(--mmg-space-md), env(safe-area-inset-bottom, 0px));
+  padding-left: max(var(--mmg-space-md), env(safe-area-inset-left, 0px));
   overflow: hidden;
 }
 
@@ -583,13 +583,11 @@ body.mmg-lightbox-open {
   width: 100%;
   max-width: 56rem;
   height: auto;
-  max-height: calc(
-    100dvh - 2 * var(--mmg-lb-gutter, var(--mmg-space-md)) -
-      env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)
-  );
+  max-height: calc(100dvh - 2 * var(--mmg-space-md));
   overflow: hidden;
   padding: 0;
   background: var(--mmg-color-bg);
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
@@ -607,16 +605,15 @@ body.mmg-lightbox-open {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: var(--mmg-lb-gutter, var(--mmg-space-md))
-    var(--mmg-lb-gutter, var(--mmg-space-md))
-    0;
+  padding: 0;
 }
 
 .mmg-lightbox__footer {
   flex: 0 0 auto;
   min-height: 0;
   overflow: hidden;
-  padding: var(--mmg-space-sm) var(--mmg-lb-gutter, var(--mmg-space-md)) 0;
+  margin-top: var(--mmg-space-sm);
+  padding: var(--mmg-space-sm) 0 0;
   border-top: 1px solid #ececec;
 }
 

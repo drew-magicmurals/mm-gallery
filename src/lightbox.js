@@ -275,14 +275,11 @@ export function createLightbox(root, state, { onClose, onNavigate, shortlistApi,
       const footer = overlay.querySelector('.mmg-lightbox__footer');
       if (!panel || !media || !footer) return;
       const overlayStyles = getComputedStyle(overlay);
-      const gutter = parseFloat(overlayStyles.getPropertyValue('--mmg-lb-gutter')) || 16;
       const overlayPad =
         (parseFloat(overlayStyles.paddingTop) || 0) +
         (parseFloat(overlayStyles.paddingBottom) || 0);
       const footerH = footer.offsetHeight;
-      const mediaStyles = getComputedStyle(media);
-      const mediaPadT = parseFloat(mediaStyles.paddingTop) || 0;
-      const chrome = overlayPad + footerH + mediaPadT + 40;
+      const chrome = overlayPad + footerH + 36;
       const maxMedia = Math.max(
         120,
         Math.min(window.innerHeight - chrome, window.innerHeight * 0.58),
